@@ -20,12 +20,26 @@ export interface RefType {
 
 function Subtitle() {
   const {
+    videoRef,
     currentSubtitle,
     setCurrentSubtitle,
     isSubtitle,
     setSubtitle,
     setIsSubtitle,
+    subTitle,
   } = useContext(AppContext);
+
+  const handlePause = () => {
+    if (!videoRef?.current?.paused) {
+      videoRef?.current?.pause();
+    }
+  };
+
+  const handlePlay = () => {
+    if (videoRef?.current?.paused) {
+      videoRef.current.play();
+    }
+  };
 
   return (
     <Draggable
@@ -36,6 +50,8 @@ function Subtitle() {
       <div
         style={containerStyle}
         className={currentSubtitle === "" ? "hidden" : ""}
+        // onMouseEnter={handlePause}
+        // onMouseLeave={handlePlay}
       >
         <div style={subTitleWrapperStyle}>
           <div style={subTitleAreaStyle}>

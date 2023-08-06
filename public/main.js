@@ -62,7 +62,6 @@ fileUpload.addEventListener("change", (e) => {
   });
   video.play();
   currentDuration.innerHTML = showDuration(0);
-  animeTitle.innerHTML = fileTitle;
   document.title = fileTitle;
 });
 
@@ -79,6 +78,7 @@ let isPlaying = false,
   touchStartTime = 0,
   isEpsMenuOpen = false,
   isSpeedMenuOpen = false;
+
 currentVol.style.width = volumeVal * 100 + "%";
 
 // Video Event Listeners

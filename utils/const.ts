@@ -9,7 +9,7 @@ const containerStyle = {
     width: "100%",
     margin: "auto",
     textAlign: "center",
-    zIndex: '2147483647'
+    zIndex: '100'
 } as const;
 
 const subTitleWrapperStyle = {
@@ -45,5 +45,14 @@ type AppProviderProps = {
     subTitle: MutableRefObject<NodeCue[]> | null
 }
 
+type LayoutProps = {
+    children?: React.ReactNode;
+};
+
+type SettingModelProps = {
+    isOpen: boolean,
+    onClose: () => void
+}
+
 export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
-export type { AppProviderProps }
+export type { AppProviderProps, LayoutProps, SettingModelProps }

@@ -6,6 +6,7 @@ import { Providers } from "@/components/provides/providers";
 import { AppProviderProps } from "@/utils/const";
 import { useRef, useState } from "react";
 import { NodeCue } from "subtitle";
+import { PiGear } from 'react-icons/pi';
 
 function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -24,7 +25,7 @@ function Page() {
     isSubtitle,
     setIsSubtitle,
     setSubtitle,
-    subTitle
+    subTitle,
   };
 
   return (

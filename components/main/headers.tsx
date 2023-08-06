@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, useDisclosure } from "@chakra-ui/react";
 import {
   compile,
   Dialogue,
@@ -13,9 +13,13 @@ import { useContext } from "react";
 import { AppContext } from "../provides/providers";
 import { FaLanguage } from "react-icons/fa";
 import { AiFillVideoCamera } from "react-icons/ai";
+import { PiGear } from "react-icons/pi";
+import SettingModal from "../modal/modal";
 
 function Headers() {
   const { setIsSubtitle, setSubtitle } = useContext(AppContext);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.stopPropagation();
@@ -66,12 +70,11 @@ function Headers() {
 
   return (
     <div className="header-container !my-2">
-      <h2 className="title"></h2>
       <div className="flex">
         <input type="file" style={{ display: "none" }} id="file-upload" />
         <Button
           className="relative"
-          rightIcon={<FaLanguage />}
+          rightIcon={<FaLanguage size="24px" />}
           width="200px"
           color="green.800"
         >
@@ -79,18 +82,18 @@ function Headers() {
             className="absolute h-full w-full"
             htmlFor="video-upload"
           ></label>
-          Choose Subtitles
+          Load Subtitles
         </Button>
         <Button
           className="ml-4 relative"
-          rightIcon={<AiFillVideoCamera />}
+          rightIcon={<AiFillVideoCamera size="18px" />}
           colorScheme="whatsapp"
         >
           <label
             htmlFor="file-upload"
             className="absolute h-full w-full"
           ></label>
-          Choose Video
+          Load Video
         </Button>
         <Input
           id="video-upload"
@@ -99,6 +102,14 @@ function Headers() {
           onChange={handleChange}
         />
       </div>
+      <PiGear
+        className="text-green-500 hover:text-green-700 active:text-green-700"
+        size="40px"
+        onClick={() => {
+          onOpen();
+        }}
+      />
+      <SettingModal isOpen={isOpen} onClose={onClose} />
     </div>
   );
 }
