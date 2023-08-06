@@ -29,19 +29,19 @@ body {
 .body-container, .header-container{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;;
 }
 
 .header-container {
-  margin: 20px 0;
-  min-width: 100vw;
-  max-height: 60px;
+  margin: 20px 0px;
+  width: 1024px;
+  height: 80px;
 }
 
 .title{
-  font-size: 42px;
+  font-size: 30px;
   color: #fff;
-  text-align: center;
+  text-align: left;
   max-width: 65%;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -69,12 +69,10 @@ body {
 .button:hover {
   animation: glow 1s ease-in infinite;
 }
-.button::before {
-  animation: glow 1s ease-in infinite;
+.button::before, .button-glow::before {
   background: #4CAF50;
   border-radius: inherit;
   content: '';
-  filter: blur(10px);
   opacity: .75;
   position: absolute;
   transition: all .3s ease-in-out;
@@ -89,6 +87,7 @@ body {
   filter: blur(20px);
   opacity: 1;
 }
+
 
 @keyframes glow {
   0% {

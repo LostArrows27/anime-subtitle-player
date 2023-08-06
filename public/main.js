@@ -467,10 +467,10 @@ function handlePlaybackRateKey(type = "") {
 function handleShorthand(e) {
   const tagName = document.activeElement.tagName.toLowerCase();
   if (tagName === "input") return;
-  if (e.key.match(/[0-9]/gi)) {
-    video.currentTime = (video.duration / 100) * (parseInt(e.key) * 10);
-    currentTime.style.width = parseInt(e.key) * 10 + "%";
-  }
+  // if (e.key.match(/[0-9]/gi)) {
+  //   video.currentTime = (video.duration / 100) * (parseInt(e.key) * 10);
+  //   currentTime.style.width = parseInt(e.key) * 10 + "%";
+  // }
   switch (e.key.toLowerCase()) {
     case " ":
       if (tagName === "button") return;

@@ -39,13 +39,7 @@ function Video() {
 
   return (
     <div className="video-container">
-      <Subtitle
-        setSubtitle={setSubtitle}
-        currentSubtitle={currentSubtitle}
-        setCurrentSubtitle={setCurrentSubtitle}
-        isSubtitle={isSubtitle}
-        setIsSubtitle={setIsSubtitle}
-      />
+      <Subtitle />
       <video ref={videoRef} id="video" disableRemotePlayback></video>
       <span className="custom-loader"></span>
       <div className="player-state">

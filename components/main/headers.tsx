@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 import {
   compile,
   Dialogue,
@@ -11,16 +11,18 @@ import { NodeCue, parseSync } from "subtitle";
 import Subtitle from "../subtitle/subtitle";
 import { useContext } from "react";
 import { AppContext } from "../provides/providers";
+import { FaLanguage } from "react-icons/fa";
+import { AiFillVideoCamera } from "react-icons/ai";
 
 function Headers() {
   const { setIsSubtitle, setSubtitle } = useContext(AppContext);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.stopPropagation();
-    const file = event.target.files[0] as File;
+    const file = (event.target as HTMLInputElement).files![0] as File;
     const types = file.name.split(".").pop();
     const reader = new FileReader();
-    reader.onload = function (event) {
+    reader.onload = function (event: ProgressEvent<FileReader>) {
       const fileText = reader.result as string;
       if (types === "srt") {
         const data = parseSync(fileText);
@@ -59,33 +61,44 @@ function Headers() {
       }
     };
     reader.readAsText(file);
-    event.target = null;
+    (event.target as HTMLInputElement).files = null;
   };
 
   return (
-    <div className="header-container">
+    <div className="header-container !my-2">
       <h2 className="title"></h2>
-      <label htmlFor="file-upload" className="button">
-        Choose Video
-      </label>
-      <input type="file" style={{ display: "none" }} id="file-upload" />
-      <label
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        htmlFor="video-upload"
-        className="bg-slate-500 px-10 py-7 text-2xl rounded-3xl uppercase"
-      >
-        Upload Subtitle
+      <div className="flex">
+        <input type="file" style={{ display: "none" }} id="file-upload" />
+        <Button
+          className="relative"
+          rightIcon={<FaLanguage />}
+          width="200px"
+          color="green.800"
+        >
+          <label
+            className="absolute h-full w-full"
+            htmlFor="video-upload"
+          ></label>
+          Choose Subtitles
+        </Button>
+        <Button
+          className="ml-4 relative"
+          rightIcon={<AiFillVideoCamera />}
+          colorScheme="whatsapp"
+        >
+          <label
+            htmlFor="file-upload"
+            className="absolute h-full w-full"
+          ></label>
+          Choose Video
+        </Button>
         <Input
-          onClick={(e) => e.stopPropagation()}
-          onFocus={(e) => e.stopPropagation()}
           id="video-upload"
           className="hidden"
           type="file"
           onChange={handleChange}
         />
-      </label>
+      </div>
     </div>
   );
 }

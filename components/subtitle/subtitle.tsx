@@ -7,41 +7,25 @@ import {
   subTitleTextStyle,
   subTitleWrapperStyle,
 } from "@/utils/const";
-import {
-  compile,
-  Dialogue,
-  DialogueSlice,
-  DialogueFragment,
-} from "ass-compiler";
-import { NodeCue, parseSync } from "subtitle";
-import { Input } from "@chakra-ui/react";
+import { NodeCue } from "subtitle";
+import { useContext } from "react";
+import { AppContext } from "../provides/providers";
 
 type Subtitle = { start?: number; end?: number; text?: string };
-
-function msToMinSecMs(ms: number) {
-  const minutes = Math.floor(ms / 60000);
-  const seconds = Math.floor((ms % 60000) / 1000);
-  const milliseconds = ms % 1000;
-  const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-  const paddedMilliseconds =
-    milliseconds < 100 ? `0${milliseconds}` : milliseconds;
-  return `${paddedMinutes}:${paddedSeconds}:${paddedMilliseconds}`;
-}
 
 export interface RefType {
   setCurrentSubtitle: () => void;
   getSubtitle: () => NodeCue[];
 }
 
-function Subtitle(props: any) {
+function Subtitle() {
   const {
     currentSubtitle,
     setCurrentSubtitle,
     isSubtitle,
     setSubtitle,
     setIsSubtitle,
-  } = props;
+  } = useContext(AppContext);
 
   return (
     <Draggable

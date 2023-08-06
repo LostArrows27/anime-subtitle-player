@@ -11,19 +11,22 @@
 Anime Subtitle Player is a video player that help people to learn Japanese through watching Anime with Japanese subtitle
 
 ## TODO
+
+- [ ] Add episode list when choose many video on the left side of the screen
 - [ ] Handle subtitle logic
-    - [x] Remove subtitle block when there's no dialogue
-    - [ ] Add skip music logic 
-    - [ ] Add detect silent logic 
-- [ ] Supporting ```.ass``` subtitle file
+  - [x] Remove subtitle block when there's no dialogue
+  - [ ] Add skip music logic
+  - [ ] Add detect silent logic
+- [ ] Supporting `.ass` subtitle file
 - [ ] Making subtitle in 3 mode
-    - [ ] On the right of video
-    - [ ] Under video
-    - [ ] In video
+  - [ ] On the right of video
+  - [ ] Under video
+  - [ ] In video
 - [ ] Store anime name and watch progress to ask next time if user watch same video
-- [ ] Redesign UI 
+- [ ] Redesign UI
 - [ ] Cleaner code
-- [ ] Add setting gears on top right screen
-    - [ ] Adjust subtitle sync, position, color, font, ....
-    - [ ] Add settting for ```.ass``` file 
-- [ ] Making video instruction to intergrate with Yomichan 
+- [ ] Add setting gears on top right screen as modal pop up
+  - [ ] Adjust subtitle sync, position, color, font, ....
+  - [ ] Add settting for `.ass` file
+  - [ ] Save user's settting in local storage
+- [ ] Making video instruction to intergrate with Yomichan
