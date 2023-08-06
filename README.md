@@ -12,7 +12,7 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 ## TODO
 - [ ] Handle subtitle logic
-    - [ ] Remove subtitle block when there's no dialogue
+    - [x] Remove subtitle block when there's no dialogue
     - [ ] Add skip music logic 
     - [ ] Add detect silent logic 
 - [ ] Supporting ```.ass``` subtitle file

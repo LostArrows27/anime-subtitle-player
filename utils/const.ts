@@ -1,3 +1,6 @@
+import { Dispatch, MutableRefObject, ReactNode, RefObject, SetStateAction } from "react";
+import { NodeCue } from "subtitle";
+
 const containerStyle = {
     position: "absolute",
     bottom: "75px",
@@ -32,4 +35,15 @@ const subTitleTextStyle = {
     textAlign: 'center',
 } as const;
 
+type AppProviderProps = {
+    videoRef: RefObject<HTMLVideoElement> | null,
+    currentSubtitle: string,
+    setCurrentSubtitle: Dispatch<SetStateAction<string>>,
+    isSubtitle: boolean,
+    setIsSubtitle: Dispatch<SetStateAction<boolean>>,
+    setSubtitle: (data: NodeCue[]) => void,
+    subTitle: MutableRefObject<NodeCue[]> | null
+}
+
 export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
+export type { AppProviderProps }

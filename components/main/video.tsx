@@ -1,27 +1,27 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Subtitle, { RefType } from "../subtitle/subtitle";
 import { NodeCue } from "subtitle";
-
-let currentPost = 0;
+import { AppContext } from "../provides/providers";
 
 function Video() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  let subTitle = useRef<NodeCue[]>([]);
-  const [currentSubtitle, setCurrentSubtitle] = useState<string>("");
-  const [isSubtitle, setIsSubtitle] = useState<boolean>(false);
-
-  const setSubtitle = (data: NodeCue[]): void => {
-    subTitle.current = data;
-  };
+  const {
+    videoRef,
+    currentSubtitle,
+    setCurrentSubtitle,
+    isSubtitle,
+    setIsSubtitle,
+    setSubtitle,
+    subTitle,
+  } = useContext(AppContext);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.ontimeupdate = (e) => {
-        const curSub: NodeCue | undefined = subTitle.current.find(
+    if (videoRef!.current) {
+      videoRef!.current.ontimeupdate = (e) => {
+        const curSub: NodeCue | undefined = subTitle!.current.find(
           (value: NodeCue) => {
             let currentTime = parseFloat(
-              videoRef.current?.currentTime.toFixed(3) as string
+              videoRef!.current?.currentTime.toFixed(3) as string
             );
             return (
               currentTime > value.data.start / 1000 &&
@@ -29,19 +29,10 @@ function Video() {
             );
           }
         );
-
+        if (curSub === undefined) {
+          setCurrentSubtitle("");
+        }
         setCurrentSubtitle(curSub?.data.text!);
-
-        // const diff =
-        //   parseFloat(videoRef.current?.currentTime.toFixed(3) as string) -
-        //   subTitle.current[currentPost]?.data.start / 1000;
-        // console.log(diff, currentPost);
-
-        // if (Math.abs(diff) < 0.2) {
-        //   setCurrentSubtitle(subTitle.current[currentPost]?.data.text);
-        //   console.log(subTitle.current[currentPost]?.data.text);
-        //   currentPost++;
-        // }
       };
     }
   }, [videoRef]);
