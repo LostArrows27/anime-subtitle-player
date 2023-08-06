@@ -55,12 +55,7 @@ function Video() {
         isSubtitle={isSubtitle}
         setIsSubtitle={setIsSubtitle}
       />
-      <video
-        ref={videoRef}
-        id="video"
-        disableRemotePlayback
-        src="/anime/1 (1).mkv"
-      ></video>
+      <video ref={videoRef} id="video" disableRemotePlayback></video>
       <span className="custom-loader"></span>
       <div className="player-state">
         <span className="state-btn state-backward">
@@ -109,15 +104,6 @@ function Video() {
             <span className="forward control-btn" title="5 forward">
               <span id="play-forward-outline-1"></span>
             </span>
-            <span className="prev-episodes control-btn" title="5 backward">
-              <span id="arrow-back-outline"></span>
-            </span>
-            <span
-              className="next-episodes forward control-btn"
-              title="5 forward"
-            >
-              <span id="arrow-forward-outline"></span>
-            </span>
             <span className="mini-player control-btn">
               <span id="albums-outline"></span>
             </span>
@@ -137,12 +123,6 @@ function Video() {
                 <li data-value="1.75">1.75x</li>
                 <li data-value="2">2x</li>
               </ul>
-            </span>
-            <span className="settings-eps episode-btn">
-              <span className="setting-btn-eps">
-                <span id="apps-outline"></span>
-              </span>
-              <ul className="setting-menu-eps"></ul>
             </span>
             <span className="theater-btn control-btn">
               <span className="theater-default">

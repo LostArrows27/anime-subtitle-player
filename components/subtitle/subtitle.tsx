@@ -44,6 +44,7 @@ function Subtitle(props: any) {
   } = props;
 
   const handleChange = (event: any) => {
+    event.stopPropagation();
     const file = event.target.files[0] as File;
     const types = file.name.split(".").pop();
     const reader = new FileReader();
@@ -53,7 +54,6 @@ function Subtitle(props: any) {
         const data = parseSync(fileText);
         setSubtitle(data);
         setIsSubtitle(true);
-
         return;
       }
       if (types === "ass") {
@@ -89,18 +89,38 @@ function Subtitle(props: any) {
     reader.readAsText(file);
     event.target = null;
   };
-  return (
-    <Draggable defaultClassName="jss3 react-draggable" axis="y">
+  return !isSubtitle ? (
+    <div className="w-full h-full flex items-center justify-center absolute right-0 left-0 z-40">
+      <label
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        htmlFor="video-upload"
+        className="bg-slate-500 px-10 py-7 text-2xl rounded-3xl uppercase"
+      >
+        Upload Subtitle
+        <Input
+          onClick={(e) => e.stopPropagation()}
+          onFocus={(e) => e.stopPropagation()}
+          id="video-upload"
+          className="hidden"
+          type="file"
+          onChange={handleChange}
+        />
+      </label>
+    </div>
+  ) : (
+    <Draggable
+      defaultClassName="jss3 react-draggable relative"
+      axis="y"
+      disabled={!isSubtitle}
+    >
       <div style={containerStyle}>
-        {!isSubtitle ? (
-          <Input className="" type="file" onChange={handleChange} />
-        ) : (
-          <div style={subTitleWrapperStyle}>
-            <div style={subTitleAreaStyle}>
-              <div style={subTitleTextStyle}>{currentSubtitle}</div>
-            </div>
+        <div style={subTitleWrapperStyle}>
+          <div style={subTitleAreaStyle}>
+            <div style={subTitleTextStyle}>{currentSubtitle}</div>
           </div>
-        )}
+        </div>
       </div>
     </Draggable>
   );
