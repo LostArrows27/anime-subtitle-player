@@ -17,6 +17,7 @@ import {
   Tabs,
   TabIndicator,
 } from "@chakra-ui/react";
+import PositionTab from "../setting-tab/positionTab/positionTab";
 
 function SettingModal({ isOpen, onClose }: SettingModelProps) {
   return (
@@ -33,9 +34,18 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
             colorScheme="green"
           >
             <TabList>
-              <Tab>Sync</Tab>
-              <Tab>Styles</Tab>
-              <Tab>Position</Tab>
+              <Tab>
+                <div className="font-bold">Sync</div>
+              </Tab>
+              <Tab>
+                <div className="font-bold">Sync</div>
+              </Tab>
+              <Tab>
+                <div className="font-bold">Position</div>
+              </Tab>
+              <Tab>
+                <div className="font-bold">Sync</div>
+              </Tab>
             </TabList>
             <TabIndicator
               mt="-1.5px"
@@ -49,6 +59,9 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
               </TabPanel>
               <TabPanel>
                 <p>Styles settng</p>
+              </TabPanel>
+              <TabPanel>
+                <PositionTab />
               </TabPanel>
               <TabPanel>
                 <p>Position settng</p>

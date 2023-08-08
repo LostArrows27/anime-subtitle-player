@@ -42,7 +42,9 @@ type AppProviderProps = {
     isSubtitle: boolean,
     setIsSubtitle: Dispatch<SetStateAction<boolean>>,
     setSubtitle: (data: NodeCue[]) => void,
-    subTitle: MutableRefObject<NodeCue[]> | null
+    subTitle: MutableRefObject<NodeCue[]> | null,
+    tabPos: TabPosition,
+    setTabPos: Dispatch<SetStateAction<TabPosition>>
 }
 
 type LayoutProps = {
@@ -54,5 +56,7 @@ type SettingModelProps = {
     onClose: () => void
 }
 
+type TabPosition = 'in-video' | 'under-video' | 'right-video'
+
 export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
-export type { AppProviderProps, LayoutProps, SettingModelProps }
+export type { AppProviderProps, LayoutProps, SettingModelProps, TabPosition }
