@@ -37,14 +37,14 @@ const subTitleTextStyle = {
 
 type AppProviderProps = {
     videoRef: RefObject<HTMLVideoElement> | null,
-    currentSubtitle: string,
-    setCurrentSubtitle: Dispatch<SetStateAction<string>>,
+    currentSubtitle: Subtitle,
+    setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>,
     isSubtitle: boolean,
     setIsSubtitle: Dispatch<SetStateAction<boolean>>,
     setSubtitle: (data: NodeCue[]) => void,
     subTitle: MutableRefObject<NodeCue[]> | null,
-    tabPos: TabPosition,
-    setTabPos: Dispatch<SetStateAction<TabPosition>>
+    subPos: SubPosition,
+    setSubPos: Dispatch<SetStateAction<SubPosition>>
 }
 
 type LayoutProps = {
@@ -56,7 +56,18 @@ type SettingModelProps = {
     onClose: () => void
 }
 
-type TabPosition = 'in-video' | 'under-video' | 'right-video'
+type Subtitle = { start?: number; end?: number; text?: string };
+
+
+type BesideSubtitleProps = {
+    sub: NodeCue;
+    currentSubtitle: Subtitle;
+    setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>;
+    videoRef: RefObject<HTMLVideoElement> | null;
+    currentSubRef: RefObject<HTMLDivElement>;
+}
+
+type SubPosition = 'in-video' | 'under-video' | 'right-video'
 
 export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
-export type { AppProviderProps, LayoutProps, SettingModelProps, TabPosition }
+export type { AppProviderProps, LayoutProps, SettingModelProps, SubPosition, BesideSubtitleProps, Subtitle }

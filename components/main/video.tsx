@@ -1,19 +1,11 @@
 "use client";
-import { useContext, useEffect, useRef, useState } from "react";
-import Subtitle, { RefType } from "../subtitle/subtitle";
+import { useContext, useEffect } from "react";
 import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
+import InVideoSubtitle from "../subtitle/inVideoSubtitle";
 
 function Video() {
-  const {
-    videoRef,
-    currentSubtitle,
-    setCurrentSubtitle,
-    isSubtitle,
-    setIsSubtitle,
-    setSubtitle,
-    subTitle,
-  } = useContext(AppContext);
+  const { videoRef, setCurrentSubtitle, subTitle } = useContext(AppContext);
 
   useEffect(() => {
     if (videoRef!.current) {
@@ -30,16 +22,20 @@ function Video() {
           }
         );
         if (curSub === undefined) {
-          setCurrentSubtitle("");
+          setCurrentSubtitle({ text: "", start: -100, end: -100 });
         }
-        setCurrentSubtitle(curSub?.data.text!);
+        setCurrentSubtitle({
+          text: curSub?.data.text,
+          start: curSub?.data.start,
+          end: curSub?.data.end,
+        });
       };
     }
   }, [videoRef]);
 
   return (
     <div className="video-container">
-      <Subtitle />
+      <InVideoSubtitle />
       <video ref={videoRef} id="video" disableRemotePlayback></video>
       <span className="custom-loader"></span>
       <div className="player-state">

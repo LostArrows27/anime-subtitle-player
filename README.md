@@ -15,24 +15,26 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 - [x] Handle subtitle logic
   - [x] Remove subtitle block when there's no dialogue
   - [x] Hover then pause
-- [ ] Add setting gears on top right screen as modal pop up
+- [x] Add setting gears on top right screen as modal pop up
   - [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
-  - [ ] Add settting for `.ass` file
   - [ ] Save user's settting in local storage
-  - [ ] 
-- [ ] Title bar when hover like youtube
-- [ ] Add episode list when choose many video on the left side of the screen
-- [ ] Supporting `.ass` subtitle file
 - [ ] Making subtitle in 3 mode
   - [ ] On the right of video
   - [ ] Under video
   - [ ] In video
+- [ ] Change ion-icon to react icon
+- [ ] Cleaner code
+- [ ] Title bar when hover like youtube
+- [ ] Add episode list when choose many video on the left side of the screen
+- [ ] Add settting for `.ass` file
+- [ ] Supporting `.ass` subtitle file
 - [ ] Store anime name and watch progress to ask next time if user watch same video
 - [ ] Redesign UI
 - [ ] Add something when video haven't loaded
-- [ ] Cleaner code
 - [ ] Auto Translate by google API
 - [ ] Hover Translate by mazii API / other source
 - [ ] Add login + save word to dictionary
 - [ ] Support video link
 - [ ] Add card to Anki API
+- [ ] Bocchi loading screen
+- [ ] Change js file to module and export

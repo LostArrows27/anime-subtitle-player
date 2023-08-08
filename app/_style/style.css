@@ -15,6 +15,26 @@
   background-color: none !important;
 }
 
+.custom-scroll-bar::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.custom-scroll-bar::-webkit-scrollbar-track {
+  background: #333; /* Background color of the track */
+}
+
+/* Handle */
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background: #22C35E; /* Color of the scrollbar handle */
+  border-radius: 4px;
+
+}
+
+/* Handle on hover */
+.custom-scroll-bar::-webkit-scrollbar-thumb:hover {
+  background: #aaa; /* Color of the scrollbar handle on hover */
+}
+
 body {
   margin: 0;
   padding: 0;

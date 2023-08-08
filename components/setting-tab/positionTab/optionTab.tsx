@@ -1,4 +1,4 @@
-import { TabPosition } from "@/utils/const";
+import { SubPosition } from "@/utils/const";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { FiPlay } from "react-icons/fi";
@@ -6,11 +6,11 @@ import { FiPlay } from "react-icons/fi";
 export function OptionTab({
   defaultPos,
   currentPos,
-  setTabPos,
+  setSubPos,
 }: {
-  defaultPos: TabPosition;
-  currentPos: TabPosition;
-  setTabPos: Dispatch<SetStateAction<TabPosition>>;
+  defaultPos: SubPosition;
+  currentPos: SubPosition;
+  setSubPos: Dispatch<SetStateAction<SubPosition>>;
 }) {
   return (
     <div className="flex flex-col w-[30%] h-full">
@@ -22,7 +22,7 @@ export function OptionTab({
             : "")
         }
         onClick={() => {
-          setTabPos(defaultPos);
+          setSubPos(defaultPos);
         }}
       >
         {convertPosToPreviewElemet(defaultPos, currentPos)}
@@ -37,15 +37,15 @@ export function OptionTab({
   );
 }
 
-function convertPos(position: TabPosition) {
+function convertPos(position: SubPosition) {
   if (position === "in-video") return "In video";
   if (position === "right-video") return "Beside video";
   return "Under video";
 }
 
 function convertPosToPreviewElemet(
-  position: TabPosition,
-  currentPos: TabPosition
+  position: SubPosition,
+  currentPos: SubPosition
 ): ReactNode {
   if (position === "in-video") {
     return (

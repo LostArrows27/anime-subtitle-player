@@ -8,13 +8,13 @@ import {
   DialogueFragment,
 } from "ass-compiler";
 import { NodeCue, parseSync } from "subtitle";
-import Subtitle from "../subtitle/subtitle";
 import { useContext } from "react";
 import { AppContext } from "../provides/providers";
 import { FaLanguage } from "react-icons/fa";
 import { AiFillVideoCamera } from "react-icons/ai";
 import { PiGear } from "react-icons/pi";
 import SettingModal from "../modal/modal";
+import { Subtitle } from "@/utils/const";
 
 function Headers() {
   const { setIsSubtitle, setSubtitle } = useContext(AppContext);

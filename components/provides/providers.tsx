@@ -3,14 +3,14 @@ import { createContext, ReactNode } from "react";
 
 const AppContext = createContext<AppProviderProps>({
   videoRef: null,
-  currentSubtitle: "",
+  currentSubtitle: { text: "", start: -100, end: -100 },
   setCurrentSubtitle: () => {},
   isSubtitle: false,
   setIsSubtitle: () => {},
   setSubtitle: () => {},
   subTitle: null,
-  tabPos: "in-video",
-  setTabPos: () => {},
+  subPos: "in-video",
+  setSubPos: () => {},
 });
 
 const Providers = ({

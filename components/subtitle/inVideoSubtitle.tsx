@@ -11,35 +11,15 @@ import { NodeCue } from "subtitle";
 import { useContext } from "react";
 import { AppContext } from "../provides/providers";
 
-type Subtitle = { start?: number; end?: number; text?: string };
-
 export interface RefType {
   setCurrentSubtitle: () => void;
   getSubtitle: () => NodeCue[];
 }
 
-function Subtitle() {
-  const {
-    videoRef,
-    currentSubtitle,
-    setCurrentSubtitle,
-    isSubtitle,
-    setSubtitle,
-    setIsSubtitle,
-    subTitle,
-  } = useContext(AppContext);
+function InVideoSubtitle() {
+  const { currentSubtitle, isSubtitle, subPos } = useContext(AppContext);
 
-  const handlePause = () => {
-    if (!videoRef?.current?.paused) {
-      videoRef?.current?.pause();
-    }
-  };
-
-  const handlePlay = () => {
-    if (videoRef?.current?.paused) {
-      videoRef.current.play();
-    }
-  };
+  if (subPos !== "in-video") return;
 
   return (
     <Draggable
@@ -49,13 +29,11 @@ function Subtitle() {
     >
       <div
         style={containerStyle}
-        className={currentSubtitle === "" ? "hidden" : ""}
-        // onMouseEnter={handlePause}
-        // onMouseLeave={handlePlay}
+        className={currentSubtitle?.text === "" ? "hidden" : ""}
       >
         <div style={subTitleWrapperStyle}>
           <div style={subTitleAreaStyle}>
-            <div style={subTitleTextStyle}>{currentSubtitle}</div>
+            <div style={subTitleTextStyle}>{currentSubtitle?.text}</div>
           </div>
         </div>
       </div>
@@ -63,4 +41,4 @@ function Subtitle() {
   );
 }
 
-export default Subtitle;
+export default InVideoSubtitle;

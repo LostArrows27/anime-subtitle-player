@@ -5,25 +5,25 @@ import { OptionTab } from "./optionTab";
 import { AppContext } from "@/components/provides/providers";
 
 function PositionTab() {
-  const { tabPos, setTabPos } = useContext(AppContext);
+  const { subPos, setSubPos } = useContext(AppContext);
 
   return (
     <div className="w-full mt-8 mb-2">
       <div className="flex items-center justify-between w-full">
         <OptionTab
-          setTabPos={setTabPos}
+          setSubPos={setSubPos}
           defaultPos="in-video"
-          currentPos={tabPos}
+          currentPos={subPos}
         />
         <OptionTab
-          setTabPos={setTabPos}
+          setSubPos={setSubPos}
           defaultPos="under-video"
-          currentPos={tabPos}
+          currentPos={subPos}
         />
         <OptionTab
-          setTabPos={setTabPos}
+          setSubPos={setSubPos}
           defaultPos="right-video"
-          currentPos={tabPos}
+          currentPos={subPos}
         />
       </div>
     </div>
