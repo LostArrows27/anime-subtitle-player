@@ -9,6 +9,8 @@ const AppContext = createContext<AppProviderProps>({
   setIsSubtitle: () => {},
   setSubtitle: () => {},
   subTitle: null,
+  tabPos: "in-video",
+  setTabPos: () => {},
 });
 
 const Providers = ({
