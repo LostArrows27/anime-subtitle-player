@@ -1,7 +1,6 @@
-import { Dispatch, MutableRefObject, ReactNode, RefObject, SetStateAction } from "react";
+import { Dispatch, MutableRefObject, RefObject, SetStateAction } from "react";
 import { NodeCue } from "subtitle";
 
-const subBelowModeVideoHeight = 522;
 
 const containerStyle = {
     position: "absolute",
@@ -71,5 +70,5 @@ type BesideSubtitleProps = {
 
 type SubPosition = 'in-video' | 'under-video' | 'right-video'
 
-export { containerStyle, subBelowModeVideoHeight, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
+export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
 export type { AppProviderProps, LayoutProps, SettingModelProps, SubPosition, BesideSubtitleProps, Subtitle }

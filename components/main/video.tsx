@@ -3,7 +3,6 @@ import { useContext, useEffect } from "react";
 import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import InVideoSubtitle from "../subtitle/inVideoSubtitle";
-import { subBelowModeVideoHeight } from "@/utils/const";
 
 function Video() {
   const { videoRef, setCurrentSubtitle, subTitle, subPos } =
@@ -39,7 +38,7 @@ function Video() {
     <div
       className={`relative video-container text-white overflow-hidden bg-[rgb(25,25,25)] flex justify-center items-center ${
         subPos === "under-video"
-          ? `w-[928px] h-[${subBelowModeVideoHeight}px]`
+          ? `w-[928px] h-[522px]`
           : "w-[1024px] h-[576px]"
       }`}
     >

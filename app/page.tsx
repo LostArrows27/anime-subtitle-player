@@ -5,7 +5,11 @@ import { Video } from "@/components/main/video";
 import { Providers } from "@/components/provides/providers";
 import BesideSubtitle from "@/components/subtitle/besideSubtitle";
 import UnderVideoSubtitle from "@/components/subtitle/underVideoSubtitle";
-import { AppProviderProps, SubPosition, Subtitle, subBelowModeVideoHeight } from "@/utils/const";
+import {
+  AppProviderProps,
+  SubPosition,
+  Subtitle,
+} from "@/utils/const";
 import { useRef, useState } from "react";
 import { NodeCue } from "subtitle";
 
@@ -42,7 +46,7 @@ function Page() {
         className={
           subPos !== "under-video"
             ? "flex flex-col items-center w-full relative"
-            : `flex h-[${subBelowModeVideoHeight}px] relative justify-center w-full`
+            : `flex !h-[522px] relative justify-center w-full`
         }
       >
         <Headers />
