@@ -4,14 +4,19 @@ import { Headers } from "@/components/main/headers";
 import { Video } from "@/components/main/video";
 import { Providers } from "@/components/provides/providers";
 import BesideSubtitle from "@/components/subtitle/besideSubtitle";
-import { AppProviderProps, SubPosition, Subtitle } from "@/utils/const";
+import UnderVideoSubtitle from "@/components/subtitle/underVideoSubtitle";
+import { AppProviderProps, SubPosition, Subtitle, subBelowModeVideoHeight } from "@/utils/const";
 import { useRef, useState } from "react";
 import { NodeCue } from "subtitle";
 
 function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);
   let subTitle = useRef<NodeCue[]>([]);
-  const [currentSubtitle, setCurrentSubtitle] = useState<Subtitle>({text: '', start: -100, end: -100 });
+  const [currentSubtitle, setCurrentSubtitle] = useState<Subtitle>({
+    text: "",
+    start: -100,
+    end: -100,
+  });
   const [isSubtitle, setIsSubtitle] = useState<boolean>(false);
   const [subPos, setSubPos] = useState<SubPosition>("in-video");
 
@@ -33,17 +38,26 @@ function Page() {
 
   return (
     <Providers appProps={props}>
-      <Headers />
       <div
         className={
-          subPos === "right-video"
-            ? "flex items-center justify-between w-full px-4"
-            : ""
+          subPos !== "under-video"
+            ? "flex flex-col items-center w-full relative"
+            : `flex h-[${subBelowModeVideoHeight}px] relative justify-center w-full`
         }
       >
-        <Video />
-        <BesideSubtitle />
+        <Headers />
+        <div
+          className={
+            subPos === "right-video"
+              ? "flex items-center justify-between w-full px-4"
+              : ""
+          }
+        >
+          <Video />
+          <BesideSubtitle />
+        </div>
       </div>
+      {subPos === "under-video" ? <UnderVideoSubtitle /> : <></>}
     </Providers>
   );
 }

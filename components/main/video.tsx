@@ -3,9 +3,11 @@ import { useContext, useEffect } from "react";
 import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import InVideoSubtitle from "../subtitle/inVideoSubtitle";
+import { subBelowModeVideoHeight } from "@/utils/const";
 
 function Video() {
-  const { videoRef, setCurrentSubtitle, subTitle } = useContext(AppContext);
+  const { videoRef, setCurrentSubtitle, subTitle, subPos } =
+    useContext(AppContext);
 
   useEffect(() => {
     if (videoRef!.current) {
@@ -16,8 +18,8 @@ function Video() {
               videoRef!.current?.currentTime.toFixed(3) as string
             );
             return (
-              currentTime > value.data.start / 1000 &&
-              currentTime < value.data.end / 1000
+              currentTime >= value.data.start / 1000 &&
+              currentTime <= value.data.end / 1000
             );
           }
         );
@@ -34,7 +36,13 @@ function Video() {
   }, [videoRef]);
 
   return (
-    <div className="video-container">
+    <div
+      className={`relative video-container text-white overflow-hidden bg-[rgb(25,25,25)] flex justify-center items-center ${
+        subPos === "under-video"
+          ? `w-[928px] h-[${subBelowModeVideoHeight}px]`
+          : "w-[1024px] h-[576px]"
+      }`}
+    >
       <InVideoSubtitle />
       <video ref={videoRef} id="video" disableRemotePlayback></video>
       <span className="custom-loader"></span>

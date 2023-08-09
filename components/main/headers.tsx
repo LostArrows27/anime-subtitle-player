@@ -17,13 +17,14 @@ import SettingModal from "../modal/modal";
 import { Subtitle } from "@/utils/const";
 
 function Headers() {
-  const { setIsSubtitle, setSubtitle } = useContext(AppContext);
+  const { setIsSubtitle, setSubtitle, subPos } = useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.stopPropagation();
     const file = (event.target as HTMLInputElement).files![0] as File;
+    if (!!!file) return;
     const types = file.name.split(".").pop();
     const reader = new FileReader();
     reader.onload = function (event: ProgressEvent<FileReader>) {
@@ -69,13 +70,25 @@ function Headers() {
   };
 
   return (
-    <div className="header-container !my-2">
-      <div className="flex">
+    <div
+      className={`flex items-center !my-2 ${
+        subPos === "under-video"
+          ? "flex-col-reverse w-[calc((100vw-928px)/2)] h-full absolute right-0 justify-around"
+          : "w-[1024px] h-20 justify-between"
+      }`}
+    >
+      <div
+        className={
+          subPos === "under-video"
+            ? "flex flex-col-reverse justify-end h-3/5"
+            : "flex"
+        }
+      >
         <input type="file" style={{ display: "none" }} id="file-upload" />
         <Button
           className="relative"
           rightIcon={<FaLanguage size="24px" />}
-          width="200px"
+          width={subPos === "under-video" ? "168px" : "200px"}
           color="green.800"
         >
           <label
@@ -85,7 +98,7 @@ function Headers() {
           Load Subtitles
         </Button>
         <Button
-          className="ml-4 relative"
+          className={subPos === "under-video" ? "mb-4" : "ml-4 relative"}
           rightIcon={<AiFillVideoCamera size="18px" />}
           colorScheme="whatsapp"
         >
@@ -103,7 +116,9 @@ function Headers() {
         />
       </div>
       <PiGear
-        className="text-green-500 hover:text-green-700 active:text-green-700"
+        className={`text-green-500 hover:text-green-700 active:text-green-700 ${
+          subPos === "under-video" ? "absolute top-1 right-1" : ""
+        }`}
         size="40px"
         onClick={() => {
           onOpen();
