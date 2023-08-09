@@ -37,15 +37,17 @@ const subTitleTextStyle = {
 } as const;
 
 type AppProviderProps = {
-    videoRef: RefObject<HTMLVideoElement> | null,
-    currentSubtitle: Subtitle,
-    setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>,
+    currentSubIndex: number
     isSubtitle: boolean,
-    setIsSubtitle: Dispatch<SetStateAction<boolean>>,
-    setSubtitle: (data: NodeCue[]) => void,
-    subTitle: MutableRefObject<NodeCue[]> | null,
+    currentSubtitle: Subtitle,
     subPos: SubPosition,
-    setSubPos: Dispatch<SetStateAction<SubPosition>>
+    setSubtitle: (data: NodeCue[]) => void,
+    videoRef: RefObject<HTMLVideoElement> | null,
+    subTitle: MutableRefObject<NodeCue[]> | null,
+    setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>,
+    setIsSubtitle: Dispatch<SetStateAction<boolean>>,
+    setSubPos: Dispatch<SetStateAction<SubPosition>>,
+    setCurrentSubIndex: Dispatch<SetStateAction<number>>
 }
 
 type LayoutProps = {

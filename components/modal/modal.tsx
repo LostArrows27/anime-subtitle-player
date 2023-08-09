@@ -38,13 +38,13 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
                 <div className="font-bold">Sync</div>
               </Tab>
               <Tab>
-                <div className="font-bold">Sync</div>
+                <div className="font-bold">Style</div>
               </Tab>
               <Tab>
                 <div className="font-bold">Position</div>
               </Tab>
               <Tab>
-                <div className="font-bold">Sync</div>
+                <div className="font-bold">Other</div>
               </Tab>
             </TabList>
             <TabIndicator
@@ -64,7 +64,7 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
                 <PositionTab />
               </TabPanel>
               <TabPanel>
-                <p>Position settng</p>
+                <p>Other settng</p>
               </TabPanel>
             </TabPanels>
           </Tabs>

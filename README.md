@@ -12,11 +12,14 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 ## TODO
 
+- [ ] Add dowload screenshot with sub or not sub
 - [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
+- [ ] Drag subtitle height when under video
 - [ ] Add ui when there's no sub or video
 - [ ] Adding beside subtitle in fullscreen mode
   - [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
   - [ ] Save user's settting in local storage
+  - [ ] Change subtitle font (Netflix-San, Yo-Gothic)
 - [ ] Change ion-icon to react icon
 - [ ] Cleaner code
 - [ ] Title bar when hover like youtube

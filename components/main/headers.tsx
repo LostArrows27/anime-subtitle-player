@@ -38,7 +38,6 @@ function Headers() {
       if (types === "ass") {
         const compiledASS = compile(fileText, {});
         let myArray: Subtitle[] = [];
-        const temp: Subtitle = {};
         compiledASS.dialogues.forEach((dialogue: Dialogue) => {
           const myDialogueFragments: Subtitle = {};
           const totalText = dialogue.slices.reduce(

@@ -64,7 +64,7 @@ function SubTitleElement({
       className={
         isCurrentSubtitle
           ? "px-2 py-6 w-full font-['simsun'] text-2xl text-start bg-gray-500 box-border border-x-4 border-solid border-green-500"
-          : "w-full font-['simsun'] text-xl text-start border-b px-2 py-6 border-b-gray-600 text-white border-solid"
+          : "w-full font-['simsun'] text-xl text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid"
       }
     >
       {convertJapaneseBracket(sub.data.text)}

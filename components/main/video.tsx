@@ -5,13 +5,13 @@ import { AppContext } from "../provides/providers";
 import InVideoSubtitle from "../subtitle/inVideoSubtitle";
 
 function Video() {
-  const { videoRef, setCurrentSubtitle, subTitle, subPos } =
+  const { videoRef, setCurrentSubtitle, subTitle, subPos, setCurrentSubIndex } =
     useContext(AppContext);
 
   useEffect(() => {
     if (videoRef!.current) {
       videoRef!.current.ontimeupdate = (e) => {
-        const curSub: NodeCue | undefined = subTitle!.current.find(
+        const curSubIndex: number = subTitle!.current.findIndex(
           (value: NodeCue) => {
             let currentTime = parseFloat(
               videoRef!.current?.currentTime.toFixed(3) as string
@@ -22,13 +22,15 @@ function Video() {
             );
           }
         );
-        if (curSub === undefined) {
+        setCurrentSubIndex(curSubIndex);
+        if (curSubIndex === -1) {
           setCurrentSubtitle({ text: "", start: -100, end: -100 });
         }
+        let currentSubFound = subTitle!.current[curSubIndex];
         setCurrentSubtitle({
-          text: curSub?.data.text,
-          start: curSub?.data.start,
-          end: curSub?.data.end,
+          text: currentSubFound?.data.text,
+          start: currentSubFound?.data.start,
+          end: currentSubFound?.data.end,
         });
       };
     }

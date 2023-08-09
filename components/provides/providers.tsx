@@ -11,6 +11,8 @@ const AppContext = createContext<AppProviderProps>({
   subTitle: null,
   subPos: "in-video",
   setSubPos: () => {},
+  currentSubIndex: -1,
+  setCurrentSubIndex: () => {}
 });
 
 const Providers = ({
