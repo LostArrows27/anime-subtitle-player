@@ -60,6 +60,11 @@ fileUpload.addEventListener("change", (e) => {
   video.addEventListener("loadedmetadata", function () {
     totalDuration.innerHTML = showDuration(video.duration);
   });
+  isPlaying = true;
+  playPause.innerHTML = `<ion-icon name="pause-outline"></ion-icon>`;
+  mainState.classList.remove("show-state");
+  handleMainStateIcon(`<ion-icon name="pause-outline"></ion-icon>`);
+  hideControls();
   video.play();
   currentDuration.innerHTML = showDuration(0);
   document.title = fileTitle;

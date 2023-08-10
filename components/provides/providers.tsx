@@ -12,7 +12,9 @@ const AppContext = createContext<AppProviderProps>({
   subPos: "in-video",
   setSubPos: () => {},
   currentSubIndex: -1,
-  setCurrentSubIndex: () => {}
+  setCurrentSubIndex: () => {},
+  showBorder: true,
+  setShowBorder: () => {},
 });
 
 const Providers = ({

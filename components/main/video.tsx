@@ -3,10 +3,24 @@ import { useContext, useEffect } from "react";
 import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import InVideoSubtitle from "../subtitle/inVideoSubtitle";
+import { FiPlay } from "react-icons/fi";
 
 function Video() {
-  const { videoRef, setCurrentSubtitle, subTitle, subPos, setCurrentSubIndex } =
-    useContext(AppContext);
+  const {
+    videoRef,
+    setCurrentSubtitle,
+    showBorder,
+    subTitle,
+    subPos,
+    setCurrentSubIndex,
+    setShowBorder,
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    if (videoRef?.current && videoRef.current.src) {
+      setShowBorder(false);
+    }
+  }, [videoRef?.current?.src]);
 
   useEffect(() => {
     if (videoRef!.current) {
@@ -39,12 +53,31 @@ function Video() {
   return (
     <div
       className={`relative video-container text-white overflow-hidden bg-[rgb(25,25,25)] flex justify-center items-center ${
+        showBorder ? "border-green-500 border-solid border-2" : ""
+      } ${
         subPos === "under-video"
           ? `w-[928px] h-[522px]`
           : "w-[1024px] h-[576px]"
       }`}
     >
       <InVideoSubtitle />
+      {showBorder ? (
+        <div
+          onClick={() => {
+            (
+              document.querySelector('[for="file-upload"]') as HTMLElement
+            )?.click();
+          }}
+          className="h-[70px] z-[999] w-[70px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        >
+          <FiPlay
+            className="text-green-500 animate-pulse glow-element cursor-pointer"
+            size="70px"
+          />
+        </div>
+      ) : (
+        ""
+      )}
       <video ref={videoRef} id="video" disableRemotePlayback></video>
       <span className="custom-loader"></span>
       <div className="player-state">

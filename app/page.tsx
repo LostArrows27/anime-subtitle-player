@@ -20,6 +20,7 @@ function Page() {
   const [isSubtitle, setIsSubtitle] = useState<boolean>(false);
   const [subPos, setSubPos] = useState<SubPosition>("in-video");
   const [currentSubIndex, setCurrentSubIndex] = useState<number>(-1);
+  const [showBorder, setShowBorder] = useState<boolean>(true);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -36,7 +37,9 @@ function Page() {
     subPos,
     setSubPos,
     currentSubIndex,
-    setCurrentSubIndex
+    setCurrentSubIndex,
+    showBorder,
+    setShowBorder
   };
 
   return (

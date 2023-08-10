@@ -10,6 +10,20 @@ function BesideSubtitle() {
     useContext(AppContext);
 
   const currentSubRef = useRef<HTMLDivElement>(null);
+  {
+    subTitle?.current!.map((sub: NodeCue, id: number) => {
+      return (
+        <SubTitleElement
+          key={id}
+          sub={sub}
+          currentSubtitle={currentSubtitle}
+          setCurrentSubtitle={setCurrentSubtitle}
+          videoRef={videoRef}
+          currentSubRef={currentSubRef!}
+        />
+      );
+    });
+  }
 
   useEffect(() => {
     if (currentSubRef.current) {
@@ -25,6 +39,13 @@ function BesideSubtitle() {
 
   return (
     <div className="rounded custom-scroll-bar w-[calc(100%-1044px)] h-[calc((9/16)*1024px)] bg-[#202024] text-white overflow-y-scroll">
+      {subTitle?.current.length === 0 ? (
+        <span className="w-full h-full text-2xl text-gray-500 text-center grid place-items-center">
+          <span>Please upload your subtitle</span>
+        </span>
+      ) : (
+        ""
+      )}
       {subTitle?.current!.map((sub: NodeCue, id: number) => {
         return (
           <SubTitleElement

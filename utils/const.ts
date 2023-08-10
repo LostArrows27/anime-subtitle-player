@@ -41,13 +41,15 @@ type AppProviderProps = {
     isSubtitle: boolean,
     currentSubtitle: Subtitle,
     subPos: SubPosition,
+    showBorder: boolean,
+    setShowBorder: Dispatch<SetStateAction<boolean>>,
     setSubtitle: (data: NodeCue[]) => void,
     videoRef: RefObject<HTMLVideoElement> | null,
     subTitle: MutableRefObject<NodeCue[]> | null,
     setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>,
     setIsSubtitle: Dispatch<SetStateAction<boolean>>,
     setSubPos: Dispatch<SetStateAction<SubPosition>>,
-    setCurrentSubIndex: Dispatch<SetStateAction<number>>
+    setCurrentSubIndex: Dispatch<SetStateAction<number>>,
 }
 
 type LayoutProps = {

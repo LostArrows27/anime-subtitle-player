@@ -15,6 +15,7 @@ function UnderVideoSubtitle() {
     });
     if (newArray === undefined) return;
     let prevSubIndex = newArray[newArray.length - 1];
+    if (!prevSubIndex?.data) return;
     videoRef!.current!.currentTime = prevSubIndex.data.start / 1000;
     setCurrentSubtitle({
       start: prevSubIndex.data.start,
@@ -50,9 +51,15 @@ function UnderVideoSubtitle() {
         className="absolute left-[calc((100vw-1250px)/2)] top-1/2 -translate-y-1/2 text-gray-700 hover:text-gray-500 active:text-green-500 cursor-pointer"
       />
       <div className="h-full flex items-center justify-center relative">
-        <span className="text-shadow-black text-center leading-[50px] font-[simsun] text-white text-4xl">
-          {currentSubtitle.text}
-        </span>
+        {subTitle?.current.length === 0 ? (
+          <span className="text-center text-2xl mt-2 text-gray-700 select-none">
+            - Please upload your subtitle -
+          </span>
+        ) : (
+          <span className="text-shadow-black text-center leading-[50px] font-[simsun] text-white text-4xl">
+            {currentSubtitle.text}
+          </span>
+        )}
       </div>
       <BsChevronRight
         onClick={handleNextSubtitle}
