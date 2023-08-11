@@ -20,6 +20,7 @@ Todays:
   - [ ] Save user's settting in local storage
   - [ ] Change subtitle font (Netflix-San, Yo-Gothic)
 - [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
+- [ ] Fixing pushing at anytime subtitle being "clunch"
 
 Other:
 
