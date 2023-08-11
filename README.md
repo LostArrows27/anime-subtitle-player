@@ -20,7 +20,8 @@ Todays:
   - [ ] Save user's settting in local storage
   - [ ] Change subtitle font (Netflix-San, Yo-Gothic)
 - [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
-- [ ] Fixing pushing at anytime subtitle being "clunch"
+- [ ] Subtitle being "lag" when forward video at specific time
+- [ ] Add larger screen feature like the old template + fix speed button not working
 
 Other:
 
