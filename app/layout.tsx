@@ -17,17 +17,14 @@ export default function RootLayout(props: LayoutProps) {
   const { children } = props;
   return (
     <html lang="en">
-      <Script
-        type="module"
-        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-      ></Script>
-      <Script
-        noModule
-        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-      ></Script>
       <body className={inter.className + " relative"}>
         <Providers>{children}</Providers>
-        <Script defer src="/main.js" strategy="lazyOnload" />
+        <Script
+          type="module"
+          defer
+          src="/script/main.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

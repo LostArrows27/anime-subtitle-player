@@ -13,9 +13,11 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 ## TODO
 
 Todays:
-- [ ] Title bar when hover like youtube
-- [ ] Change ion-icon to react icon
-Other: 
+
+- [x] Change ion-icon to react icon
+
+Other:
+
 - [ ] Add dowload screenshot with sub or not sub
 - [ ] only access to main UI after upload video or subtitle (with modal)
 - [ ] Add ui when there's no video
@@ -49,4 +51,4 @@ Other:
   - [x] Under video
   - [x] In video
 - [x] Fix click at any subtitle in beside mode
-- [x] Add ui when there's no sub 
+- [x] Add ui when there's no sub

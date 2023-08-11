@@ -4,7 +4,16 @@ import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import InVideoSubtitle from "../subtitle/inVideoSubtitle";
 import { FiPlay } from "react-icons/fi";
-
+import {
+  IoPlayBackOutline,
+  IoPlayForwardOutline,
+  IoVolumeHighOutline,
+  IoAlbumsOutline,
+  IoOptionsOutline,
+  IoScanOutline,
+  IoContractOutline,
+  IoPlayOutline,
+} from "react-icons/io5";
 function Video() {
   const {
     videoRef,
@@ -82,15 +91,21 @@ function Video() {
       <span className="custom-loader"></span>
       <div className="player-state">
         <span className="state-btn state-backward">
-          <span id="play-back-outline"></span>
+          <span id="play-back-outline">
+            <IoPlayBackOutline size="17px" />
+          </span>
           <span className="backward-duration">5</span>
         </span>
         <span className="main-state state-btn">
-          <span id="play-outline"></span>
+          <span id="play-outline">
+            <IoPlayOutline size="17px" />
+          </span>
         </span>
         <span className="state-btn state-forward">
           <span className="forward-duration">5</span>
-          <span id="play-forward-outline"></span>
+          <span id="play-forward-outline">
+            <IoPlayForwardOutline size="17px" />
+          </span>
         </span>
       </div>
       <div className="controls">
@@ -104,11 +119,15 @@ function Video() {
         <div className="btn-controls">
           <div className="btn-con">
             <span className="play-pause control-btn">
-              <span id="play-outline-1"></span>
+              <span id="play-outline-1">
+                <IoPlayOutline size="17px" />
+              </span>
             </span>
             <span className="volume">
               <span className="mute-unmute control-btn">
-                <span id="volume-high-outline"></span>
+                <span id="volume-high-outline">
+                  <IoVolumeHighOutline size="17px" />
+                </span>
               </span>
               <div className="max-vol">
                 <div className="current-vol"></div>
@@ -122,17 +141,25 @@ function Video() {
           </div>
           <div className="right-controls">
             <span className="backward control-btn" title="5 backward">
-              <span id="play-back-outline-1"></span>
+              <span id="play-back-outline-1">
+                <IoPlayBackOutline size="17px" />
+              </span>
             </span>
             <span className="forward control-btn" title="5 forward">
-              <span id="play-forward-outline-1"></span>
+              <span id="play-forward-outline-1">
+                <IoPlayForwardOutline size="17px" />
+              </span>
             </span>
             <span className="mini-player control-btn">
-              <span id="albums-outline"></span>
+              <span id="albums-outline">
+                <IoAlbumsOutline size="17px" />
+              </span>
             </span>
             <span className="settings control-btn">
               <span className="setting-btn">
-                <span id="options-outline"></span>
+                <span id="options-outline">
+                  <IoOptionsOutline size="17px" />
+                </span>
               </span>
               <ul className="setting-menu">
                 <li data-value="0.25">0.25x</li>
@@ -147,20 +174,16 @@ function Video() {
                 <li data-value="2">2x</li>
               </ul>
             </span>
-            <span className="theater-btn control-btn">
-              <span className="theater-default">
-                <span id="tablet-landscape-outline"></span>
-              </span>
-              <span className="theater-active">
-                <span id="tv-outline"></span>
-              </span>
-            </span>
             <span className="fullscreen-btn control-btn" title="fullscreen">
               <span className="full">
-                <span id="scan-outline"></span>
+                <span id="scan-outline">
+                  <IoScanOutline size="17px" />
+                </span>
               </span>
               <span className="contract">
-                <span id="contract-outline"></span>
+                <span id="contract-outline">
+                  <IoContractOutline size="17px" />
+                </span>
               </span>
             </span>
           </div>

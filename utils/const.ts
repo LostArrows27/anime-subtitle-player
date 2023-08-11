@@ -1,7 +1,6 @@
 import { Dispatch, MutableRefObject, RefObject, SetStateAction } from "react";
 import { NodeCue } from "subtitle";
 
-
 const containerStyle = {
     position: "absolute",
     bottom: "75px",
@@ -49,7 +48,7 @@ type AppProviderProps = {
     setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>,
     setIsSubtitle: Dispatch<SetStateAction<boolean>>,
     setSubPos: Dispatch<SetStateAction<SubPosition>>,
-    setCurrentSubIndex: Dispatch<SetStateAction<number>>,
+    setCurrentSubIndex: Dispatch<SetStateAction<number>>
 }
 
 type LayoutProps = {
@@ -75,4 +74,5 @@ type BesideSubtitleProps = {
 type SubPosition = 'in-video' | 'under-video' | 'right-video'
 
 export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle }
+
 export type { AppProviderProps, LayoutProps, SettingModelProps, SubPosition, BesideSubtitleProps, Subtitle }

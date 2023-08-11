@@ -1,29 +1,15 @@
-const addMoreButton = [
-  "play-back-outline",
-  "play-outline",
-  "play-forward-outline",
-  "play-outline-1",
-  "volume-high-outline",
-  "play-back-outline-1",
-  "play-forward-outline-1",
-  "albums-outline",
-  "options-outline",
-  "tablet-landscape-outline",
-  "tv-outline",
-  "scan-outline",
-  "contract-outline",
-];
+import {
+  playIcon,
+  pauseIcon,
+  volumeHighIcon,
+  volumeMuteIcon,
+  fullScreenIcon,
+  contractIcon,
+  tvOutLineIcon,
+  magnetIcon,
+  albumIcon,
+} from "../svg/icon.js";
 
-addMoreButton.forEach((value) => {
-  let myElement = document.querySelector(`#${value}`);
-  if (value.endsWith("-1")) {
-    value = value.slice(0, -2);
-  }
-  myElement.outerHTML = `<ion-icon name="${value}"></ion-icon>`;
-});
-
-//TODO: handle notification what episode is watching and time to continue
-const animeTitle = document.querySelector(".title");
 const video = document.querySelector("video");
 const fullscreen = document.querySelector(".fullscreen-btn");
 const playPause = document.querySelector(".play-pause");
@@ -52,6 +38,19 @@ const forwardSate = document.querySelector(".state-forward");
 const loader = document.querySelector(".custom-loader");
 const fileUpload = document.querySelector("#file-upload");
 
+let isPlaying = false,
+  mouseDownProgress = false,
+  mouseDownVol = false,
+  isCursorOnControls = false,
+  muted = false,
+  timeout = 0,
+  volumeVal = 1,
+  mouseOverDuration = false,
+  touchClientX = 0,
+  touchPastDurationWidth = 0,
+  touchStartTime = 0,
+  isSpeedMenuOpen = false;
+
 fileUpload.addEventListener("change", (e) => {
   const file = e.target.files[0];
   const fileTitle = file.name.split(".")[0];
@@ -61,32 +60,17 @@ fileUpload.addEventListener("change", (e) => {
     totalDuration.innerHTML = showDuration(video.duration);
   });
   isPlaying = true;
-  playPause.innerHTML = `<ion-icon name="pause-outline"></ion-icon>`;
+  playPause.innerHTML = pauseIcon(17, 17);
   mainState.classList.remove("show-state");
-  handleMainStateIcon(`<ion-icon name="pause-outline"></ion-icon>`);
+  handleMainStateIcon(pauseIcon(40, 40));
   hideControls();
   video.play();
   currentDuration.innerHTML = showDuration(0);
   document.title = fileTitle;
 });
 
-let isPlaying = false,
-  mouseDownProgress = false,
-  mouseDownVol = false,
-  isCursorOnControls = false,
-  muted = false,
-  timeout,
-  volumeVal = 1,
-  mouseOverDuration = false,
-  touchClientX = 0,
-  touchPastDurationWidth = 0,
-  touchStartTime = 0,
-  isEpsMenuOpen = false,
-  isSpeedMenuOpen = false;
-
 currentVol.style.width = volumeVal * 100 + "%";
 
-// Video Event Listeners
 video.addEventListener("loadedmetadata", canPlayInit);
 
 function canPlayInit() {
@@ -96,7 +80,7 @@ function canPlayInit() {
   if (video.paused) {
     controls.classList.add("show-controls");
     mainState.classList.add("show-state");
-    handleMainStateIcon(`<ion-icon name="play-outline"></ion-icon>`);
+    handleMainStateIcon(playIcon(40, 40));
   }
   video.addEventListener("play", play);
   video.addEventListener("pause", pause);
@@ -248,9 +232,9 @@ function play() {
   if (!!video.src && !isPlaying) {
     video.play();
     isPlaying = true;
-    playPause.innerHTML = `<ion-icon name="pause-outline"></ion-icon>`;
+    playPause.innerHTML = pauseIcon(17, 17);
     mainState.classList.remove("show-state");
-    handleMainStateIcon(`<ion-icon name="pause-outline"></ion-icon>`);
+    handleMainStateIcon(pauseIcon(40, 40));
     hideControls();
     watchProgress();
   }
@@ -271,10 +255,10 @@ function handleProgressBar() {
 function pause() {
   video.pause();
   isPlaying = false;
-  playPause.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
+  playPause.innerHTML = playIcon(17, 17);
   controls.classList.add("show-controls");
   mainState.classList.add("show-state");
-  handleMainStateIcon(`<ion-icon name="play-outline"></ion-icon>`);
+  handleMainStateIcon(playIcon(40, 40));
   if (video.ended) {
     currentTime.style.width = 100 + "%";
   }
@@ -317,15 +301,15 @@ function toggleMuteUnmute() {
   if (!muted) {
     video.volume = 0;
     muted = true;
-    muteUnmute.innerHTML = `<ion-icon name="volume-mute-outline"></ion-icon>`;
-    handleMainStateIcon(`<ion-icon name="volume-mute-outline"></ion-icon>`);
+    muteUnmute.innerHTML = volumeMuteIcon(17, 17);
+    handleMainStateIcon(volumeMuteIcon(40, 40));
     totalVol.classList.remove("show");
   } else {
     video.volume = volumeVal;
     muted = false;
     totalVol.classList.add("show");
-    handleMainStateIcon(`<ion-icon name="volume-high-outline"></ion-icon>`);
-    muteUnmute.innerHTML = `<ion-icon name="volume-high-outline"></ion-icon>`;
+    handleMainStateIcon(volumeHighIcon(40, 40));
+    muteUnmute.innerHTML = volumeHighIcon(17, 17);
   }
 }
 
@@ -375,9 +359,9 @@ function handleProgress() {
 function toggleFullscreen(e) {
   if (!document.fullscreenElement) {
     videoContainer.requestFullscreen();
-    handleMainStateIcon(`<ion-icon name="scan-outline"></ion-icon>`);
+    handleMainStateIcon(fullScreenIcon(40, 40));
   } else {
-    handleMainStateIcon(` <ion-icon name="contract-outline"></ion-icon>`);
+    handleMainStateIcon(contractIcon(40, 40));
     document.exitFullscreen();
   }
 }
@@ -418,10 +402,10 @@ function handleBackward(e) {
 function handleMainSateAnimationEnd() {
   mainState.classList.remove("animate-state");
   if (!isPlaying) {
-    mainState.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
+    mainState.innerHTML = playIcon(40, 40);
   }
   if (document.pictureInPictureElement) {
-    mainState.innerHTML = ` <ion-icon name="tv-outline"></ion-icon>`;
+    mainState.innerHTML = tvOutLineIcon(40, 40);
   }
 }
 
@@ -429,10 +413,10 @@ function toggleMiniPlayer(e) {
   e.stopPropagation();
   if (document.pictureInPictureElement) {
     document.exitPictureInPicture();
-    handleMainStateIcon(`<ion-icon name="magnet-outline"></ion-icon>`);
+    handleMainStateIcon(magnetIcon(40, 40));
   } else {
     video.requestPictureInPicture();
-    handleMainStateIcon(`<ion-icon name="albums-outline"></ion-icon>`);
+    handleMainStateIcon(albumIcon(40, 40));
   }
 }
 

@@ -9,6 +9,7 @@ import { AppProviderProps, SubPosition, Subtitle } from "@/utils/const";
 import { useRef, useState } from "react";
 import { NodeCue } from "subtitle";
 
+
 function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);
   let subTitle = useRef<NodeCue[]>([]);
