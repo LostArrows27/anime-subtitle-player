@@ -48,7 +48,7 @@ type AppProviderProps = {
     setCurrentSubtitle: Dispatch<SetStateAction<Subtitle>>,
     setIsSubtitle: Dispatch<SetStateAction<boolean>>,
     setSubPos: Dispatch<SetStateAction<SubPosition>>,
-    setCurrentSubIndex: Dispatch<SetStateAction<number>>
+    setCurrentSubIndex: Dispatch<SetStateAction<number>>,
 }
 
 type LayoutProps = {

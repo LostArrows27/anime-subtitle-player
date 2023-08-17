@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/main/video.tsx", "components/video/videoJS.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/main/video.tsx", "components/video/videoJS.jsx", "app/worker.js", "app/test/page.jsx"],
   "exclude": ["node_modules"]
 }
