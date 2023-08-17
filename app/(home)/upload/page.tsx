@@ -15,7 +15,7 @@ import { parseSync, NodeCue, Cue } from "subtitle";
 import { pipeline } from "@xenova/transformers";
 import { HfInference } from "@huggingface/inference";
 import Replicate from "replicate";
-import fetch from "cross-fetch";
+// import fetch from "cross-fetch";
 
 type Subtitle = { start?: number; end?: number; text?: string };
 

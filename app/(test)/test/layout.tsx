@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "anime video player with subtitle",
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>{children}</body>
