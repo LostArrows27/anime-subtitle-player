@@ -15,10 +15,10 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 Todays:
 
 - [ ] Synchrnization settings
+- [ ] Add Whisper Model AI to subtitle Synchronization
 
 Other:
 
-- [x] Change Font size
 - [ ] Add preview video and subtitle for user
 - [ ] Toggle subtitle
 - [ ] Add error.tsx UI
@@ -60,3 +60,4 @@ Other:
 - [x] Change subtitle font (Netflix-San, Yu-Gothic, Zen-Maru-Gothic)
 - [x] Change font's weight (bold, thin);
 - [x] Preview font option in settings
+- [x] Change Font size
