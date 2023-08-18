@@ -12,6 +12,7 @@ function UnderVideoSubtitle() {
     subTitle,
     setCurrentSubtitle,
     currentFont,
+    fontSize,
   } = useContext(AppContext);
 
   const handlePrevSubtitle = () => {
@@ -72,8 +73,9 @@ function UnderVideoSubtitle() {
             style={{
               fontWeight: currentFont.fontWeight,
               fontFamily: convertFontName(currentFont.name as FontName),
+              fontSize: fontSize,
             }}
-            className={`text-shadow-black text-center leading-[50px] text-white text-4xl`}
+            className={`text-shadow-black text-center leading-[50px] text-white`}
           >
             {currentSubtitle.text}
           </span>

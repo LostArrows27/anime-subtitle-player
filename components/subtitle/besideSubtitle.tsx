@@ -14,6 +14,7 @@ function BesideSubtitle() {
     videoRef,
     currentSubtitle,
     currentFont,
+    fontSize,
   } = useContext(AppContext);
 
   const currentSubRef = useRef<HTMLDivElement>(null);
@@ -42,6 +43,7 @@ function BesideSubtitle() {
       {subTitle?.current!.map((sub: NodeCue, id: number) => {
         return (
           <SubTitleElement
+            fontSize={fontSize}
             key={id}
             sub={sub}
             currentSubtitle={currentSubtitle}
@@ -63,6 +65,7 @@ function SubTitleElement({
   videoRef,
   currentSubRef,
   currentFont,
+  fontSize,
 }: BesideSubtitleProps) {
   const isCurrentSubtitle = compareSubtitle(currentSubtitle, sub);
 
@@ -79,10 +82,14 @@ function SubTitleElement({
       }}
       className={
         isCurrentSubtitle
-          ? `px-2 py-6 w-full text-2xl text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
-          : `w-full text-xl text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
+          ? `px-2 py-6 w-full text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
+          : `w-full text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
       }
-      style={{ fontWeight: currentFont.fontWeight, fontFamily: convertFontName(currentFont.name as FontName) }}
+      style={{
+        fontWeight: currentFont.fontWeight,
+        fontFamily: convertFontName(currentFont.name as FontName),
+        fontSize: isCurrentSubtitle ? (fontSize - 8) * 1.2 : fontSize - 8,
+      }}
     >
       {convertJapaneseBracket(sub.data.text)}
     </div>

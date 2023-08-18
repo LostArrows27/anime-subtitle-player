@@ -19,7 +19,7 @@ export interface RefType {
 }
 
 function InVideoSubtitle() {
-  const { currentSubtitle, isSubtitle, subPos, currentFont } =
+  const { currentSubtitle, isSubtitle, subPos, currentFont, fontSize } =
     useContext(AppContext);
 
   if (subPos !== "in-video") return;
@@ -41,8 +41,9 @@ function InVideoSubtitle() {
                 ...subTitleTextStyle,
                 fontWeight: currentFont.fontWeight,
                 fontFamily: convertFontName(currentFont.name as FontName),
+                fontSize: fontSize,
               }}
-              className={`text-shadow-black text-[45px]`}
+              className="text-shadow-black"
             >
               {currentSubtitle?.text}
             </div>

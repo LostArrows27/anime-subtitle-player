@@ -28,6 +28,7 @@ function Page() {
   const [currentSubIndex, setCurrentSubIndex] = useState<number>(-1);
   const [showBorder, setShowBorder] = useState<boolean>(true);
   const [currentFont, setCurrentFont] = useState<FontOption>(fonts.simsunBold);
+  const [fontSize, setFontSize] = useState<number>(45);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -49,6 +50,8 @@ function Page() {
     setShowBorder,
     currentFont,
     setCurrentFont,
+    fontSize,
+    setFontSize,
   };
 
   return (

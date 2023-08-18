@@ -1,6 +1,8 @@
 import { Dispatch, MutableRefObject, RefObject, SetStateAction } from "react";
 import { NodeCue } from "subtitle";
 
+const DEFAULT_FONT_SIZE = 45;
+
 const containerStyle = {
     position: "absolute",
     bottom: "75px",
@@ -95,7 +97,9 @@ type AppProviderProps = {
     setSubPos: Dispatch<SetStateAction<SubPosition>>,
     setCurrentSubIndex: Dispatch<SetStateAction<number>>,
     currentFont: FontOption,
-    setCurrentFont: Dispatch<SetStateAction<FontOption>>
+    setCurrentFont: Dispatch<SetStateAction<FontOption>>,
+    fontSize: number,
+    setFontSize: Dispatch<SetStateAction<number>>,
 }
 
 type FontOption = {
@@ -125,10 +129,11 @@ type BesideSubtitleProps = {
     videoRef: RefObject<HTMLVideoElement> | null;
     currentSubRef: RefObject<HTMLDivElement>;
     currentFont: FontOption
+    fontSize: number
 }
 
 type SubPosition = 'in-video' | 'under-video' | 'right-video'
 
-export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle, fonts }
+export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle, fonts, DEFAULT_FONT_SIZE }
 
 export type { AppProviderProps, LayoutProps, SettingModelProps, SubPosition, BesideSubtitleProps, Subtitle, FontOption, FontName }

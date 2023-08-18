@@ -14,12 +14,13 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [ ] Change Font size
 - [ ] Synchrnization settings
 
 Other:
 
+- [x] Change Font size
 - [ ] Add preview video and subtitle for user
+- [ ] Toggle subtitle
 - [ ] Add error.tsx UI
 - [ ] Adding beside subtitle in fullscreen mode
 - [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
@@ -29,7 +30,7 @@ Other:
 - [ ] Add dowload screenshot with sub or not sub
 - [ ] Drag subtitle height when under video
 - [ ] Add light and dark mode
-- [ ] Cleaner code
+- [ ] Cleaner code (type and function position rearrange)
 - [ ] Add episode list when choose many video on the left side of the screen
 - [ ] Add settting for `.ass` file
 - [ ] Supporting `.ass` subtitle file
