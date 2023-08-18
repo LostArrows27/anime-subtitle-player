@@ -97,11 +97,6 @@ function canPlayInit() {
     navigate(e);
   });
 
-  duration.addEventListener("mousedown", (e) => {
-    mouseDownProgress = true;
-    navigate(e);
-  });
-
   totalVol.addEventListener("mousedown", (e) => {
     e.stopPropagation();
     mouseDownVol = true;
@@ -248,6 +243,7 @@ function watchProgress() {
 }
 
 function handleProgressBar() {
+  // console.log(`%c${video.currentTime}`, "color: red");
   currentTime.style.width = (video.currentTime / video.duration) * 100 + "%";
   currentDuration.innerHTML = showDuration(video.currentTime);
 }
@@ -278,8 +274,9 @@ function navigate(e) {
     Math.max(0, e.clientX - totalDurationRect.x),
     totalDurationRect.width
   );
-  currentTime.style.width = (width / totalDurationRect.width) * 100 + "%";
   video.currentTime = (width / totalDurationRect.width) * video.duration;
+  console.log(`%c${video.currentTime}`, "color: blue");
+  currentTime.style.width = (video.currentTime / video.duration) * 100 + "%";
 }
 
 function handleTouchNavigate(e) {

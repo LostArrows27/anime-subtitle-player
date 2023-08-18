@@ -16,17 +16,15 @@ Todays:
 
 - [ ] Add error.tsx UI
 - [ ] Adding beside subtitle in fullscreen mode
-  - [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
-  - [ ] Save user's settting in local storage
-  - [ ] Change subtitle font (Netflix-San, Yo-Gothic)
+- [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
+- [ ] Save user's settting in local storage
+- [ ] Change subtitle font (Netflix-San, Yo-Gothic)
 - [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
-- [ ] Subtitle being "lag" when forward video at specific time
 - [ ] Add larger screen feature like the old template + fix speed button not working
 
 Other:
 
 - [ ] Add dowload screenshot with sub or not sub
-- [ ] only access to main UI after upload video or subtitle (with modal)
 - [ ] Drag subtitle height when under video
 - [ ] Cleaner code
 - [ ] Add episode list when choose many video on the left side of the screen
@@ -54,3 +52,4 @@ Other:
 - [x] Add ui when there's no sub
 - [x] Change ion-icon to react icon
 - [x] Add ui when there's no video
+- [x] Subtitle being "lag" when forward video at specific time
