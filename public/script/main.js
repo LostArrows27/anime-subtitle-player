@@ -275,7 +275,7 @@ function navigate(e) {
     totalDurationRect.width
   );
   video.currentTime = (width / totalDurationRect.width) * video.duration;
-  console.log(`%c${video.currentTime}`, "color: blue");
+  // console.log(`%c${video.currentTime}`, "color: blue");
   currentTime.style.width = (video.currentTime / video.duration) * 100 + "%";
 }
 

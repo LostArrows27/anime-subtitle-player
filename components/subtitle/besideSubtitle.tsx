@@ -6,24 +6,16 @@ import { BesideSubtitleProps, Subtitle } from "@/utils/const";
 import { compareSubtitle } from "../../lib/compareSubtitle";
 
 function BesideSubtitle() {
-  const { subPos, subTitle, setCurrentSubtitle, videoRef, currentSubtitle } =
-    useContext(AppContext);
+  const {
+    subPos,
+    subTitle,
+    setCurrentSubtitle,
+    videoRef,
+    currentSubtitle,
+    currentFont,
+  } = useContext(AppContext);
 
   const currentSubRef = useRef<HTMLDivElement>(null);
-  {
-    subTitle?.current!.map((sub: NodeCue, id: number) => {
-      return (
-        <SubTitleElement
-          key={id}
-          sub={sub}
-          currentSubtitle={currentSubtitle}
-          setCurrentSubtitle={setCurrentSubtitle}
-          videoRef={videoRef}
-          currentSubRef={currentSubRef!}
-        />
-      );
-    });
-  }
 
   useEffect(() => {
     if (currentSubRef.current) {
@@ -55,6 +47,7 @@ function BesideSubtitle() {
             setCurrentSubtitle={setCurrentSubtitle}
             videoRef={videoRef}
             currentSubRef={currentSubRef!}
+            currentFont={currentFont}
           />
         );
       })}
@@ -68,6 +61,7 @@ function SubTitleElement({
   setCurrentSubtitle,
   videoRef,
   currentSubRef,
+  currentFont,
 }: BesideSubtitleProps) {
   const isCurrentSubtitle = compareSubtitle(currentSubtitle, sub);
 
@@ -84,9 +78,10 @@ function SubTitleElement({
       }}
       className={
         isCurrentSubtitle
-          ? "px-2 py-6 w-full font-['simsun'] text-2xl text-start bg-gray-500 box-border border-x-4 border-solid border-green-500"
-          : "w-full font-['simsun'] text-xl text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid"
+          ? `px-2 py-6 w-full font-['${currentFont.name}'] text-2xl text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
+          : `w-full font-['${currentFont.name}'] text-xl text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
       }
+      style={{ fontWeight: currentFont.fontWeight }}
     >
       {convertJapaneseBracket(sub.data.text)}
     </div>

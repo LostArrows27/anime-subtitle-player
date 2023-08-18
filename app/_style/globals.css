@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -66,13 +68,38 @@
  
     --ring: 217.2 32.6% 17.5%;
   }
-}
- 
-@layer base {
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Define font-family for NetflixSans_W_Bd.woff2 */
+  @font-face {
+    font-family: 'Netflix Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/NetflixSans_W_Bd.woff2') format('woff2');
+  }
+
+  /* Define font-family for NetflixSans_W_Rg.woff2 */
+  @font-face {
+    font-family: 'Netflix Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/NetflixSans_W_Rg.woff2') format('woff2');
+  }
+
+  /* Define font-family for NetflixSans_W_Md.woff2 */
+  @font-face {
+    font-family: 'Netflix Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/NetflixSans_W_Md.woff2') format('woff2');
+  }
 }
+ 
+

@@ -4,8 +4,13 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { NodeCue } from "subtitle";
 
 function UnderVideoSubtitle() {
-  const { currentSubtitle, videoRef, subTitle, setCurrentSubtitle } =
-    useContext(AppContext);
+  const {
+    currentSubtitle,
+    videoRef,
+    subTitle,
+    setCurrentSubtitle,
+    currentFont,
+  } = useContext(AppContext);
 
   const handlePrevSubtitle = () => {
     let currentTime = videoRef?.current?.currentTime as number;
@@ -52,11 +57,16 @@ function UnderVideoSubtitle() {
       />
       <div className="h-full flex items-center justify-center relative">
         {subTitle?.current.length === 0 ? (
-          <span className="text-center text-2xl mt-2 text-gray-700 select-none">
+          <span
+            className={`text-center font-['${currentFont.name}'] text-2xl mt-2 text-gray-700 select-none`}
+          >
             - Please upload your subtitle -
           </span>
         ) : (
-          <span className="text-shadow-black text-center leading-[50px] font-[simsun] text-white text-4xl">
+          <span
+            style={{ fontWeight: currentFont.fontWeight }}
+            className={`text-shadow-black text-center leading-[50px]font-['${currentFont.name}'] text-white text-4xl`}
+          >
             {currentSubtitle.text}
           </span>
         )}

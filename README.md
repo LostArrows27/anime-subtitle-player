@@ -14,18 +14,20 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
+- [ ] Change subtitle font (Netflix-San, Yu-Gothic, Zen-Maru-Gothic)
+- [ ] Change font's weight (bold, thin);
+
+Other:
+
 - [ ] Add error.tsx UI
 - [ ] Adding beside subtitle in fullscreen mode
 - [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
 - [ ] Save user's settting in local storage
-- [ ] Change subtitle font (Netflix-San, Yo-Gothic)
 - [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
 - [ ] Add larger screen feature like the old template + fix speed button not working
-
-Other:
-
 - [ ] Add dowload screenshot with sub or not sub
 - [ ] Drag subtitle height when under video
+- [ ] Add light and dark mode
 - [ ] Cleaner code
 - [ ] Add episode list when choose many video on the left side of the screen
 - [ ] Add settting for `.ass` file

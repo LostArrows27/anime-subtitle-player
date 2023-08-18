@@ -15,6 +15,12 @@ const AppContext = createContext<AppProviderProps>({
   setCurrentSubIndex: () => {},
   showBorder: true,
   setShowBorder: () => {},
+  currentFont: {
+    name: "simsun",
+    title: "Simsun Bold",
+    fontWeight: 900,
+  },
+  setCurrentFont: () => {},
 });
 
 const Providers = ({

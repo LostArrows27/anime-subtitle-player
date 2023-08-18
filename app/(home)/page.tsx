@@ -5,10 +5,15 @@ import { Video } from "@/components/main/video";
 import { Providers } from "@/components/provides/providers";
 import BesideSubtitle from "@/components/subtitle/besideSubtitle";
 import UnderVideoSubtitle from "@/components/subtitle/underVideoSubtitle";
-import { AppProviderProps, SubPosition, Subtitle } from "@/utils/const";
+import {
+  AppProviderProps,
+  FontOption,
+  SubPosition,
+  Subtitle,
+  fonts,
+} from "@/utils/const";
 import { useRef, useState } from "react";
 import { NodeCue } from "subtitle";
-
 
 function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -22,6 +27,7 @@ function Page() {
   const [subPos, setSubPos] = useState<SubPosition>("in-video");
   const [currentSubIndex, setCurrentSubIndex] = useState<number>(-1);
   const [showBorder, setShowBorder] = useState<boolean>(true);
+  const [currentFont, setCurrentFont] = useState<FontOption>(fonts.simsunBold);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -40,7 +46,9 @@ function Page() {
     currentSubIndex,
     setCurrentSubIndex,
     showBorder,
-    setShowBorder
+    setShowBorder,
+    currentFont,
+    setCurrentFont,
   };
 
   return (

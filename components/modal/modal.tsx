@@ -18,6 +18,7 @@ import {
   TabIndicator,
 } from "@chakra-ui/react";
 import PositionTab from "../setting-tab/positionTab/positionTab";
+import StyleTab from "../setting-tab/styleTab/styleTab";
 
 function SettingModal({ isOpen, onClose }: SettingModelProps) {
   return (
@@ -58,7 +59,7 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
                 <p>Syn setting</p>
               </TabPanel>
               <TabPanel>
-                <p>Styles settng</p>
+                <StyleTab />
               </TabPanel>
               <TabPanel>
                 <PositionTab />
