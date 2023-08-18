@@ -2,8 +2,9 @@ import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import { useContext, useEffect, useRef } from "react";
 import { convertJapaneseBracket } from "@/lib/convertJapaneseBracket";
-import { BesideSubtitleProps, Subtitle } from "@/utils/const";
+import { BesideSubtitleProps, FontName, Subtitle } from "@/utils/const";
 import { compareSubtitle } from "../../lib/compareSubtitle";
+import { convertFontName } from "@/lib/convertFontName";
 
 function BesideSubtitle() {
   const {
@@ -78,10 +79,10 @@ function SubTitleElement({
       }}
       className={
         isCurrentSubtitle
-          ? `px-2 py-6 w-full font-['${currentFont.name}'] text-2xl text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
-          : `w-full font-['${currentFont.name}'] text-xl text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
+          ? `px-2 py-6 w-full text-2xl text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
+          : `w-full text-xl text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
       }
-      style={{ fontWeight: currentFont.fontWeight }}
+      style={{ fontWeight: currentFont.fontWeight, fontFamily: convertFontName(currentFont.name as FontName) }}
     >
       {convertJapaneseBracket(sub.data.text)}
     </div>

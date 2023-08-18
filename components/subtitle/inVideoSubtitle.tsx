@@ -2,6 +2,7 @@
 
 import Draggable from "react-draggable";
 import {
+  FontName,
   containerStyle,
   subTitleAreaStyle,
   subTitleTextStyle,
@@ -10,6 +11,7 @@ import {
 import { NodeCue } from "subtitle";
 import { useContext } from "react";
 import { AppContext } from "../provides/providers";
+import { convertFontName } from "@/lib/convertFontName";
 
 export interface RefType {
   setCurrentSubtitle: () => void;
@@ -35,8 +37,12 @@ function InVideoSubtitle() {
         <div style={subTitleWrapperStyle}>
           <div style={subTitleAreaStyle}>
             <div
-              style={{...subTitleTextStyle, fontWeight: currentFont.fontWeight}}
-              className={`text-shadow-black font-['${currentFont.name}'] text-[45px]`}
+              style={{
+                ...subTitleTextStyle,
+                fontWeight: currentFont.fontWeight,
+                fontFamily: convertFontName(currentFont.name as FontName),
+              }}
+              className={`text-shadow-black text-[45px]`}
             >
               {currentSubtitle?.text}
             </div>

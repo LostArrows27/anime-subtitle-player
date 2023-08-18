@@ -20,6 +20,24 @@
   background: #aaa; 
 }
 
+.custom-scroll-bar-2::-webkit-scrollbar {
+  width: 6px; 
+}
+
+.custom-scroll-bar-2::-webkit-scrollbar-track {
+  background: #2D3748;
+}
+
+.custom-scroll-bar-2::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+
+}
+
+.custom-scroll-bar-2::-webkit-scrollbar-thumb:hover {
+  background: #aaa; 
+}
+
 
 video {
   max-width: 100%;

@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { AppContext } from "../provides/providers";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { NodeCue } from "subtitle";
+import { convertFontName } from "@/lib/convertFontName";
+import { FontName } from "@/utils/const";
 
 function UnderVideoSubtitle() {
   const {
@@ -58,14 +60,20 @@ function UnderVideoSubtitle() {
       <div className="h-full flex items-center justify-center relative">
         {subTitle?.current.length === 0 ? (
           <span
-            className={`text-center font-['${currentFont.name}'] text-2xl mt-2 text-gray-700 select-none`}
+            className={`text-center text-2xl mt-2 text-gray-700 select-none`}
+            style={{
+              fontFamily: convertFontName(currentFont.name as FontName),
+            }}
           >
             - Please upload your subtitle -
           </span>
         ) : (
           <span
-            style={{ fontWeight: currentFont.fontWeight }}
-            className={`text-shadow-black text-center leading-[50px]font-['${currentFont.name}'] text-white text-4xl`}
+            style={{
+              fontWeight: currentFont.fontWeight,
+              fontFamily: convertFontName(currentFont.name as FontName),
+            }}
+            className={`text-shadow-black text-center leading-[50px] text-white text-4xl`}
           >
             {currentSubtitle.text}
           </span>

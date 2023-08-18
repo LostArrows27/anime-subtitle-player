@@ -99,10 +99,12 @@ type AppProviderProps = {
 }
 
 type FontOption = {
-    name: 'simsun' | 'Netflix_Sans' | 'Sawarabi_Gothic' | 'Zen_Maru_Gothic',
+    name: FontName,
     title: 'Simsun' | 'Simsun Bold' | 'Netflix Sans' | 'Netflix Sans Bold' | 'Sawarabi Gothic Bold' | 'Sawarabi Gothic' | 'Maru Gothic' | 'Maru Gothic Bold',
     fontWeight: number
 }
+
+type FontName = 'simsun' | 'Netflix_Sans' | 'Sawarabi_Gothic' | 'Zen_Maru_Gothic'
 
 type LayoutProps = {
     children?: React.ReactNode;
@@ -129,4 +131,4 @@ type SubPosition = 'in-video' | 'under-video' | 'right-video'
 
 export { containerStyle, subTitleAreaStyle, subTitleTextStyle, subTitleWrapperStyle, fonts }
 
-export type { AppProviderProps, LayoutProps, SettingModelProps, SubPosition, BesideSubtitleProps, Subtitle, FontOption }
+export type { AppProviderProps, LayoutProps, SettingModelProps, SubPosition, BesideSubtitleProps, Subtitle, FontOption, FontName }
