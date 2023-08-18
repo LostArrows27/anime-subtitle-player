@@ -34,6 +34,7 @@ function StyleTab() {
     return fontArray.map((fontChild: { font: FontOption }, id: number) => {
       return (
         <MenuItemOption
+          isChecked={true}
           key={id}
           backgroundColor="gray.700"
           py={1.5}
@@ -119,8 +120,8 @@ function StyleTab() {
             borderColor="whiteAlpha.300"
           >
             <MenuOptionGroup
-              defaultValue={`${currentFont.name} ${currentFont.fontWeight}`}
-              type="checkbox"
+              defaultValue={`${currentFont.title} ${currentFont.fontWeight}`}
+              type="radio"
             >
               {mapFontOption()}
             </MenuOptionGroup>
