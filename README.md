@@ -14,8 +14,9 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [ ] Change subtitle font (Netflix-San, Yu-Gothic, Zen-Maru-Gothic)
-- [ ] Change font's weight (bold, thin);
+- [ ] Preview font option in settings
+- [ ] Change Font size
+- [ ] Synchrnization settings
 
 Other:
 
@@ -55,3 +56,5 @@ Other:
 - [x] Change ion-icon to react icon
 - [x] Add ui when there's no video
 - [x] Subtitle being "lag" when forward video at specific time
+- [x] Change subtitle font (Netflix-San, Yu-Gothic, Zen-Maru-Gothic)
+- [x] Change font's weight (bold, thin);
