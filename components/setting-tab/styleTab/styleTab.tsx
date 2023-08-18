@@ -81,6 +81,7 @@ function StyleTab() {
               width="900"
               height="500"
               alt="preview image"
+              placeholder="blur"
             />
             <div
               style={{
