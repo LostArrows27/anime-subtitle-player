@@ -31,6 +31,7 @@ function Page() {
   const [fontSize, setFontSize] = useState<number>(45);
   const [backgroundOpacity, setBackgroundOpacity] = useState<number>(0);
   const [showSubtitle, setShowSubtitle] = useState<boolean>(true);
+  const [subtitleSyncDiff, setSubtitleSyncDiff] = useState<number>(0);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -58,6 +59,8 @@ function Page() {
     setBackgroundOpacity,
     showSubtitle,
     setShowSubtitle,
+    subtitleSyncDiff,
+    setSubtitleSyncDiff,
   };
 
   return (

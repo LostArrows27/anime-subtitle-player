@@ -14,13 +14,15 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
+- [ ] Preview subtitle in image example with user setting
 - [ ] Synchrnization settings
 - [ ] Add Whisper Model AI to subtitle Synchronization
 - [ ] Auto Subtitle Generate with Whisper AI
+- [ ] Hover Translate by mazii API / other source
+- [ ] Apply setting when click "Save" button
 
 Other:
 
-- [ ] Preview Font based on current subtitle + video image frame
 - [ ] Add preview video and subtitle for user
 - [ ] Add error.tsx UI
 - [ ] Adding beside subtitle in fullscreen mode
@@ -31,20 +33,18 @@ Other:
 - [ ] Drag subtitle height when under video
 - [ ] Add light and dark mode
 - [ ] Cleaner code (type and function position rearrange)
+- [ ] Preview Font based on current subtitle + video image frame
 - [ ] Add episode list when choose many video on the left side of the screen
 - [ ] Add settting for `.ass` file
 - [ ] Supporting `.ass` subtitle file
 - [ ] Store anime name and watch progress to ask next time if user watch same video
 - [ ] Redesign UI
 - [ ] Add something when video haven't loaded
-- [ ] Auto Translate by google API
-- [ ] Hover Translate by mazii API / other source
 - [ ] In page dictionary
 - [ ] Add login + save word to dictionary
 - [ ] Support video link
 - [ ] Add card to Anki API
 - [ ] Bocchi loading screen
-- [ ] Change js file to module and export
 - [x] Handle subtitle logic
   - [x] Remove subtitle block when there's no dialogue
   - [x] Hover then pause
@@ -65,3 +65,4 @@ Other:
 - [x] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode)
 - [x] Subtitle Background
 - [x] Toggle subtitle
+- [x] Change js file to module and export

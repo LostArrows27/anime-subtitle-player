@@ -19,10 +19,26 @@ import {
 } from "@chakra-ui/react";
 import PositionTab from "../setting-tab/positionTab/positionTab";
 import StyleTab from "../setting-tab/styleTab/styleTab";
+import SynchronizationTab from "../setting-tab/syncTab/SynchronizationTab";
+import { useContext, useState } from "react";
+import { AppContext } from "../provides/providers";
 
 function SettingModal({ isOpen, onClose }: SettingModelProps) {
+  const { subtitleSyncDiff, setSubtitleSyncDiff } = useContext(AppContext);
+  const [save, setSave] = useState<boolean>(false);
+  const [subtitleSyncDiffAdd, setSubtitleSyncDiffAdd] = useState<number>(0);
+
   return (
-    <Modal isCentered isOpen={isOpen} onClose={onClose}>
+    <Modal
+      onCloseComplete={() => {
+        if (save) {
+          setSave(false);
+        }
+      }}
+      isCentered
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
       <ModalContent className="!bg-gray-800 !z-[999999] !text-white !w-[700px] !max-w-[700px]">
         <ModalHeader>Settings</ModalHeader>
@@ -56,7 +72,9 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
             />
             <TabPanels>
               <TabPanel>
-                <p>Syn setting</p>
+                <SynchronizationTab
+                  setSubtitleSyncDiffAdd={setSubtitleSyncDiffAdd}
+                />
               </TabPanel>
               <TabPanel>
                 <StyleTab />
@@ -74,7 +92,13 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
           <Button onClick={onClose} className="mr-4">
             Close
           </Button>
-          <Button onClick={onClose} colorScheme="green">
+          <Button
+            onClick={() => {
+              onClose();
+              setSubtitleSyncDiff((prev) => prev + subtitleSyncDiffAdd);
+            }}
+            colorScheme="green"
+          >
             Save
           </Button>
         </ModalFooter>

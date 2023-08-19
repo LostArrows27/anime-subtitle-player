@@ -48,7 +48,7 @@ function FontFamilySetting({
             setCurrentFont(fontChild.font);
           }}
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between py-2">
             <span className="pl-1 mr-2">{fontChild.font.title}</span>
             <Tooltip
               bg="gray.500"
@@ -56,7 +56,7 @@ function FontFamilySetting({
               label="Preview font"
               aria-label="A tooltip"
             >
-              <IconButton
+              {/* <IconButton
                 colorScheme=""
                 aria-label="preview font"
                 onClick={(e) => {
@@ -65,7 +65,18 @@ function FontFamilySetting({
                   onOpen();
                 }}
                 icon={<FiEye className="ml-1 text-green-400" size="24" />}
-              />
+              /> */}
+              <span>
+                <FiEye
+                  onClick={(e: any) => {
+                    e.stopPropagation();
+                    setPreviewFont(fontChild.font);
+                    onOpen();
+                  }}
+                  className="ml-2 text-green-400"
+                  size="24"
+                />
+              </span>
             </Tooltip>
           </div>
         </MenuItemOption>

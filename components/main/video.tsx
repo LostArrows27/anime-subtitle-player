@@ -23,6 +23,7 @@ function Video() {
     subPos,
     setCurrentSubIndex,
     setShowBorder,
+    subtitleSyncDiff,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -39,9 +40,11 @@ function Video() {
             let currentTime = parseFloat(
               videoRef!.current?.currentTime.toFixed(3) as string
             );
+            console.log(subtitleSyncDiff);
+
             return (
-              currentTime >= value.data.start / 1000 &&
-              currentTime <= value.data.end / 1000
+              currentTime >= value.data.start / 1000 + subtitleSyncDiff &&
+              currentTime <= value.data.end / 1000 + subtitleSyncDiff
             );
           }
         );
@@ -57,7 +60,7 @@ function Video() {
         });
       };
     }
-  }, [videoRef]);
+  }, [videoRef!.current, subtitleSyncDiff]);
 
   return (
     <div
@@ -80,7 +83,7 @@ function Video() {
           className="h-[70px] z-[999] w-[70px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         >
           <FiPlay
-            className="text-green-500 animate-pulse glow-element cursor-pointer"
+            className="animate-pulse glow-element text-green-500 cursor-pointer"
             size="70px"
           />
         </div>

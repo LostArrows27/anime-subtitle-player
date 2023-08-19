@@ -104,7 +104,9 @@ type AppProviderProps = {
     backgroundOpacity: number,
     setBackgroundOpacity: Dispatch<SetStateAction<number>>,
     showSubtitle: boolean,
-    setShowSubtitle: Dispatch<SetStateAction<boolean>>
+    setShowSubtitle: Dispatch<SetStateAction<boolean>>,
+    subtitleSyncDiff: number,
+    setSubtitleSyncDiff: Dispatch<SetStateAction<number>>,
 }
 
 type FontOption = {
@@ -134,7 +136,8 @@ type BesideSubtitleProps = {
     videoRef: RefObject<HTMLVideoElement> | null;
     currentSubRef: RefObject<HTMLDivElement>;
     currentFont: FontOption
-    fontSize: number
+    fontSize: number,
+    subtitleSyncDiff: number,
 }
 
 type SubPosition = 'in-video' | 'under-video' | 'right-video'

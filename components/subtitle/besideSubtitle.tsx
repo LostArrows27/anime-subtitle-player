@@ -15,6 +15,7 @@ function BesideSubtitle() {
     currentSubtitle,
     currentFont,
     fontSize,
+    subtitleSyncDiff,
   } = useContext(AppContext);
 
   const currentSubRef = useRef<HTMLDivElement>(null);
@@ -34,7 +35,7 @@ function BesideSubtitle() {
   return (
     <div className="rounded custom-scroll-bar w-[calc(100%-1044px)] h-[calc((9/16)*1024px)] bg-[#202024] text-white overflow-y-scroll">
       {subTitle?.current.length === 0 ? (
-        <span className="w-full h-full text-2xl text-gray-500 text-center grid place-items-center">
+        <span className="place-items-center grid w-full h-full text-2xl text-center text-gray-500">
           <span>Please upload your subtitle</span>
         </span>
       ) : (
@@ -43,6 +44,7 @@ function BesideSubtitle() {
       {subTitle?.current!.map((sub: NodeCue, id: number) => {
         return (
           <SubTitleElement
+            subtitleSyncDiff={subtitleSyncDiff}
             fontSize={fontSize}
             key={id}
             sub={sub}
@@ -66,6 +68,7 @@ function SubTitleElement({
   currentSubRef,
   currentFont,
   fontSize,
+  subtitleSyncDiff,
 }: BesideSubtitleProps) {
   const isCurrentSubtitle = compareSubtitle(currentSubtitle, sub);
 
@@ -73,7 +76,8 @@ function SubTitleElement({
     <div
       ref={isCurrentSubtitle ? currentSubRef : null}
       onClick={() => {
-        videoRef!.current!.currentTime = sub.data.start / 1000;
+        videoRef!.current!.currentTime =
+          sub.data.start / 1000 + subtitleSyncDiff;
         setCurrentSubtitle({
           text: sub.data.text,
           start: sub.data.start,

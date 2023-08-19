@@ -27,6 +27,8 @@ const AppContext = createContext<AppProviderProps>({
   setBackgroundOpacity: () => {},
   showSubtitle: true,
   setShowSubtitle: () => {},
+  subtitleSyncDiff: 0,
+  setSubtitleSyncDiff: () => {},
 });
 
 const Providers = ({
