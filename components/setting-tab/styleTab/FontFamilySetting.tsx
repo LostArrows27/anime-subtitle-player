@@ -48,8 +48,8 @@ function FontFamilySetting({
             setCurrentFont(fontChild.font);
           }}
         >
-          <div className="flex justify-between items-center">
-            <span className="mr-2 pl-1">{fontChild.font.title}</span>
+          <div className="flex items-center justify-between">
+            <span className="pl-1 mr-2">{fontChild.font.title}</span>
             <Tooltip
               bg="gray.500"
               hasArrow
@@ -74,8 +74,15 @@ function FontFamilySetting({
   }
 
   return (
-    <div className="flex justify-between w-full items-center h-[80px]">
-      <h4>Font Style</h4>
+    <div className=" mb-7 flex items-center justify-between w-full mt-6">
+      <div>
+        <h2 className="mb-2 text-[18px] font-bold text-green-500">
+          Subtitle Font
+        </h2>
+        <h4 className="text- text-sm text-gray-300">
+          Choose subtitle font family
+        </h4>
+      </div>
       <Menu placement="bottom-end" closeOnSelect closeOnBlur={false}>
         <MenuButton
           px={4}

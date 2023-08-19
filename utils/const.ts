@@ -11,17 +11,18 @@ const containerStyle = {
     width: "100%",
     margin: "auto",
     textAlign: "center",
-    zIndex: '100'
+    zIndex: '100',
 } as const;
 
 const subTitleWrapperStyle = {
     display: "inline-block",
-    backgroundColor: "transparent",
     fontWeight: '900',
     marginLeft: "0",
+    padding: '0 15px',
     marginRight: "0",
     border: "none",
     cursor: "pointer",
+    borderRadius: "40px",
     userSelect: "none",
 } as const
 
@@ -100,6 +101,10 @@ type AppProviderProps = {
     setCurrentFont: Dispatch<SetStateAction<FontOption>>,
     fontSize: number,
     setFontSize: Dispatch<SetStateAction<number>>,
+    backgroundOpacity: number,
+    setBackgroundOpacity: Dispatch<SetStateAction<number>>,
+    showSubtitle: boolean,
+    setShowSubtitle: Dispatch<SetStateAction<boolean>>
 }
 
 type FontOption = {

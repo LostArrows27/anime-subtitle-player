@@ -22,7 +22,7 @@ export default function RootLayout(props: LayoutProps) {
       <body
         className={
           inter.className +
-          " relative m-0 p-0 flex flex-col items-center h-screen !bg-[#131418]"
+          "relative m-0 p-0 flex flex-col items-center h-screen !bg-[#131418]"
         }
       >
         <Providers>{children}</Providers>

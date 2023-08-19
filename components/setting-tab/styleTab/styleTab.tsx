@@ -6,14 +6,17 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
+  Switch,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import FontFamilySetting from "./FontFamilySetting";
 import FontSizeSetting from "./FontSizeSetting";
+import SubtitleBackground from "./SubtitleBackground";
 
 function StyleTab() {
-  const { currentFont, setCurrentFont } = useContext(AppContext);
+  const { currentFont, setCurrentFont, showSubtitle, setShowSubtitle } =
+    useContext(AppContext);
   const [previewFont, setPreviewFont] = useState<FontOption>(currentFont);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -22,7 +25,7 @@ function StyleTab() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent className="flex items-center bg-gray-700 !w-[900px] !max-w-[900px] justify-center self-center">
-          <div className="relative grid place-items-center bg-gray-700">
+          <div className="place-items-center relative grid bg-gray-700">
             <Image
               src="/image/preview.png"
               width="900"
@@ -50,6 +53,28 @@ function StyleTab() {
         setPreviewFont={setPreviewFont}
         onOpen={onOpen}
       />
+      <SubtitleBackground />
+      <div className="flex justify-between">
+        <div>
+          <h2 className="mb-2 text-[18px] font-bold text-green-500">
+            Toggle Subtitle
+          </h2>
+          <h4 className="text- text-sm text-gray-300">
+            Show or hide inside video subtitle
+          </h4>
+        </div>
+        <div>
+          <Switch
+            size="lg"
+            mt={5}
+            colorScheme="green"
+            isChecked={showSubtitle}
+            onChange={(e) => {
+              setShowSubtitle(!showSubtitle);
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }

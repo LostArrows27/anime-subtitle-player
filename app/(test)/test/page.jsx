@@ -62,7 +62,7 @@ function Page() {
   return (
     <input
       type="file"
-      className="w-full max-w-xs p-2 border border-gray-300 rounded mb-4"
+      className="w-full max-w-xs p-2 mb-4 border border-gray-300 rounded"
       placeholder="Enter text here"
       onInput={(e) => {
         classify(e);

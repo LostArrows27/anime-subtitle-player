@@ -16,14 +16,14 @@ Todays:
 
 - [ ] Synchrnization settings
 - [ ] Add Whisper Model AI to subtitle Synchronization
+- [ ] Auto Subtitle Generate with Whisper AI
 
 Other:
 
+- [ ] Preview Font based on current subtitle + video image frame
 - [ ] Add preview video and subtitle for user
-- [ ] Toggle subtitle
 - [ ] Add error.tsx UI
 - [ ] Adding beside subtitle in fullscreen mode
-- [ ] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode), theme app
 - [ ] Save user's settting in local storage
 - [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
 - [ ] Add larger screen feature like the old template + fix speed button not working
@@ -39,6 +39,7 @@ Other:
 - [ ] Add something when video haven't loaded
 - [ ] Auto Translate by google API
 - [ ] Hover Translate by mazii API / other source
+- [ ] In page dictionary
 - [ ] Add login + save word to dictionary
 - [ ] Support video link
 - [ ] Add card to Anki API
@@ -61,3 +62,6 @@ Other:
 - [x] Change font's weight (bold, thin);
 - [x] Preview font option in settings
 - [x] Change Font size
+- [x] Adjust sub bg, font size, edit mode, sync slow fast, subtitle position (3 mode)
+- [x] Subtitle Background
+- [x] Toggle subtitle

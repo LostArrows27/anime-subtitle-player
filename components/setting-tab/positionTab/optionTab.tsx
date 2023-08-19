@@ -49,7 +49,7 @@ function convertPosToPreviewElemet(
 ): ReactNode {
   if (position === "in-video") {
     return (
-      <div className="h-full w-full bg-gray-600 rounded-xl pt-4 pb-3 justify-between flex flex-col items-center">
+      <div className="flex flex-col items-center justify-between w-full h-full pt-4 pb-3 bg-gray-600 rounded-xl">
         <FiPlay
           size="30px"
           className={`${
@@ -68,8 +68,8 @@ function convertPosToPreviewElemet(
   }
   if (position === "under-video") {
     return (
-      <div className="flex flex-col items-center h-full w-full justify-between">
-        <div className="h-2/3 w-full bg-gray-600 rounded-xl grid place-items-center">
+      <div className="flex flex-col items-center justify-between w-full h-full">
+        <div className="grid w-full bg-gray-600 h-2/3 rounded-xl place-items-center">
           <FiPlay
             size="26px"
             className={`${
@@ -77,7 +77,7 @@ function convertPosToPreviewElemet(
             }`}
           />
         </div>
-        <div className="h-1/4 w-full bg-gray-600 grid place-items-center rounded-lg">
+        <div className="grid w-full bg-gray-600 rounded-lg h-1/4 place-items-center">
           <p
             className={`text-base select-none ${
               position === currentPos ? "text-green-400" : "text-gray-400"
@@ -91,7 +91,7 @@ function convertPosToPreviewElemet(
   }
   return (
     <div className="flex justify-between w-full h-full">
-      <div className="h-full w-3/5 bg-gray-600 rounded-xl grid place-items-center">
+      <div className="grid w-3/5 h-full bg-gray-600 rounded-xl place-items-center">
         <FiPlay
           size="30px"
           className={`${

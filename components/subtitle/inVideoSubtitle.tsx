@@ -19,10 +19,17 @@ export interface RefType {
 }
 
 function InVideoSubtitle() {
-  const { currentSubtitle, isSubtitle, subPos, currentFont, fontSize } =
-    useContext(AppContext);
+  const {
+    currentSubtitle,
+    isSubtitle,
+    subPos,
+    currentFont,
+    fontSize,
+    backgroundOpacity,
+    showSubtitle,
+  } = useContext(AppContext);
 
-  if (subPos !== "in-video") return;
+  if (subPos !== "in-video" || !showSubtitle) return;
 
   return (
     <Draggable
@@ -34,7 +41,14 @@ function InVideoSubtitle() {
         style={containerStyle}
         className={currentSubtitle?.text === "" ? "hidden" : ""}
       >
-        <div style={subTitleWrapperStyle}>
+        <div
+          style={{
+            ...subTitleWrapperStyle,
+            backgroundColor: `rgba(0,0,0,${backgroundOpacity})`,
+            width: !!currentSubtitle?.text ? "auto" : "0",
+            height: !!currentSubtitle?.text ? "auto" : "0",
+          }}
+        >
           <div style={subTitleAreaStyle}>
             <div
               style={{

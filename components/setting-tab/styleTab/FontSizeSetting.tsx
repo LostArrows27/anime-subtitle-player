@@ -15,7 +15,12 @@ function FontSizeSetting() {
 
   return (
     <div className="flex justify-between w-full my-5">
-      <h4>Font Size</h4>
+      <div>
+        <h2 className="mb-2 text-[18px] font-bold text-green-500">Font Size</h2>
+        <h4 className="text- text-sm text-gray-300">
+          Change subtitle font size
+        </h4>
+      </div>
       <div className="w-2/5">
         <SliderThumbWithTooltip fontSize={fontSize} setFontSize={setFontSize} />
       </div>
@@ -40,6 +45,7 @@ function SliderThumbWithTooltip({
       max={100}
       colorScheme="green"
       py={5}
+      mt={4}
       size="lg"
       onChange={(v) => {
         let fontsize = Math.round((v / 100) * 25) + 20;

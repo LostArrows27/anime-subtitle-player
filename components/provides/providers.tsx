@@ -23,6 +23,10 @@ const AppContext = createContext<AppProviderProps>({
   setCurrentFont: () => {},
   fontSize: DEFAULT_FONT_SIZE,
   setFontSize: () => {},
+  backgroundOpacity: 0,
+  setBackgroundOpacity: () => {},
+  showSubtitle: true,
+  setShowSubtitle: () => {},
 });
 
 const Providers = ({
