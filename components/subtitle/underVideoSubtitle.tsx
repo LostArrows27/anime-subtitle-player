@@ -14,6 +14,9 @@ function UnderVideoSubtitle() {
     currentFont,
     fontSize,
     subtitleSyncDiff,
+    setIsHoverSubtitle,
+    preventPlaying,
+    setPreventPlaying,
   } = useContext(AppContext);
 
   const handlePrevSubtitle = () => {
@@ -73,6 +76,21 @@ function UnderVideoSubtitle() {
           </span>
         ) : (
           <span
+            onMouseEnter={() => {
+              setIsHoverSubtitle(true);
+              if (videoRef?.current?.paused) {
+                setPreventPlaying(true);
+              } else {
+                videoRef?.current?.pause();
+                setPreventPlaying(false);
+              }
+            }}
+            onMouseLeave={() => {
+              setIsHoverSubtitle(false);
+              if (!preventPlaying) {
+                videoRef?.current?.play();
+              }
+            }}
             style={{
               fontWeight: currentFont.fontWeight,
               fontFamily: convertFontName(currentFont.name as FontName),

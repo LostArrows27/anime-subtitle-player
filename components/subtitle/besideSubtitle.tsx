@@ -1,6 +1,6 @@
 import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
-import { useContext, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { convertJapaneseBracket } from "@/lib/convertJapaneseBracket";
 import { BesideSubtitleProps, FontName, Subtitle } from "@/utils/const";
 import { compareSubtitle } from "../../lib/compareSubtitle";
@@ -16,9 +16,44 @@ function BesideSubtitle() {
     currentFont,
     fontSize,
     subtitleSyncDiff,
+    setIsHoverSubtitle,
+    preventPlaying,
+    setPreventPlaying,
   } = useContext(AppContext);
 
   const currentSubRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let tempRef = currentSubRef.current;
+
+    const handleMouseEnter = () => {
+      setIsHoverSubtitle(true);
+      if (videoRef?.current?.paused) {
+        setPreventPlaying(true);
+      } else {
+        videoRef?.current?.pause();
+        setPreventPlaying(false);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      setIsHoverSubtitle(false);
+      if (!preventPlaying) {
+        videoRef?.current?.play();
+      }
+    };
+
+    if (currentSubRef.current) {
+      currentSubRef.current.addEventListener("mouseenter", handleMouseEnter);
+      currentSubRef.current.addEventListener("mouseleave", handleMouseLeave);
+    }
+    return () => {
+      if (tempRef) {
+        tempRef.removeEventListener("mouseenter", handleMouseEnter);
+        tempRef.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, [currentSubRef.current]);
 
   useEffect(() => {
     if (currentSubRef.current) {

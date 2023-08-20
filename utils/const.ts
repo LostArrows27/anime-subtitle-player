@@ -141,7 +141,7 @@ type BesideSubtitleProps = {
     currentSubRef: RefObject<HTMLDivElement>;
     currentFont: FontOption
     fontSize: number,
-    subtitleSyncDiff: number,
+    subtitleSyncDiff: number
 }
 
 type SubPosition = 'in-video' | 'under-video' | 'right-video'
