@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Rampart+One&family=Sawarabi+Gothic&family=Zen+Kaku+Gothic+New:wght@400;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@300;400;700&family=Rampart+One&family=Sawarabi+Gothic&family=Train+One&family=Zen+Kaku+Gothic+New:wght@400;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,30 +75,6 @@
 
   body {
     @apply bg-background text-foreground;
-  }
-
-  /* Define font-family for NetflixSans_W_Bd.woff2 */
-  @font-face {
-    font-family: 'Netflix Sans';
-    font-style: normal;
-    font-weight: 700;
-    src: url('/fonts/NetflixSans_W_Bd.woff2') format('woff2');
-  }
-
-  /* Define font-family for NetflixSans_W_Rg.woff2 */
-  @font-face {
-    font-family: 'Netflix Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/NetflixSans_W_Rg.woff2') format('woff2');
-  }
-
-  /* Define font-family for NetflixSans_W_Md.woff2 */
-  @font-face {
-    font-family: 'Netflix Sans';
-    font-style: normal;
-    font-weight: 500;
-    src: url('/fonts/NetflixSans_W_Md.woff2') format('woff2');
   }
 }
  

@@ -1,3 +1,5 @@
+"use client";
+
 import { AppContext } from "@/components/provides/providers";
 import { convertFontName } from "@/lib/convertFontName";
 import { FontOption, FontName } from "@/utils/const";
@@ -19,6 +21,7 @@ function StyleTab() {
     useContext(AppContext);
   const [previewFont, setPreviewFont] = useState<FontOption>(currentFont);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const previewFontName = convertFontName(previewFont.name);
 
   return (
     <div className="w-full h-full">
@@ -42,9 +45,7 @@ function StyleTab() {
                 isTextShadow ? "text-shadow-black" : ""
               }`}
             >
-              <span
-                className={`${convertFontName(previewFont.name as FontName)}`}
-              >
+              <span style={{ fontFamily: previewFontName }}>
                 わ。。私、怒ってるわけない！
               </span>
             </div>

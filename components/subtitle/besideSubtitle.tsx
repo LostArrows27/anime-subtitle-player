@@ -43,15 +43,11 @@ function BesideSubtitle() {
       }
     };
 
-    if (currentSubRef.current) {
-      currentSubRef.current.addEventListener("mouseenter", handleMouseEnter);
-      currentSubRef.current.addEventListener("mouseleave", handleMouseLeave);
-    }
+    currentSubRef.current?.addEventListener("mouseenter", handleMouseEnter);
+    currentSubRef.current?.addEventListener("mouseleave", handleMouseLeave);
     return () => {
-      if (tempRef) {
-        tempRef.removeEventListener("mouseenter", handleMouseEnter);
-        tempRef.removeEventListener("mouseleave", handleMouseLeave);
-      }
+      tempRef?.removeEventListener("mouseenter", handleMouseEnter);
+      tempRef?.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [currentSubRef.current]);
 
@@ -105,6 +101,9 @@ function SubTitleElement({
   fontSize,
   subtitleSyncDiff,
 }: BesideSubtitleProps) {
+  let text = convertJapaneseBracket(sub.data.text);
+  let fontName = convertFontName(currentFont.name);
+
   const isCurrentSubtitle = compareSubtitle(currentSubtitle, sub);
 
   return (
@@ -119,19 +118,20 @@ function SubTitleElement({
           end: sub.data.end,
         });
       }}
-      className={`${convertFontName(currentFont.name as FontName)} ${
+      className={
         isCurrentSubtitle
           ? `px-2 py-6 w-full text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
           : `w-full text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
-      }`}
+      }
       style={{
         fontWeight: currentFont.fontWeight,
         fontSize: isCurrentSubtitle
           ? getSuitableSubSize((fontSize - 6) * 1.2)
           : getSuitableSubSize(fontSize - 6),
+        fontFamily: fontName,
       }}
     >
-      {convertJapaneseBracket(sub.data.text)}
+      {text}
     </div>
   );
 }

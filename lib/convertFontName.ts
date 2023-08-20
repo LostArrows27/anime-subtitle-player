@@ -3,21 +3,23 @@ import { FontName } from "@/utils/const";
 export const convertFontName = (name: FontName) => {
     switch (name) {
         case 'simsun':
-            return 'font-simsun'
-        case 'Netflix_Sans':
-            return 'font-netflixSans'
+            return "simsun, sans-serif"
         case 'Sawarabi_Gothic':
-            return 'font-sawarabi'
+            return 'Sawarabi Gothic, sans-serif'
         case 'Zen_Maru_Gothic':
-            return 'font-zenMaruGothic'
+            return 'Zen Maru Gothic New, sans-serif'
         case 'Noto_Sans_JP':
-            return 'font-notoSansJP'
+            return 'Noto Sans JP, sans-serif'
         case 'Zen_Kaku_Gothic':
-            return 'font-zenKakuGothic'
+            return 'Zen Kaku Gothic New, sans-serif'
         case 'Rampart_One':
-            return 'font-rampartOne'
+            return 'Rampart One, cursive'
+        case 'Dot_Gothic':
+            return 'DotGothic16, sans-serif'
+        case 'Train_One':
+            return 'Train One, cursive'
         default:
-            return 'font-simsun'
+            return "simsun, sans-serif"
     }
 
 }

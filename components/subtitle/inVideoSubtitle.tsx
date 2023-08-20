@@ -35,6 +35,8 @@ function InVideoSubtitle() {
   } = useContext(AppContext);
 
   if (subPos !== "in-video" || !showSubtitle) return;
+  let fontName = convertFontName(currentFont.name);
+  let text = currentSubtitle?.text;
 
   return (
     <Draggable
@@ -74,13 +76,12 @@ function InVideoSubtitle() {
               style={{
                 ...subTitleTextStyle,
                 fontWeight: currentFont.fontWeight,
+                fontFamily: fontName,
                 fontSize: fontSize,
               }}
-              className={`${convertFontName(currentFont.name as FontName)} ${
-                isTextShadow ? "text-shadow-black" : ""
-              }`}
+              className={`${isTextShadow ? "text-shadow-black" : ""}`}
             >
-              {currentSubtitle?.text}
+              {text}
             </div>
           </div>
         </div>

@@ -49,15 +49,20 @@ const fonts: { [keys in FontKey]: FontOption } = {
         title: 'Simsun Bold',
         fontWeight: 900,
     },
-    netflixSansRegular: {
-        name: "Netflix_Sans",
-        title: 'Netflix Sans',
+    rampartOneRegular: {
+        name: "Rampart_One",
+        title: 'Rampart',
         fontWeight: 400,
     },
-    netflixSansBold: {
-        name: "Netflix_Sans",
-        title: 'Netflix Sans Bold',
-        fontWeight: 900,
+    dotGothic: {
+        name: "Dot_Gothic",
+        title: 'Dot Gothic',
+        fontWeight: 400,
+    },
+    trainOne: {
+        name: "Train_One",
+        title: 'Train One',
+        fontWeight: 400,
     },
     sawarabiGothicRegular: {
         name: "Sawarabi_Gothic",
@@ -99,14 +104,9 @@ const fonts: { [keys in FontKey]: FontOption } = {
         title: 'Kaku Bold',
         fontWeight: 900,
     },
-    rampartOneRegular: {
-        name: "Rampart_One",
-        title: 'Rampart',
-        fontWeight: 400,
-    }
 }
 
-type FontKey = 'simsunRegular' | 'simsunBold' | 'netflixSansRegular' | 'netflixSansBold' | 'sawarabiGothicRegular' | 'sawarabiGothicBold' | 'zenMaruGothicRegular' | 'zenMaruGothicBold' | 'notoSansJPRegular' | 'notoSansJPBold' | 'zenKakuGothicRegular' | 'zenKakuGothicBold' | 'rampartOneRegular'
+type FontKey = 'simsunRegular' | 'simsunBold' | 'sawarabiGothicRegular' | 'sawarabiGothicBold' | 'zenMaruGothicRegular' | 'zenMaruGothicBold' | 'notoSansJPRegular' | 'notoSansJPBold' | 'zenKakuGothicRegular' | 'zenKakuGothicBold' | 'rampartOneRegular' | 'trainOne' | 'dotGothic'
 
 type AppProviderProps = {
     currentSubIndex: number
@@ -142,11 +142,11 @@ type AppProviderProps = {
 
 type FontOption = {
     name: FontName,
-    title: 'Simsun' | 'Simsun Bold' | 'Netflix Sans' | 'Netflix Sans Bold' | 'Sawarabi Gothic Bold' | 'Sawarabi Gothic' | 'Maru Gothic' | 'Maru Gothic Bold' | 'Noto JP' | 'Noto JP Bold' | 'Kaku' | 'Kaku Bold' | 'Rampart'
+    title: 'Simsun' | 'Simsun Bold' | 'Sawarabi Gothic Bold' | 'Sawarabi Gothic' | 'Maru Gothic' | 'Maru Gothic Bold' | 'Noto JP' | 'Noto JP Bold' | 'Kaku' | 'Kaku Bold' | 'Rampart' | 'Train One' | 'Dot Gothic'
     fontWeight: number
 }
 
-type FontName = 'simsun' | 'Netflix_Sans' | 'Sawarabi_Gothic' | 'Zen_Maru_Gothic' | 'Noto_Sans_JP' | 'Zen_Kaku_Gothic' | 'Rampart_One'
+type FontName = 'simsun' | 'Sawarabi_Gothic' | 'Zen_Maru_Gothic' | 'Noto_Sans_JP' | 'Zen_Kaku_Gothic' | 'Rampart_One' | 'Train_One' | 'Dot_Gothic'
 
 type LayoutProps = {
     children?: React.ReactNode;

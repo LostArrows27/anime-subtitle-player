@@ -5,3 +5,8 @@ export function convertJapaneseBracket(str: string): string {
     const replacedStr = str.replace(fullWidthOpeningBracket, '(').replace(fullWidthClosingBracket, ') ');
     return replacedStr;
 }
+
+// example
+// const str = '（あいうえお）';
+// const convertedStr = convertJapaneseBracket(str);
+// console.log(convertedStr); // (あいうえお)
