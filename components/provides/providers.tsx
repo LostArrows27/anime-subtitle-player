@@ -33,6 +33,8 @@ const AppContext = createContext<AppProviderProps>({
   setIsHoverSubtitle: () => {},
   preventPlaying: false,
   setPreventPlaying: () => {},
+  isTextShadow: true,
+  setIsTextShadow: () => {},
 });
 
 const Providers = ({

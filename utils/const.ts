@@ -79,9 +79,34 @@ const fonts: { [keys in FontKey]: FontOption } = {
         title: 'Maru Gothic Bold',
         fontWeight: 900,
     },
+    notoSansJPRegular: {
+        name: "Noto_Sans_JP",
+        title: 'Noto JP',
+        fontWeight: 400,
+    },
+    notoSansJPBold: {
+        name: "Noto_Sans_JP",
+        title: 'Noto JP Bold',
+        fontWeight: 900,
+    },
+    zenKakuGothicRegular: {
+        name: "Zen_Kaku_Gothic",
+        title: 'Kaku',
+        fontWeight: 400,
+    },
+    zenKakuGothicBold: {
+        name: "Zen_Kaku_Gothic",
+        title: 'Kaku Bold',
+        fontWeight: 900,
+    },
+    rampartOneRegular: {
+        name: "Rampart_One",
+        title: 'Rampart',
+        fontWeight: 400,
+    }
 }
 
-type FontKey = 'simsunRegular' | 'simsunBold' | 'netflixSansRegular' | 'netflixSansBold' | 'sawarabiGothicRegular' | 'sawarabiGothicBold' | 'zenMaruGothicRegular' | 'zenMaruGothicBold'
+type FontKey = 'simsunRegular' | 'simsunBold' | 'netflixSansRegular' | 'netflixSansBold' | 'sawarabiGothicRegular' | 'sawarabiGothicBold' | 'zenMaruGothicRegular' | 'zenMaruGothicBold' | 'notoSansJPRegular' | 'notoSansJPBold' | 'zenKakuGothicRegular' | 'zenKakuGothicBold' | 'rampartOneRegular'
 
 type AppProviderProps = {
     currentSubIndex: number
@@ -111,15 +136,17 @@ type AppProviderProps = {
     setIsHoverSubtitle: Dispatch<SetStateAction<boolean>>,
     preventPlaying: boolean,
     setPreventPlaying: Dispatch<SetStateAction<boolean>>,
+    isTextShadow: boolean,
+    setIsTextShadow: Dispatch<SetStateAction<boolean>>,
 }
 
 type FontOption = {
     name: FontName,
-    title: 'Simsun' | 'Simsun Bold' | 'Netflix Sans' | 'Netflix Sans Bold' | 'Sawarabi Gothic Bold' | 'Sawarabi Gothic' | 'Maru Gothic' | 'Maru Gothic Bold',
+    title: 'Simsun' | 'Simsun Bold' | 'Netflix Sans' | 'Netflix Sans Bold' | 'Sawarabi Gothic Bold' | 'Sawarabi Gothic' | 'Maru Gothic' | 'Maru Gothic Bold' | 'Noto JP' | 'Noto JP Bold' | 'Kaku' | 'Kaku Bold' | 'Rampart'
     fontWeight: number
 }
 
-type FontName = 'simsun' | 'Netflix_Sans' | 'Sawarabi_Gothic' | 'Zen_Maru_Gothic'
+type FontName = 'simsun' | 'Netflix_Sans' | 'Sawarabi_Gothic' | 'Zen_Maru_Gothic' | 'Noto_Sans_JP' | 'Zen_Kaku_Gothic' | 'Rampart_One'
 
 type LayoutProps = {
     children?: React.ReactNode;

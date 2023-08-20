@@ -34,6 +34,7 @@ function Page() {
   const [subtitleSyncDiff, setSubtitleSyncDiff] = useState<number>(0);
   const [isHoverSubtitle, setIsHoverSubtitle] = useState<boolean>(false);
   const [preventPlaying, setPreventPlaying] = useState<boolean>(false);
+  const [isTextShadow, setIsTextShadow] = useState<boolean>(true);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -67,6 +68,8 @@ function Page() {
     setIsHoverSubtitle,
     preventPlaying,
     setPreventPlaying,
+    isTextShadow,
+    setIsTextShadow,
   };
 
   return (

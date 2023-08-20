@@ -16,6 +16,15 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        simsun: ["simsun", "sans-serif"],
+        sawarabi: ["Sawarabi Gothic", "sans-serif"],
+        zenMaruGothic: ["Zen Maru Gothic", "sans-serif"],
+        notoSansJP: ["Noto Sans JP", "sans-serif"],
+        zenKakuGothic: ["Zen Kaku Gothic", "sans-serif"],
+        rampartOne: ["Rampart One", "cursive"],
+        netflixSans: ["Netflix Sans", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

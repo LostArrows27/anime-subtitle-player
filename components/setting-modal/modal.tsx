@@ -22,6 +22,7 @@ import StyleTab from "../setting-tab/styleTab/styleTab";
 import SynchronizationTab from "../setting-tab/syncTab/SynchronizationTab";
 import { useContext, useState } from "react";
 import { AppContext } from "../provides/providers";
+import OtherSettingTab from "../setting-tab/otherTab/OtherSettingTab";
 
 function SettingModal({ isOpen, onClose }: SettingModelProps) {
   const { subtitleSyncDiff, setSubtitleSyncDiff } = useContext(AppContext);
@@ -83,7 +84,7 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
                 <PositionTab />
               </TabPanel>
               <TabPanel>
-                <p>Other settng</p>
+                <OtherSettingTab />
               </TabPanel>
             </TabPanels>
           </Tabs>

@@ -14,10 +14,9 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [ ] Hover subtitle pause video
-  - [ ] In video
-  - [ ] Under video
-  - [ ] Beside video
+- [x] Toggle text shadow
+- [x] Adding Yu Gothic, Noto Font and MS Gothic
+- [ ] Changin subtitle color and text shadow color
 - [ ] Add dowload screenshot with sub or not sub
 - [ ] Keyboard shortcut
 
@@ -76,3 +75,7 @@ Other:
 - [x] Toggle subtitle
 - [x] Change js file to module and export
 - [x] Synchrnization settings
+- [x] Hover subtitle pause video
+  - [x] In video
+  - [x] Under video
+  - [x] Beside video

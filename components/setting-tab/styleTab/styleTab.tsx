@@ -15,7 +15,7 @@ import FontSizeSetting from "./FontSizeSetting";
 import SubtitleBackground from "./SubtitleBackground";
 
 function StyleTab() {
-  const { currentFont, setCurrentFont, showSubtitle, setShowSubtitle } =
+  const { currentFont, setCurrentFont, isTextShadow, setIsTextShadow } =
     useContext(AppContext);
   const [previewFont, setPreviewFont] = useState<FontOption>(currentFont);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,11 +37,16 @@ function StyleTab() {
             <div
               style={{
                 fontWeight: previewFont.fontWeight,
-                fontFamily: convertFontName(previewFont.name as FontName),
               }}
-              className={`w-full absolute py-4 px-2 bottom-0 text-white text-4xl grid place-items-center text-shadow-black`}
+              className={`w-full absolute py-4 px-2 bottom-0 text-white text-4xl grid place-items-center ${
+                isTextShadow ? "text-shadow-black" : ""
+              }`}
             >
-              <span>わ。。私、怒ってるわけない！</span>
+              <span
+                className={`${convertFontName(previewFont.name as FontName)}`}
+              >
+                わ。。私、怒ってるわけない！
+              </span>
             </div>
           </div>
         </ModalContent>
@@ -54,13 +59,13 @@ function StyleTab() {
         onOpen={onOpen}
       />
       <SubtitleBackground />
-      <div className="flex justify-between">
+      <div className="flex justify-between my-5">
         <div>
           <h2 className="mb-2 text-[18px] font-bold text-green-500">
-            Toggle Subtitle
+            Text Shadow
           </h2>
           <h4 className="text- text-sm text-gray-300">
-            Show or hide inside video subtitle
+            Add black shadow arround subtitle text
           </h4>
         </div>
         <div>
@@ -68,9 +73,9 @@ function StyleTab() {
             size="lg"
             mt={5}
             colorScheme="green"
-            isChecked={showSubtitle}
+            isChecked={isTextShadow}
             onChange={(e) => {
-              setShowSubtitle(!showSubtitle);
+              setIsTextShadow(!isTextShadow);
             }}
           />
         </div>

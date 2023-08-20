@@ -31,6 +31,7 @@ function InVideoSubtitle() {
     preventPlaying,
     setPreventPlaying,
     videoRef,
+    isTextShadow,
   } = useContext(AppContext);
 
   if (subPos !== "in-video" || !showSubtitle) return;
@@ -73,10 +74,11 @@ function InVideoSubtitle() {
               style={{
                 ...subTitleTextStyle,
                 fontWeight: currentFont.fontWeight,
-                fontFamily: convertFontName(currentFont.name as FontName),
                 fontSize: fontSize,
               }}
-              className="text-shadow-black"
+              className={`${convertFontName(currentFont.name as FontName)} ${
+                isTextShadow ? "text-shadow-black" : ""
+              }`}
             >
               {currentSubtitle?.text}
             </div>

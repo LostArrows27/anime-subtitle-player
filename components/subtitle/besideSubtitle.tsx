@@ -119,20 +119,27 @@ function SubTitleElement({
           end: sub.data.end,
         });
       }}
-      className={
+      className={`${convertFontName(currentFont.name as FontName)} ${
         isCurrentSubtitle
           ? `px-2 py-6 w-full text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
           : `w-full text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
-      }
+      }`}
       style={{
         fontWeight: currentFont.fontWeight,
-        fontFamily: convertFontName(currentFont.name as FontName),
-        fontSize: isCurrentSubtitle ? (fontSize - 8) * 1.2 : fontSize - 8,
+        fontSize: isCurrentSubtitle
+          ? getSuitableSubSize((fontSize - 6) * 1.2)
+          : getSuitableSubSize(fontSize - 6),
       }}
     >
       {convertJapaneseBracket(sub.data.text)}
     </div>
   );
+}
+
+function getSuitableSubSize(fontSize: number) {
+  if (fontSize < 14) return 14;
+  if (fontSize > 40) return 40;
+  return fontSize;
 }
 
 export default BesideSubtitle;

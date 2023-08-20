@@ -17,6 +17,7 @@ function UnderVideoSubtitle() {
     setIsHoverSubtitle,
     preventPlaying,
     setPreventPlaying,
+    isTextShadow,
   } = useContext(AppContext);
 
   const handlePrevSubtitle = () => {
@@ -67,10 +68,9 @@ function UnderVideoSubtitle() {
       <div className="relative flex items-center justify-center h-full">
         {subTitle?.current.length === 0 ? (
           <span
-            className={`text-center text-2xl mt-2 text-gray-700 select-none`}
-            style={{
-              fontFamily: convertFontName(currentFont.name as FontName),
-            }}
+            className={`${convertFontName(
+              currentFont.name as FontName
+            )} text-center text-2xl mt-2 text-gray-700 select-none`}
           >
             - Please upload your subtitle -
           </span>
@@ -93,10 +93,13 @@ function UnderVideoSubtitle() {
             }}
             style={{
               fontWeight: currentFont.fontWeight,
-              fontFamily: convertFontName(currentFont.name as FontName),
               fontSize: fontSize,
             }}
-            className={`text-shadow-black text-center leading-[50px] text-white`}
+            className={`${
+              isTextShadow ? "text-shadow-black" : ""
+            } text-center leading-[50px] text-white ${convertFontName(
+              currentFont.name as FontName
+            )}`}
           >
             {currentSubtitle.text}
           </span>

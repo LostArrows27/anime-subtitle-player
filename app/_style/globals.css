@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Rampart+One&family=Sawarabi+Gothic&family=Zen+Kaku+Gothic+New:wght@400;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
 
 @layer base {
   :root {

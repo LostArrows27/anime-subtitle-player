@@ -13,7 +13,7 @@ import { AppContext } from "../provides/providers";
 import { FaLanguage } from "react-icons/fa";
 import { AiFillVideoCamera } from "react-icons/ai";
 import { PiGear } from "react-icons/pi";
-import SettingModal from "../modal/modal";
+import SettingModal from "../setting-modal/modal";
 import { Subtitle } from "@/utils/const";
 
 function Headers() {

@@ -46,6 +46,7 @@ function FontFamilySetting({
           value={`${fontChild.font.name} ${fontChild.font.fontWeight}`}
           onClick={() => {
             setCurrentFont(fontChild.font);
+            console.log(fontChild.font);
           }}
         >
           <div className="flex items-center justify-between py-2">
@@ -56,16 +57,6 @@ function FontFamilySetting({
               label="Preview font"
               aria-label="A tooltip"
             >
-              {/* <IconButton
-                colorScheme=""
-                aria-label="preview font"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setPreviewFont(fontChild.font);
-                  onOpen();
-                }}
-                icon={<FiEye className="ml-1 text-green-400" size="24" />}
-              /> */}
               <span>
                 <FiEye
                   onClick={(e: any) => {
