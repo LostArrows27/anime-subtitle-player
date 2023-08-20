@@ -40,7 +40,6 @@ function Video() {
             let currentTime = parseFloat(
               videoRef!.current?.currentTime.toFixed(3) as string
             );
-            console.log(subtitleSyncDiff);
 
             return (
               currentTime >= value.data.start / 1000 + subtitleSyncDiff &&

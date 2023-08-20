@@ -29,6 +29,10 @@ const AppContext = createContext<AppProviderProps>({
   setShowSubtitle: () => {},
   subtitleSyncDiff: 0,
   setSubtitleSyncDiff: () => {},
+  isHoverSubtitle: false,
+  setIsHoverSubtitle: () => {},
+  preventPlaying: false,
+  setPreventPlaying: () => {},
 });
 
 const Providers = ({

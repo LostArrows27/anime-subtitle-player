@@ -27,6 +27,10 @@ function InVideoSubtitle() {
     fontSize,
     backgroundOpacity,
     showSubtitle,
+    setIsHoverSubtitle,
+    preventPlaying,
+    setPreventPlaying,
+    videoRef,
   } = useContext(AppContext);
 
   if (subPos !== "in-video" || !showSubtitle) return;
@@ -51,6 +55,21 @@ function InVideoSubtitle() {
         >
           <div style={subTitleAreaStyle}>
             <div
+              onMouseEnter={() => {
+                setIsHoverSubtitle(true);
+                if (videoRef?.current?.paused) {
+                  setPreventPlaying(true);
+                } else {
+                  videoRef?.current?.pause();
+                  setPreventPlaying(false);
+                }
+              }}
+              onMouseLeave={() => {
+                setIsHoverSubtitle(false);
+                if (!preventPlaying) {
+                  videoRef?.current?.play();
+                }
+              }}
               style={{
                 ...subTitleTextStyle,
                 fontWeight: currentFont.fontWeight,

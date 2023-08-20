@@ -20,7 +20,10 @@ function HandSyncSetting({ setSubtitleSyncDiffAdd }: SynchronizationTabProps) {
         </h2>
         <div className="mt-4 text-sm text-gray-300">
           <h4 className="mb-1">Adjust subtitle to faster or slower</h4>
-          <h4>(Click Save to save settings)</h4>
+          <h4>
+            (Click <span className="text-green-500">Save</span> to save
+            settings)
+          </h4>
         </div>
       </div>
       <div className="flex flex-col items-center w-2/5 mt-3">

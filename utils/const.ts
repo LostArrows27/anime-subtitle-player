@@ -107,6 +107,10 @@ type AppProviderProps = {
     setShowSubtitle: Dispatch<SetStateAction<boolean>>,
     subtitleSyncDiff: number,
     setSubtitleSyncDiff: Dispatch<SetStateAction<number>>,
+    isHoverSubtitle: boolean,
+    setIsHoverSubtitle: Dispatch<SetStateAction<boolean>>,
+    preventPlaying: boolean,
+    setPreventPlaying: Dispatch<SetStateAction<boolean>>,
 }
 
 type FontOption = {
