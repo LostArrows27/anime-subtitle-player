@@ -58,7 +58,7 @@ function InVideoSubtitle() {
           })
       );
     }
-
+    setNewFuriganaOne([<div key="0">{text}</div>]);
     setFurigana();
   }, [currentSubtitle?.text]);
 

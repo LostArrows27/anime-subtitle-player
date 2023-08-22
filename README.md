@@ -14,8 +14,8 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [x] Furigana for subtitle
-- [ ] Fix render 2 time subtitle error
+- [ ] Only show furigana when hover subtitle
+- [ ] Furigana On / Off Mode
 - [ ] Add hover translation hover for word with 'each word translation i4"
 - [ ] Add dictionary pop up with 2 mode
   - [ ] Vietnam Dictionary (Mazii)
@@ -87,3 +87,5 @@ Other:
   - [x] Beside video
 - [x] Toggle text shadow
 - [x] Adding Yu Gothic, Noto Font and MS Gothic
+- [x] Furigana for subtitle
+- [x] Fix render 2 time subtitle error
