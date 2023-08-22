@@ -91,7 +91,7 @@ function Headers() {
           color="green.800"
         >
           <label
-            className="absolute h-full w-full"
+            className="absolute w-full h-full"
             htmlFor="video-upload"
           ></label>
           Load Subtitles
@@ -103,7 +103,7 @@ function Headers() {
         >
           <label
             htmlFor="file-upload"
-            className="absolute h-full w-full"
+            className="absolute w-full h-full"
           ></label>
           Load Video
         </Button>

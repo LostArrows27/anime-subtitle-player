@@ -14,11 +14,17 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [x] Toggle text shadow
-- [x] Adding Yu Gothic, Noto Font and MS Gothic
+- [x] Furigana for subtitle
+- [ ] Fix render 2 time subtitle error
+- [ ] Add hover translation hover for word with 'each word translation i4"
+- [ ] Add dictionary pop up with 2 mode
+  - [ ] Vietnam Dictionary (Mazii)
+  - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
+- [ ] Keyboard shortcut
+- [ ] Website name
 - [ ] Changin subtitle color and text shadow color
 - [ ] Add dowload screenshot with sub or not sub
-- [ ] Keyboard shortcut
+- [ ] Website main paage
 
 Going todo next:
 
@@ -79,3 +85,5 @@ Other:
   - [x] In video
   - [x] Under video
   - [x] Beside video
+- [x] Toggle text shadow
+- [x] Adding Yu Gothic, Noto Font and MS Gothic
