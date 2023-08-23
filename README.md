@@ -16,6 +16,7 @@ Todays:
 
 - [ ] Only show furigana when hover subtitle
 - [ ] Furigana On / Off Mode
+- [ ] Loading furigana UI with bocchi:D
 - [ ] Add hover translation hover for word with 'each word translation i4"
 - [ ] Add dictionary pop up with 2 mode
   - [ ] Vietnam Dictionary (Mazii)

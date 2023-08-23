@@ -58,8 +58,8 @@ function InVideoSubtitle() {
           })
       );
     }
-    setNewFuriganaOne([<div key="0">{text}</div>]);
-    setFurigana();
+    // setNewFuriganaOne([<div key="0">{text}</div>]);
+    // setFurigana();
   }, [currentSubtitle?.text]);
 
   if (subPos !== "in-video" || !showSubtitle) return;
@@ -109,8 +109,8 @@ function InVideoSubtitle() {
               }}
               className={`${isTextShadow ? "text-shadow-black" : ""}`}
             >
-              {/* {text} */}
-              <div>{!!currentSubtitle?.text ? newFuriganaOne : text}</div>
+              {text}
+              {/* <div>{!!currentSubtitle?.text ? newFuriganaOne : text}</div> */}
             </div>
           </div>
         </div>
