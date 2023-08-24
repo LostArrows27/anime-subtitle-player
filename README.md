@@ -14,53 +14,45 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
+- [ ] Redesign website feature for user to more "learnable"
+- [ ] Add larger screen feature like the old template + fix speed button not working + click button video stop error
+- [ ] Keyboard shortcut
+- [ ] Make "furigana for subtitle" algorithm => efficent + faster
 - [ ] Only show furigana when hover subtitle
 - [ ] Furigana On / Off Mode
 - [ ] Loading furigana UI with bocchi:D
 - [ ] Add hover translation hover for word with 'each word translation i4"
-- [ ] Add dictionary pop up with 2 mode
+- [ ] Add dictionary 2 mode for pop up + in page
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
 - [ ] (Immersion Kit API)[https://docs.immersionkit.com/public%20api/search/] for anime sentence example
-- [ ] Keyboard shortcut
-- [ ] Website name
-- [ ] Changin subtitle color and text shadow color
-- [ ] Add dowload screenshot with sub or not sub
-- [ ] Website main paage
 
 Going todo next:
 
-- [ ] Preview subtitle in image example with user setting
-- [ ] Add Whisper Model AI to subtitle Synchronization
 - [ ] Auto Subtitle Generate with Whisper AI
-- [ ] Hover Translate by mazii API / other source
-- [ ] Apply setting when click "Save" button
-
-Other:
-
-- [ ] Add preview video and subtitle for user
-- [ ] Add error.tsx UI
-- [ ] Adding beside subtitle in fullscreen mode
+- [ ] Preview subtitle in image example with user setting
 - [ ] Save user's settting in local storage
-- [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
-- [ ] Add larger screen feature like the old template + fix speed button not working
-- [ ] Drag subtitle height when under video
-- [ ] Add light and dark mode
-- [ ] Cleaner code (type and function position rearrange)
-- [ ] Preview Font based on current subtitle + video image frame
-- [ ] Add episode list when choose many video on the left side of the screen
+- [ ] Apply setting when click "Save" button
 - [ ] Add settting for `.ass` file
 - [ ] Supporting `.ass` subtitle file
+- [ ] Add dowload screenshot with sub or not sub
+- [ ] Changin subtitle color and text shadow color
+
+Other (if have time):
+
+- [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
+- [ ] Add "sample" video and subtitle for user
+- [ ] Cleaner code (type and function position rearrange)
 - [ ] Store anime name and watch progress to ask next time if user watch same video
-- [ ] Redesign UI
 - [ ] Add something when video haven't loaded
-- [ ] In page dictionary
+- [ ] Adding beside subtitle in fullscreen mode
+- [ ] Add light and dark mode
+- [ ] Website main paage
+- [ ] Redesign UI
 - [ ] Add login + save word to dictionary
+- [ ] Website name
+- [ ] Drag subtitle height when under video
 - [ ] Support video link
-- [ ] Add card to Anki API
-- [ ] Website be more "learn able" for user
-- [ ] Making my own dictionaries from yomichan JSON file
-- [ ] Bocchi loading screen
 - [x] Handle subtitle logic
   - [x] Remove subtitle block when there's no dialogue
   - [x] Hover then pause
@@ -91,3 +83,4 @@ Other:
 - [x] Adding Yu Gothic, Noto Font and MS Gothic
 - [x] Furigana for subtitle
 - [x] Fix render 2 time subtitle error
+- [x] Add Whisper Model AI to subtitle Synchronization
