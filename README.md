@@ -21,6 +21,7 @@ Todays:
 - [ ] Add dictionary pop up with 2 mode
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
+- [ ] (Immersion Kit API)[https://docs.immersionkit.com/public%20api/search/] for anime sentence example
 - [ ] Keyboard shortcut
 - [ ] Website name
 - [ ] Changin subtitle color and text shadow color

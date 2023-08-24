@@ -4,25 +4,19 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 function Page() {
   const worker = useRef(null);
-
   useEffect(() => {
+    // Create the worker if it does not yet exist.
     if (!worker.current) {
-      // Create the worker if it does not yet exist.
       worker.current = new Worker(new URL("./worker.js", import.meta.url), {
         type: "module",
       });
     }
 
-    // Create a callback function for messages from the worker thread.
-    const onMessageReceived = (e) => {
-      // console.log(e.data.status);
-      console.log(e.data);
-      if (!!e.data.data) {
-        console.log(e.data.data);
-      }
-      if (!!e.data.output) {
-        console.log(e.data.output);
-      }
+    const onMessageReceived = (event) => {
+      const message = event.data;
+      // Update the state with the result
+      console.log(message.status);
+      if (message.status === "complete") console.log(message.data);
     };
 
     // Attach the callback function as an event listener.
@@ -34,29 +28,28 @@ function Page() {
   });
 
   const classify = useCallback(async (event) => {
-    if (worker.current) {
-      let files = event.target.files;
-      if (!files) return;
+    let files = event.target.files;
+    if (!files) return;
+    const reader = new FileReader();
+    reader.addEventListener("load", async (e) => {
+      const arrayBuffer = e.target?.result; // Get the ArrayBuffer
+      if (!arrayBuffer) return;
 
-      // Create a blob that we can use as an src for our audio element
-      const urlObj = URL.createObjectURL(files[0]);
-      const mimeType = files[0].type;
-
-      const reader = new FileReader();
-      reader.addEventListener("load", async (e) => {
-        const arrayBuffer = e.target?.result; // Get the ArrayBuffer
-        if (!arrayBuffer) return;
-
-        const audioCTX = new AudioContext({
-          sampleRate: 16000,
-        });
-
-        const decoded = await audioCTX.decodeAudioData(arrayBuffer);
-        const channelData = decoded.getChannelData(0);
-        worker.current.postMessage({ audio: channelData });
+      const audioCTX = new AudioContext({
+        sampleRate: 16000,
       });
-      reader.readAsArrayBuffer(files[0]);
-    }
+
+      const decoded = await audioCTX.decodeAudioData(arrayBuffer);
+      worker.current.postMessage({
+        audio: decoded.getChannelData(0),
+        model: "medium",
+        multilingual: true,
+        quantized: true,
+        subtask: "transcribe",
+        language: "ja",
+      });
+    });
+    reader.readAsArrayBuffer(files[0]);
   }, []);
 
   return (

@@ -20,15 +20,11 @@ class PipelineFactory {
 
   static async getInstance(progress_callback = null) {
     if (this.instance === null) {
-      this.instance = pipeline(
-        "automatic-speech-recognition",
-        "Xenova/whisper-base",
-        {
-          quantized: false,
-          progress_callback,
-          revision: "output_attentions",
-        }
-      );
+      console.log("instance ", this.model, this.task);
+      this.instance = pipeline(this.task, this.model, {
+        quantized: this.quantized,
+        progress_callback,
+      });
     }
 
     return this.instance;
@@ -42,11 +38,11 @@ self.addEventListener("message", async (event) => {
   // TODO use message data
   let transcript = await transcribe(
     message.audio,
-    "Xenova/whisper-base",
-    true,
-    false,
-    "transcribe",
-    "ja"
+    message.model,
+    message.multilingual,
+    message.quantized,
+    message.subtask,
+    message.language
   );
   if (transcript === null) return;
 
@@ -74,7 +70,9 @@ const transcribe = async (
 ) => {
   // TODO use subtask and language
 
-  const modelName = `Xenova/whisper-base`;
+  const modelName = `Xenova/whisper-${model}${multilingual ? "" : ".en"}`;
+  console.log(model, multilingual, quantized, subtask, language);
+  console.log(modelName);
 
   const p = AutomaticSpeechRecognitionPipelineFactory;
   if (p.model !== modelName || p.quantized !== quantized) {
@@ -87,6 +85,7 @@ const transcribe = async (
       p.instance = null;
     }
   }
+  console.log(p.model, p.quantized, p.task);
 
   // Load transcriber model
   let transcriber = await p.getInstance((data) => {
@@ -96,7 +95,6 @@ const transcribe = async (
   const time_precision =
     transcriber.processor.feature_extractor.config.chunk_length /
     transcriber.model.config.max_source_positions;
-  console.log(time_precision);
 
   // Storage for chunks to be processed. Initialise with an empty chunk.
   let chunks_to_process = [
@@ -147,20 +145,25 @@ const transcribe = async (
     });
   }
 
-  self.postMessage({
-    audio: audio,
-  });
-
   // Actually run transcription
   let output = await transcriber(audio, {
+    // Greedy
     top_k: 0,
     do_sample: false,
+
+    // Sliding window
     chunk_length_s: 30,
     stride_length_s: 5,
+
+    // Language and task
     language: language,
     task: subtask,
-    return_timestamps: "word",
+
+    // Return timestamps
+    return_timestamps: true,
     force_full_sequences: false,
+
+    // Callback functions
     callback_function: callback_function, // after each generation step
     chunk_callback: chunk_callback, // after each chunk is processed
   }).catch((error) => {
@@ -171,8 +174,6 @@ const transcribe = async (
     });
     return null;
   });
-
-  console.log(output);
 
   return output;
 };
