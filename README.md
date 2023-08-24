@@ -14,8 +14,7 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [ ] Redesign website feature for user to more "learnable"
-- [ ] Add larger screen feature like the old template + fix speed button not working + click button video stop error
+- [x] Add larger screen feature like the old template + fix speed button not working + click button video stop error
 - [ ] Keyboard shortcut
 - [ ] Make "furigana for subtitle" algorithm => efficent + faster
 - [ ] Only show furigana when hover subtitle

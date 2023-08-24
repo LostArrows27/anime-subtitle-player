@@ -30,7 +30,7 @@ const backward = document.querySelector(".backward");
 const hoverTime = document.querySelector(".hover-time");
 const hoverDuration = document.querySelector(".hover-duration");
 const miniPlayer = document.querySelector(".mini-player");
-const settingsBtn = document.querySelector(".setting-btn");
+const settingsBtn = document.querySelector(".settings");
 const settingMenu = document.querySelector(".setting-menu");
 const speedButtons = document.querySelectorAll(".setting-menu li");
 const backwardSate = document.querySelector(".state-backward");
@@ -294,7 +294,10 @@ function handleTouchNavigate(e) {
   }
 }
 
-function toggleMuteUnmute() {
+function toggleMuteUnmute(e) {
+  if (e) {
+    e.stopPropagation();
+  }
   if (!muted) {
     video.volume = 0;
     muted = true;
@@ -354,6 +357,9 @@ function handleProgress() {
 }
 
 function toggleFullscreen(e) {
+  if (e) {
+    e.stopPropagation();
+  }
   if (!document.fullscreenElement) {
     videoContainer.requestFullscreen();
     handleMainStateIcon(fullScreenIcon(40, 40));
@@ -418,9 +424,9 @@ function toggleMiniPlayer(e) {
 }
 
 function handleSettingMenu(e) {
+  e.stopPropagation();
   settingMenu.classList.toggle("show-setting-menu");
   isSpeedMenuOpen = !isSpeedMenuOpen;
-  e.stopPropagation();
 }
 
 function handlePlaybackRate(e) {
