@@ -36,6 +36,8 @@ const AppContext = createContext<AppProviderProps>({
   setPreventPlaying: () => {},
   isTextShadow: true,
   setIsTextShadow: () => {},
+  isSyncingSubtitle: false,
+  setIsSyncingSubtitle: () => {},
 });
 
 const Providers = ({

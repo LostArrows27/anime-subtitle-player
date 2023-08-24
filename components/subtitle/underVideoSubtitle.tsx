@@ -18,6 +18,7 @@ function UnderVideoSubtitle() {
     preventPlaying,
     setPreventPlaying,
     isTextShadow,
+    isSyncingSubtitle,
   } = useContext(AppContext);
 
   let text = currentSubtitle?.text;
@@ -100,7 +101,9 @@ function UnderVideoSubtitle() {
             }}
             className={`${
               isTextShadow ? "text-shadow-black" : ""
-            } text-center leading-[50px] text-white`}
+            } text-center leading-[50px] ${
+              isSyncingSubtitle ? "!text-[lime]" : "!text-white"
+            }`}
           >
             {text}
           </span>

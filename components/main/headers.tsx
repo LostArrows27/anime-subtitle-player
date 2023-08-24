@@ -17,7 +17,8 @@ import SettingModal from "../setting-modal/modal";
 import { Subtitle } from "@/types/type";
 
 function Headers() {
-  const { setIsSubtitle, setSubtitle, subPos } = useContext(AppContext);
+  const { setIsSubtitle, setSubtitle, subPos, showSubtitle } =
+    useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -71,14 +72,14 @@ function Headers() {
   return (
     <div
       className={`flex items-center !my-2 ${
-        subPos === "under-video"
+        subPos === "under-video" && showSubtitle
           ? "flex-col-reverse w-[calc((100vw-928px)/2)] h-full absolute right-0 justify-around"
           : "w-[1024px] h-20 justify-between"
       }`}
     >
       <div
         className={
-          subPos === "under-video"
+          subPos === "under-video" && showSubtitle
             ? "flex flex-col-reverse justify-end h-3/5"
             : "flex"
         }

@@ -19,6 +19,7 @@ function BesideSubtitle() {
     setIsHoverSubtitle,
     preventPlaying,
     setPreventPlaying,
+    isSyncingSubtitle,
   } = useContext(AppContext);
 
   const currentSubRef = useRef<HTMLDivElement>(null);
@@ -84,6 +85,7 @@ function BesideSubtitle() {
             videoRef={videoRef}
             currentSubRef={currentSubRef!}
             currentFont={currentFont}
+            isSyncingSubtitle={isSyncingSubtitle}
           />
         );
       })}
@@ -100,6 +102,7 @@ function SubTitleElement({
   currentFont,
   fontSize,
   subtitleSyncDiff,
+  isSyncingSubtitle,
 }: BesideSubtitleProps) {
   let text = convertJapaneseBracket(sub.data.text);
   let fontName = convertFontName(currentFont.name);
@@ -118,11 +121,15 @@ function SubTitleElement({
           end: sub.data.end,
         });
       }}
-      className={
+      className={`${
         isCurrentSubtitle
           ? `px-2 py-6 w-full text-start bg-gray-500 box-border border-x-4 border-solid border-green-500`
-          : `w-full text-justify border-b px-3 py-6 border-b-gray-600 text-white border-solid`
-      }
+          : `w-full text-justify border-b px-3 py-6 border-b-gray-600 border-solid`
+      } ${
+        isSyncingSubtitle && isCurrentSubtitle
+          ? " !text-[lime]"
+          : " !text-white"
+      }`}
       style={{
         fontWeight: currentFont.fontWeight,
         fontSize: isCurrentSubtitle

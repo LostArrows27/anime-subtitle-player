@@ -33,6 +33,7 @@ function InVideoSubtitle() {
     setPreventPlaying,
     videoRef,
     isTextShadow,
+    isSyncingSubtitle,
   } = useContext(AppContext);
   const [newFuriganaOne, setNewFuriganaOne] = useState<JSX.Element[]>([
     <div key="1"></div>,
@@ -106,7 +107,9 @@ function InVideoSubtitle() {
                 fontFamily: fontName,
                 fontSize: fontSize,
               }}
-              className={`${isTextShadow ? "text-shadow-black" : ""}`}
+              className={`${isTextShadow ? "text-shadow-black" : ""} ${
+                isSyncingSubtitle ? "!text-[lime]" : "!text-white"
+              }`}
             >
               {text}
               {/* <div>{!!currentSubtitle?.text ? newFuriganaOne : text}</div> */}

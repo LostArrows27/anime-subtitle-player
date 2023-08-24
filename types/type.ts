@@ -46,6 +46,10 @@ type AppProviderProps = {
   setPreventPlaying: Dispatch<SetStateAction<boolean>>;
   isTextShadow: boolean;
   setIsTextShadow: Dispatch<SetStateAction<boolean>>;
+  isSyncingSubtitle: boolean;
+  setIsSyncingSubtitle: Dispatch<SetStateAction<boolean>>;
+  openMenu: boolean;
+  setOpenMenu: Dispatch<SetStateAction<boolean>>;
 };
 
 type FontOption = {
@@ -97,6 +101,7 @@ type BesideSubtitleProps = {
   currentFont: FontOption;
   fontSize: number;
   subtitleSyncDiff: number;
+  isSyncingSubtitle: boolean;
 };
 
 type SubPosition = "in-video" | "under-video" | "right-video";

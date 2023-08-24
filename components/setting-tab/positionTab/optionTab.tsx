@@ -7,10 +7,12 @@ export function OptionTab({
   defaultPos,
   currentPos,
   setSubPos,
+  setShowSubtitle,
 }: {
   defaultPos: SubPosition;
   currentPos: SubPosition;
   setSubPos: Dispatch<SetStateAction<SubPosition>>;
+  setShowSubtitle: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
     <div className="flex flex-col w-[30%] h-full">
@@ -23,6 +25,7 @@ export function OptionTab({
         }
         onClick={() => {
           setSubPos(defaultPos);
+          setShowSubtitle(true);
         }}
       >
         {convertPosToPreviewElemet(defaultPos, currentPos)}

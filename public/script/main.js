@@ -413,7 +413,9 @@ function handleMainSateAnimationEnd() {
 }
 
 function toggleMiniPlayer(e) {
-  e.stopPropagation();
+  if (e) {
+    e.stopPropagation();
+  }
   if (document.pictureInPictureElement) {
     document.exitPictureInPicture();
     handleMainStateIcon(magnetIcon(40, 40));
@@ -480,9 +482,6 @@ function handleShorthand(e) {
       break;
     case "arrowleft":
       handleBackward();
-      break;
-    case "t":
-      toggleTheater();
       break;
     case "i":
       toggleMiniPlayer();

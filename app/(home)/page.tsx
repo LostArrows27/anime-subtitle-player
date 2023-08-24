@@ -12,7 +12,7 @@ import {
   Subtitle,
 } from "@/types/type";
 import { fonts } from "@/utils/const";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { NodeCue } from "subtitle";
 
 function Page() {
@@ -35,6 +35,8 @@ function Page() {
   const [isHoverSubtitle, setIsHoverSubtitle] = useState<boolean>(false);
   const [preventPlaying, setPreventPlaying] = useState<boolean>(false);
   const [isTextShadow, setIsTextShadow] = useState<boolean>(true);
+  const [isSyncingSubtitle, setIsSyncingSubtitle] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -70,13 +72,106 @@ function Page() {
     setPreventPlaying,
     isTextShadow,
     setIsTextShadow,
+    isSyncingSubtitle,
+    setIsSyncingSubtitle,
+    openMenu,
+    setOpenMenu,
   };
+
+  const handlepPrevSub = () => {
+    let currentTimes = videoRef?.current?.currentTime as number;
+    if (currentTimes === undefined) return;
+    let newArray = subTitle?.current.filter((sub: NodeCue) => {
+      return sub.data.end / 1000 + subtitleSyncDiff < currentTimes;
+    });
+    if (newArray === undefined) return;
+    let prevSubIndex = newArray[newArray.length - 1];
+    if (!prevSubIndex?.data) return;
+    videoRef!.current!.currentTime =
+      prevSubIndex.data.start / 1000 + subtitleSyncDiff;
+    setCurrentSubtitle({
+      start: prevSubIndex.data.start,
+      end: prevSubIndex.data.end,
+      text: prevSubIndex.data.text,
+    });
+  };
+
+  const handleNextSub = () => {
+    let currentTime = videoRef?.current?.currentTime as number;
+    if (currentTime === undefined) return;
+    let nextSubIndex: NodeCue | undefined = subTitle?.current.find(
+      (sub: NodeCue) => {
+        return sub.data.start / 1000 + subtitleSyncDiff > currentTime;
+      }
+    );
+    if (nextSubIndex === undefined) return;
+    videoRef!.current!.currentTime =
+      nextSubIndex.data.start / 1000 + subtitleSyncDiff;
+    setCurrentSubtitle({
+      start: nextSubIndex.data.start,
+      end: nextSubIndex.data.end,
+      text: nextSubIndex.data.text,
+    });
+  };
+
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    switch (event.key) {
+      case "c":
+        // toggle subtitle
+        setShowSubtitle((prev) => !prev);
+        break;
+      case "a":
+        // prev subtitle
+        handlepPrevSub();
+        break;
+      case "d":
+        // next subtitle
+        handleNextSub();
+        break;
+      case "w":
+        // sync subtitle earlier 1s
+        setSubtitleSyncDiff((prev) => prev - 1);
+        setIsSyncingSubtitle(true);
+        break;
+      case "s":
+        // sync subtitle later 1s
+        setSubtitleSyncDiff((prev) => prev + 1);
+        setIsSyncingSubtitle(true);
+        break;
+      case "q":
+        // toggle setting menu open
+        setOpenMenu((prev) => !prev);
+        break;
+
+      default:
+    }
+  }, []);
+
+  const handleKeyUp = useCallback((event: KeyboardEvent) => {
+    if (event.key === "w") {
+      setIsSyncingSubtitle(false);
+      return;
+    }
+    if (event.key === "s") {
+      setIsSyncingSubtitle(false);
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("keyup", handleKeyUp);
+    return () => {
+      document.addEventListener("keyup", handleKeyUp);
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleKeyPress, handleKeyUp]);
 
   return (
     <Providers appProps={props}>
       <div
         className={
-          subPos !== "under-video"
+          subPos !== "under-video" || !showSubtitle
             ? "flex flex-col items-center w-full relative"
             : `flex !h-[522px] relative justify-center w-full`
         }
@@ -84,16 +179,20 @@ function Page() {
         <Headers />
         <div
           className={
-            subPos === "right-video"
+            subPos === "right-video" && showSubtitle
               ? "flex items-center justify-between w-full px-4"
               : ""
           }
         >
           <Video />
-          <BesideSubtitle />
+          {showSubtitle && <BesideSubtitle />}
         </div>
       </div>
-      {subPos === "under-video" ? <UnderVideoSubtitle /> : <></>}
+      {subPos === "under-video" && showSubtitle ? (
+        <UnderVideoSubtitle />
+      ) : (
+        <></>
+      )}
     </Providers>
   );
 }

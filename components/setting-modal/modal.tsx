@@ -20,14 +20,19 @@ import {
 import PositionTab from "../setting-tab/positionTab/positionTab";
 import StyleTab from "../setting-tab/styleTab/styleTab";
 import SynchronizationTab from "../setting-tab/syncTab/SynchronizationTab";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../provides/providers";
 import OtherSettingTab from "../setting-tab/otherTab/OtherSettingTab";
 
 function SettingModal({ isOpen, onClose }: SettingModelProps) {
-  const { subtitleSyncDiff, setSubtitleSyncDiff } = useContext(AppContext);
+  const { subtitleSyncDiff, setSubtitleSyncDiff, openMenu, setOpenMenu } =
+    useContext(AppContext);
   const [save, setSave] = useState<boolean>(false);
   const [subtitleSyncDiffAdd, setSubtitleSyncDiffAdd] = useState<number>(0);
+
+  useEffect(() => {
+    setOpenMenu(isOpen);
+  }, [isOpen]);
 
   return (
     <Modal
@@ -37,7 +42,7 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
         }
       }}
       isCentered
-      isOpen={isOpen}
+      isOpen={isOpen || openMenu}
       onClose={onClose}
     >
       <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
