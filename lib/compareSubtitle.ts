@@ -1,4 +1,4 @@
-import { Subtitle } from "@/utils/const";
+import { Subtitle } from "@/types/type";
 import { NodeCue } from "subtitle";
 
 export function compareSubtitle(first: Subtitle, second: NodeCue): boolean {

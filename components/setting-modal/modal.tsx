@@ -1,6 +1,6 @@
 "use client";
 
-import { SettingModelProps } from "@/utils/const";
+import { SettingModelProps } from "@/types/type";
 import {
   Modal,
   ModalOverlay,

@@ -1,4 +1,4 @@
-import { TranslationData, WordBreakDownData } from "@/utils/const";
+import { TranslationData, WordBreakDownData } from "@/types/type";
 import parse from "node-html-parser";
 
 export async function sentenceBreakdown(

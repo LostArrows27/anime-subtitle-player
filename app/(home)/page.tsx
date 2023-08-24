@@ -10,8 +10,8 @@ import {
   FontOption,
   SubPosition,
   Subtitle,
-  fonts,
-} from "@/utils/const";
+} from "@/types/type";
+import { fonts } from "@/utils/const";
 import { useRef, useState } from "react";
 import { NodeCue } from "subtitle";
 

@@ -1,4 +1,5 @@
-import { AppProviderProps, DEFAULT_FONT_SIZE } from "@/utils/const";
+import { DEFAULT_FONT_SIZE } from "@/utils/const";
+import { AppProviderProps } from "@/types/type";
 import { createContext, ReactNode } from "react";
 
 const AppContext = createContext<AppProviderProps>({

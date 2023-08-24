@@ -2,13 +2,12 @@
 
 import Draggable from "react-draggable";
 import {
-  WordPart,
-  WordTranslationReturnType,
   containerStyle,
   subTitleAreaStyle,
   subTitleTextStyle,
   subTitleWrapperStyle,
 } from "@/utils/const";
+import { WordPart, WordTranslationReturnType } from "@/types/type";
 import { NodeCue } from "subtitle";
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { AppContext } from "../provides/providers";

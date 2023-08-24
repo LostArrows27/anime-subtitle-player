@@ -1,4 +1,5 @@
-import { fonts, FontOption } from "@/utils/const";
+import { fonts } from "@/utils/const";
+import { FontOption } from "@/types/type";
 import {
   MenuItemOption,
   Tooltip,

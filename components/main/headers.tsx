@@ -14,7 +14,7 @@ import { FaLanguage } from "react-icons/fa";
 import { AiFillVideoCamera } from "react-icons/ai";
 import { PiGear } from "react-icons/pi";
 import SettingModal from "../setting-modal/modal";
-import { Subtitle } from "@/utils/const";
+import { Subtitle } from "@/types/type";
 
 function Headers() {
   const { setIsSubtitle, setSubtitle, subPos } = useContext(AppContext);

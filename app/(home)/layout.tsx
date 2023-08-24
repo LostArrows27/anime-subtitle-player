@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import Script from "next/script";
-import { LayoutProps } from "@/utils/const";
+import { LayoutProps } from "@/types/type";
 import { ColorModeScript } from "@chakra-ui/react";
 const inter = Inter({ subsets: ["latin"] });
 

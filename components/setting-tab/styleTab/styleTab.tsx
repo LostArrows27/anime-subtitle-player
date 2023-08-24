@@ -2,7 +2,7 @@
 
 import { AppContext } from "@/components/provides/providers";
 import { convertFontName } from "@/lib/convertFontName";
-import { FontOption, FontName } from "@/utils/const";
+import { FontOption, FontName } from "@/types/type";
 import {
   useDisclosure,
   Modal,

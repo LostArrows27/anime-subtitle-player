@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   WordTranslationReturnType,
   WordTraslationRequestBody,
-} from "@/utils/const";
+} from "@/types/type";
 
 export async function POST(request: Request) {
   const { sentence } = await request.json();

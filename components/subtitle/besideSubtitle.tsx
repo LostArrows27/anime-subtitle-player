@@ -2,7 +2,7 @@ import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import { useContext, useEffect, useRef } from "react";
 import { convertJapaneseBracket } from "@/lib/convertJapaneseBracket";
-import { BesideSubtitleProps } from "@/utils/const";
+import { BesideSubtitleProps } from "@/types/type";
 import { compareSubtitle } from "../../lib/compareSubtitle";
 import { convertFontName } from "@/lib/convertFontName";
 

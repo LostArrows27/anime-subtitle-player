@@ -1,4 +1,4 @@
-import { SubPosition } from "@/utils/const";
+import { SubPosition } from "@/types/type";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { FiPlay } from "react-icons/fi";
@@ -49,7 +49,7 @@ function convertPosToPreviewElemet(
 ): ReactNode {
   if (position === "in-video") {
     return (
-      <div className="flex flex-col items-center justify-between w-full h-full pt-4 pb-3 bg-gray-600 rounded-xl">
+      <div className="rounded-xl flex flex-col items-center justify-between w-full h-full pt-4 pb-3 bg-gray-600">
         <FiPlay
           size="30px"
           className={`${
@@ -69,7 +69,7 @@ function convertPosToPreviewElemet(
   if (position === "under-video") {
     return (
       <div className="flex flex-col items-center justify-between w-full h-full">
-        <div className="grid w-full bg-gray-600 h-2/3 rounded-xl place-items-center">
+        <div className="h-2/3 rounded-xl place-items-center grid w-full bg-gray-600">
           <FiPlay
             size="26px"
             className={`${
@@ -77,7 +77,7 @@ function convertPosToPreviewElemet(
             }`}
           />
         </div>
-        <div className="grid w-full bg-gray-600 rounded-lg h-1/4 place-items-center">
+        <div className="h-1/4 place-items-center grid w-full bg-gray-600 rounded-lg">
           <p
             className={`text-base select-none ${
               position === currentPos ? "text-green-400" : "text-gray-400"
@@ -91,7 +91,7 @@ function convertPosToPreviewElemet(
   }
   return (
     <div className="flex justify-between w-full h-full">
-      <div className="grid w-3/5 h-full bg-gray-600 rounded-xl place-items-center">
+      <div className="rounded-xl place-items-center grid w-3/5 h-full bg-gray-600">
         <FiPlay
           size="30px"
           className={`${

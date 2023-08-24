@@ -3,7 +3,7 @@ import { AppContext } from "../provides/providers";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { NodeCue } from "subtitle";
 import { convertFontName } from "@/lib/convertFontName";
-import { FontName } from "@/utils/const";
+import { FontName } from "@/types/type";
 
 function UnderVideoSubtitle() {
   const {
