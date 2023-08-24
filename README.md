@@ -37,6 +37,7 @@ Going todo next:
 - [ ] Supporting `.ass` subtitle file
 - [ ] Add dowload screenshot with sub or not sub
 - [ ] Changin subtitle color and text shadow color
+- [ ] File "classification" when upload
 
 Other (if have time):
 
