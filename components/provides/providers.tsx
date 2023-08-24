@@ -38,6 +38,8 @@ const AppContext = createContext<AppProviderProps>({
   setIsTextShadow: () => {},
   isSyncingSubtitle: false,
   setIsSyncingSubtitle: () => {},
+  openMenu: false,
+  setOpenMenu: () => {},
 });
 
 const Providers = ({
