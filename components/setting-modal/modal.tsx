@@ -42,8 +42,11 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
         }
       }}
       isCentered
-      isOpen={isOpen || openMenu}
-      onClose={onClose}
+      isOpen={openMenu}
+      onClose={() => {
+        onClose();
+        setOpenMenu(false);
+      }}
     >
       <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
       <ModalContent className="!bg-gray-800 !z-[999999] !text-white !w-[700px] !max-w-[700px]">
@@ -95,12 +98,19 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
           </Tabs>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={onClose} className="mr-4">
+          <Button
+            onClick={() => {
+              onClose();
+              setOpenMenu(false);
+            }}
+            className="mr-4"
+          >
             Close
           </Button>
           <Button
             onClick={() => {
               onClose();
+              setOpenMenu(false);
               setSubtitleSyncDiff((prev) => prev + subtitleSyncDiffAdd);
             }}
             colorScheme="green"

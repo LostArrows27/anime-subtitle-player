@@ -17,7 +17,7 @@ import SettingModal from "../setting-modal/modal";
 import { Subtitle } from "@/types/type";
 
 function Headers() {
-  const { setIsSubtitle, setSubtitle, subPos, showSubtitle } =
+  const { setIsSubtitle, setSubtitle, subPos, showSubtitle, setOpenMenu } =
     useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -126,6 +126,7 @@ function Headers() {
         size="40px"
         onClick={() => {
           onOpen();
+          setOpenMenu(true);
         }}
       />
       <SettingModal isOpen={isOpen} onClose={onClose} />
