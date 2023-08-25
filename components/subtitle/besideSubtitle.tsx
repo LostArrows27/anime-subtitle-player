@@ -145,7 +145,7 @@ function SubTitleElement({
 
 function getSuitableSubSize(fontSize: number) {
   if (fontSize < 14) return 14;
-  if (fontSize > 40) return 40;
+  if (fontSize > 30) return 30;
   return fontSize;
 }
 

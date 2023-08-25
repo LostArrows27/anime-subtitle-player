@@ -62,7 +62,7 @@ function InVideoSubtitle() {
     // setFurigana();
   }, [currentSubtitle?.text]);
 
-  if (subPos !== "in-video" || !showSubtitle) return;
+  if (subPos === "under-video" || !showSubtitle) return;
   let fontName = convertFontName(currentFont.name);
   let text = currentSubtitle?.text;
 
