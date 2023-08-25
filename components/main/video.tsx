@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NodeCue } from "subtitle";
 import { AppContext } from "../provides/providers";
 import InVideoSubtitle from "../subtitle/inVideoSubtitle";
@@ -14,6 +14,7 @@ import {
   IoContractOutline,
   IoPlayOutline,
 } from "react-icons/io5";
+import Image from "next/image";
 function Video() {
   const {
     videoRef,
@@ -26,6 +27,22 @@ function Video() {
     subtitleSyncDiff,
     showSubtitle,
   } = useContext(AppContext);
+
+  const [dotsCount, setDotsCount] = useState(0);
+
+  // Function to update dots count and create the loop effect
+  const updateDots = () => {
+    setDotsCount((prevCount) => (prevCount + 1) % 4); // Loop from 0 to 3
+  };
+
+  useEffect(() => {
+    // Update dots count every 500 milliseconds
+    const intervalId = setInterval(updateDots, 500);
+
+    return () => {
+      clearInterval(intervalId); // Clear the interval when the component unmounts
+    };
+  }, []);
 
   useEffect(() => {
     if (videoRef?.current && videoRef.current.src) {
@@ -74,18 +91,31 @@ function Video() {
     >
       <InVideoSubtitle />
       {showBorder ? (
-        <div
-          onClick={() => {
-            (
-              document.querySelector('[for="file-upload"]') as HTMLElement
-            )?.click();
-          }}
-          className="h-[70px] z-[999] w-[70px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        >
-          <FiPlay
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] flex flex-col items-center justify-center">
+          <div
+            onClick={() => {
+              (
+                document.querySelector('[for="file-upload"]') as HTMLElement
+              )?.click();
+            }}
+            className="h-[200px] z-[999] w-[200px] "
+          >
+            {/* <FiPlay
             className="animate-pulse glow-element text-green-500 cursor-pointer"
             size="70px"
-          />
+          /> */}
+            <Image
+              className="cursor-pointer"
+              src="/image/arisu.gif"
+              width={367 * 3}
+              height={360 * 3}
+              alt="arisu_dance"
+            />
+          </div>
+          <div className="text-3xl w-[620px] mt-6">
+            Upload video and subittle to start watching
+            {Array(dotsCount + 1).join(" .")}
+          </div>
         </div>
       ) : (
         ""

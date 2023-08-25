@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Anime Video Players",
   description: "anime video player with subtitle",
+  icons: { icon: "/image/bocchi.jpg" },
 };
 
 export default function RootLayout(props: LayoutProps) {
