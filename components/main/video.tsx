@@ -24,6 +24,7 @@ function Video() {
     setCurrentSubIndex,
     setShowBorder,
     subtitleSyncDiff,
+    showSubtitle,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -66,7 +67,7 @@ function Video() {
       className={`relative video-container text-white overflow-hidden bg-[rgb(25,25,25)] flex justify-center items-center ${
         showBorder ? "border-green-500 border-solid border-2" : ""
       } ${
-        subPos === "under-video"
+        subPos === "under-video" && showSubtitle
           ? `w-[928px] h-[522px]`
           : "w-[1024px] h-[576px]"
       }`}

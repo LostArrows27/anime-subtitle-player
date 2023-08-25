@@ -88,7 +88,7 @@ function Headers() {
         <Button
           className="relative"
           rightIcon={<FaLanguage size="24px" />}
-          width={subPos === "under-video" ? "168px" : "200px"}
+          width={subPos === "under-video" && showSubtitle ? "168px" : "200px"}
           color="green.800"
         >
           <label
@@ -98,7 +98,9 @@ function Headers() {
           Load Subtitles
         </Button>
         <Button
-          className={subPos === "under-video" ? "mb-4" : "ml-4 relative"}
+          className={
+            subPos === "under-video" && showSubtitle ? "mb-4" : "ml-4 relative"
+          }
           rightIcon={<AiFillVideoCamera size="18px" />}
           colorScheme="whatsapp"
         >
@@ -117,7 +119,9 @@ function Headers() {
       </div>
       <PiGear
         className={`text-green-500 hover:text-green-700 active:text-green-700 ${
-          subPos === "under-video" ? "absolute top-1 right-1" : ""
+          subPos === "under-video" && showSubtitle
+            ? "absolute top-1 right-1"
+            : ""
         }`}
         size="40px"
         onClick={() => {
