@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "@/components/provides/providers";
-import { Switch } from "@chakra-ui/react";
+import { Kbd, Switch } from "@chakra-ui/react";
+import KeyboardGuild from "./KeyboardGuild";
 
 function OtherSettingTab() {
   const { showSubtitle, setShowSubtitle } = useContext(AppContext);
@@ -27,6 +28,29 @@ function OtherSettingTab() {
           />
         </div>
       </div>
+      <div className="flex justify-between my-5">
+        <div>
+          <h2 className="mb-2 text-[18px] font-bold text-green-500">
+            Keyboard Shortcuts
+          </h2>
+        </div>
+      </div>
+      <section className="grid grid-cols-3 gap-y-8 gap-x-5">
+        <KeyboardGuild keyboard="f" guild="Fullscreen" />
+        <KeyboardGuild keyboard="i" guild="Mini Player" />
+        <KeyboardGuild keyboard="m" guild="Mute" />
+        <KeyboardGuild keyboard="→" guild="Forward 5s" />
+        <KeyboardGuild keyboard="←" guild="Backward 5s" />
+        <KeyboardGuild keyboard="c" guild="Toggle subtitle" />
+        <KeyboardGuild keyboard="+" guild="Increase speed" />
+        <KeyboardGuild keyboard="-" guild="Decrease speed" />
+        <KeyboardGuild keyboard="q" guild="Open settings" />
+        <KeyboardGuild keyboard="a" guild="Previous subtitle" />
+        <KeyboardGuild keyboard="d" guild="Next subtitle" />
+        <KeyboardGuild keyboard="Space" guild="Play / pause" />
+        <KeyboardGuild keyboard="w" guild="Subtitle ealier 1s" />
+        <KeyboardGuild keyboard="s" guild="Subtitle later 1s" />
+      </section>
     </div>
   );
 }
