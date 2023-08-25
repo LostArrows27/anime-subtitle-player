@@ -10,6 +10,20 @@
 
 Anime Subtitle Player is a video player that help people to learn Japanese through watching Anime with Japanese subtitle
 
+## Preview 
+
+- In video subtitle
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/840d8c55-337e-46c7-bd0a-47d3f66d8e98)
+
+- Beside video subtitle
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/2face80e-c5e9-4305-b367-e4ddcfcf2562)
+
+- Under video subtitle
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/c3c0b11a-252e-4804-8518-5783acb93048)
+
 ## TODO
 
 Todays:
