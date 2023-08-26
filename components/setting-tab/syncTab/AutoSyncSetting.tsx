@@ -4,61 +4,26 @@ import { AppContext } from "@/components/provides/providers";
 import { useContext } from "react";
 import axios from "axios";
 import { Subtitle } from "@/types/type";
-import {
-  compile,
-  Dialogue,
-  DialogueSlice,
-  DialogueFragment,
-} from "ass-compiler";
-import { v4 as uuidv4 } from "uuid";
+import { convertAssFileText } from "@/lib/convertAssFileText";
+import { prepareFormdataTranscribe } from "@/lib/prepareFormdataTranscribe";
 
 function AutoSynSetting() {
   const { video, setSubtitleSyncDiff, subTitle } = useContext(AppContext);
 
   const handleSyncSubtitle = async () => {
-    const formData = new FormData();
     try {
-      formData.append("video", video!);
-      formData.append("language", "ja");
-      formData.append("task", "transcribe");
-      formData.append("vadEnabled", "true");
-      formData.append("maxCharsPerLine", "42");
-      formData.append("maxLinesPerSub", "2");
-      formData.append("advancedSubtitlesEnabled", "false");
-      formData.append("id", uuidv4());
+      const formData = prepareFormdataTranscribe(video!);
       const {
         data: { id },
       } = await axios.post(
         process.env.NEXT_PUBLIC_TRANSCRIBE_URL as string,
         formData
       );
+
       const subtitleURL = `${process.env.NEXT_PUBLIC_SUBTITLE_URL}/${id}`;
-      const result = await fetch(subtitleURL).then((res) => res.text());
-      const compiledASS = compile(result, {});
-      let myArray: Subtitle[] = [];
-      compiledASS.dialogues.forEach((dialogue: Dialogue) => {
-        const myDialogueFragments: Subtitle = {};
-        const totalText = dialogue.slices.reduce(
-          (prev: string, slice: DialogueSlice) => {
-            return (
-              prev +
-              "\n" +
-              slice.fragments.reduce(
-                (prev: string, frags: DialogueFragment) => {
-                  return prev + " " + frags.text;
-                },
-                ""
-              )
-            );
-          },
-          ""
-        );
-        myDialogueFragments.start = dialogue.start;
-        myDialogueFragments.end = dialogue.end;
-        myDialogueFragments.text = totalText;
-        myArray.push(myDialogueFragments);
-      });
-      // console.log(myArray);
+      const resultText = await fetch(subtitleURL).then((res) => res.text());
+      let myArray: Subtitle[] = convertAssFileText(resultText);
+
       if (subTitle?.current === undefined) {
         alert("Please upload subtitle first");
       }
