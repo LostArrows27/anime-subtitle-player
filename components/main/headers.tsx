@@ -8,7 +8,7 @@ import {
   DialogueFragment,
 } from "ass-compiler";
 import { NodeCue, parseSync } from "subtitle";
-import { useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import { AppContext } from "../provides/providers";
 import { FaLanguage } from "react-icons/fa";
 import { AiFillVideoCamera } from "react-icons/ai";
@@ -17,10 +17,21 @@ import SettingModal from "../setting-modal/modal";
 import { Subtitle } from "@/types/type";
 
 function Headers() {
-  const { setIsSubtitle, setSubtitle, subPos, showSubtitle, setOpenMenu } =
-    useContext(AppContext);
+  const {
+    setIsSubtitle,
+    setSubtitle,
+    subPos,
+    showSubtitle,
+    setOpenMenu,
+    setVideo,
+  } = useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const uploadVideo = async (event: ChangeEvent<HTMLInputElement>) => {
+    const videoFile = (event.target as HTMLInputElement).files![0] as File;
+    setVideo(videoFile);
+  };
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.stopPropagation();
@@ -84,7 +95,12 @@ function Headers() {
             : "flex"
         }
       >
-        <input type="file" style={{ display: "none" }} id="file-upload" />
+        <input
+          onChange={uploadVideo}
+          type="file"
+          style={{ display: "none" }}
+          id="file-upload"
+        />
         <Button
           className="relative"
           rightIcon={<FaLanguage size="24px" />}

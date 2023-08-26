@@ -40,6 +40,8 @@ const AppContext = createContext<AppProviderProps>({
   setIsSyncingSubtitle: () => {},
   openMenu: false,
   setOpenMenu: () => {},
+  video: null,
+  setVideo: () => {},
 });
 
 const Providers = ({

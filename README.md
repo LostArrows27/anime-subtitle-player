@@ -10,17 +10,17 @@
 
 Anime Subtitle Player is a video player that help people to learn Japanese through watching Anime with Japanese subtitle
 
-## Preview 
+## Preview
 
 - In video subtitle
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/840d8c55-337e-46c7-bd0a-47d3f66d8e98)
 
-- Beside video subtitle
+- Under video subtitle
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/2face80e-c5e9-4305-b367-e4ddcfcf2562)
 
-- Under video subtitle
+- Beside video subtitle
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/c3c0b11a-252e-4804-8518-5783acb93048)
 
@@ -28,6 +28,10 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
+- [ ] Handle in auto sync if difference video file / not have subtitle
+- [ ] File upload type limit
+- [ ] Silence + Music OP and ED identicator
+- [ ] Add image bg for settings subtitle background opacity
 - [ ] Add in video subtitle along with beside subtitle
 - [ ] Make "furigana for subtitle" algorithm => efficent + faster
 - [ ] Only show furigana when hover subtitle
@@ -38,9 +42,11 @@ Todays:
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
 - [ ] (Immersion Kit API)[https://docs.immersionkit.com/public%20api/search/] for anime sentence example
+- [ ] Add card to Anki with exact audio time and image with subtitle
 
 Going todo next:
 
+- [ ] [playerIO](https://plyr.io/) player
 - [ ] Auto Subtitle Generate with Whisper AI
 - [ ] Preview subtitle in image example with user setting
 - [ ] Save user's settting in local storage
@@ -101,3 +107,4 @@ Other (if have time):
 - [x] Keyboard shortcut
 - [x] keyboard shortcut UI
 - [x] Instruction at screen + bocchi loading screen
+- [x] Auto Sync subtitle with Video

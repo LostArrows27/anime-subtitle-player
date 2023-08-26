@@ -50,6 +50,8 @@ type AppProviderProps = {
   setIsSyncingSubtitle: Dispatch<SetStateAction<boolean>>;
   openMenu: boolean;
   setOpenMenu: Dispatch<SetStateAction<boolean>>;
+  video: File | null;
+  setVideo: Dispatch<SetStateAction<File | null>>;
 };
 
 type FontOption = {

@@ -37,6 +37,7 @@ function Page() {
   const [isTextShadow, setIsTextShadow] = useState<boolean>(true);
   const [isSyncingSubtitle, setIsSyncingSubtitle] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [video, setVideo] = useState<File | null>(null);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -76,6 +77,8 @@ function Page() {
     setIsSyncingSubtitle,
     openMenu,
     setOpenMenu,
+    video,
+    setVideo,
   };
 
   const handlepPrevSub = () => {
