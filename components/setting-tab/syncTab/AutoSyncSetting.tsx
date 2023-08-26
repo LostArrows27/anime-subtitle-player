@@ -18,7 +18,7 @@ function AutoSynSetting() {
   const handleSyncSubtitle = async () => {
     const formData = new FormData();
     try {
-      formData.append("file", video!);
+      formData.append("video", video!);
       formData.append("language", "ja");
       formData.append("task", "transcribe");
       formData.append("vadEnabled", "true");
