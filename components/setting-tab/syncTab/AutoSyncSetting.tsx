@@ -10,17 +10,28 @@ import {
   DialogueSlice,
   DialogueFragment,
 } from "ass-compiler";
+import { v4 as uuidv4 } from "uuid";
 
 function AutoSynSetting() {
   const { video, setSubtitleSyncDiff, subTitle } = useContext(AppContext);
 
   const handleSyncSubtitle = async () => {
     const formData = new FormData();
-    formData.append("file", video!);
     try {
+      formData.append("file", video!);
+      formData.append("language", "ja");
+      formData.append("task", "transcribe");
+      formData.append("vadEnabled", "true");
+      formData.append("maxCharsPerLine", "42");
+      formData.append("maxLinesPerSub", "2");
+      formData.append("advancedSubtitlesEnabled", "false");
+      formData.append("id", uuidv4());
       const {
         data: { id },
-      } = await axios.post("/api/transcribe", formData);
+      } = await axios.post(
+        process.env.NEXT_PUBLIC_TRANSCRIBE_URL as string,
+        formData
+      );
       const subtitleURL = `${process.env.NEXT_PUBLIC_SUBTITLE_URL}/${id}`;
       const result = await fetch(subtitleURL).then((res) => res.text());
       const compiledASS = compile(result, {});
