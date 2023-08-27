@@ -28,49 +28,35 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 Todays:
 
-- [ ] Handle in auto sync if difference video file / not have subtitle
-- [ ] File upload type limit
+- [ ] Handle in auto sync if difference video file / not have subtitle (limit button click time)
+- [ ] File upload type limit (toast message) 
 - [ ] Silence + Music OP and ED identicator
 - [ ] Add image bg for settings subtitle background opacity
-- [ ] Add in video subtitle along with beside subtitle
-- [ ] Make "furigana for subtitle" algorithm => efficent + faster
-- [ ] Only show furigana when hover subtitle
-- [ ] Furigana On / Off Mode
-- [ ] Loading furigana UI with bocchi:D
+- [ ] Furigana On / Off Mode (with better algorithm)
 - [ ] Add hover translation hover for word with 'each word translation i4"
 - [ ] Add dictionary 2 mode for pop up + in page
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
-- [ ] (Immersion Kit API)[https://docs.immersionkit.com/public%20api/search/] for anime sentence example
-- [ ] Add card to Anki with exact audio time and image with subtitle
+- [ ] [Immersion Kit API](htps://docs.immersionkit.com/public%20api/search) for anime sentence example
+- [ ] Add card to Anki with exact audio time and image 
 
 Going todo next:
 
+- [ ] Website main page with instruction + better README
 - [ ] [playerIO](https://plyr.io/) player
-- [ ] Auto Subtitle Generate with Whisper AI
 - [ ] Preview subtitle in image example with user setting
 - [ ] Save user's settting in local storage
-- [ ] Apply setting when click "Save" button
-- [ ] Add settting for `.ass` file
 - [ ] Supporting `.ass` subtitle file
 - [ ] Add dowload screenshot with sub or not sub
 - [ ] Changin subtitle color and text shadow color
-- [ ] File "classification" when upload
 
 Other (if have time):
 
-- [ ] Add more feature for below video subtitle (next sentence, timeline, ....)
 - [ ] Add "sample" video and subtitle for user
-- [ ] Cleaner code (type and function position rearrange)
 - [ ] Store anime name and watch progress to ask next time if user watch same video
-- [ ] Add something when video haven't loaded
-- [ ] Adding beside subtitle in fullscreen mode
-- [ ] Add light and dark mode
-- [ ] Website main paage
 - [ ] Redesign UI
 - [ ] Add login + save word to dictionary
 - [ ] Website name
-- [ ] Drag subtitle height when under video
 - [ ] Support video link
 - [x] Handle subtitle logic
   - [x] Remove subtitle block when there's no dialogue
@@ -108,3 +94,5 @@ Other (if have time):
 - [x] keyboard shortcut UI
 - [x] Instruction at screen + bocchi loading screen
 - [x] Auto Sync subtitle with Video
+- [x] Add in video subtitle along with beside subtitle
+- [x] Add something when video haven't loaded
