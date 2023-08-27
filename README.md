@@ -6,11 +6,17 @@
 <div>Learn Japanese through Anime</div>
 </div>
 
-## About The Project
+## 💬 About The Project
 
-Anime Subtitle Player is a video player that help people to learn Japanese through watching Anime with Japanese subtitle
+- Anime Subtitle Player is a video player that help people to learn Japanese through watching Anime with Japanese subtitle.
 
-## Preview
+## ⏳ Timeline
+
+- ✅ I started this project on Aug 6, 2023 because it's a bit annoying to use MKV player with a tab aside (it's make video too small 😠). Also, i want to make it easier for me to just hover directly to the subtitle in the video and get the definition of the word.
+
+- ❌ I am not going to finish this project at a specific time cause i'm going to use this everyday and do more feature when i have time to make it better 😁.
+
+## 📺 Preview
 
 - In video subtitle
 
@@ -24,40 +30,50 @@ Anime Subtitle Player is a video player that help people to learn Japanese throu
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/c3c0b11a-252e-4804-8518-5783acb93048)
 
-## TODO
+## 📚 TODO
 
-Todays:
+#####1. Subtitle
 
 - [ ] Handle in auto sync if difference video file / not have subtitle (limit button click time)
-- [ ] File upload type limit (toast message) 
+- [ ] File upload type limit (toast message)
 - [ ] Silence + Music OP and ED identicator
-- [ ] Add image bg for settings subtitle background opacity
-- [ ] Furigana On / Off Mode (with better algorithm)
+- [ ] Auto translation (for no subtitle case)
+- [ ] Supporting `.ass` subtitle file
+
+#####2. Dicitonaries + Translation
+
 - [ ] Add hover translation hover for word with 'each word translation i4"
+- [ ] See more word information when hover up => open pop up dictionary
 - [ ] Add dictionary 2 mode for pop up + in page
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
 - [ ] [Immersion Kit API](htps://docs.immersionkit.com/public%20api/search) for anime sentence example
-- [ ] Add card to Anki with exact audio time and image 
+- [ ] Furigana On / Off Mode (with better algorithm)
+- [ ] Add card to Anki with exact audio time and image
 
-Going todo next:
+#####3. Video
 
-- [ ] Website main page with instruction + better README
+- [ ] Add dowload screenshot with sub or not sub (using imageNext smth i forgot 😭)
 - [ ] [playerIO](https://plyr.io/) player
-- [ ] Preview subtitle in image example with user setting
-- [ ] Save user's settting in local storage
-- [ ] Supporting `.ass` subtitle file
-- [ ] Add dowload screenshot with sub or not sub
-- [ ] Changin subtitle color and text shadow color
+- [ ] Support video link
 
-Other (if have time):
+#####4. UI + main page
 
 - [ ] Add "sample" video and subtitle for user
-- [ ] Store anime name and watch progress to ask next time if user watch same video
-- [ ] Redesign UI
-- [ ] Add login + save word to dictionary
 - [ ] Website name
-- [ ] Support video link
+- [ ] Store anime name and watch progress to ask next time if user watch same video
+- [ ] Website main page with instruction + better README
+- [ ] Add login + save word to dictionary with audio + image screenshot
+- [ ] Export to anki word have saved
+
+#####5. Settings
+
+- [ ] Add image bg for settings subtitle background opacity
+- [ ] Save user's settting in local storage
+- [ ] Changin subtitle color and text shadow color
+
+## ✅ Finished Task
+
 - [x] Handle subtitle logic
   - [x] Remove subtitle block when there's no dialogue
   - [x] Hover then pause
