@@ -34,8 +34,8 @@
 
 #### 1. Subtitle
 
-- [ ] Handle in auto sync if difference video file / not have subtitle (limit button click time)
-- [ ] File upload type limit (toast message)
+- [x] Handle in auto sync if difference video file / not have subtitle (limit button click time)
+- [x] File upload type limit (toast message)
 - [ ] Silence + Music OP and ED identicator
 - [ ] Auto translation (for no subtitle case)
 - [ ] Supporting `.ass` subtitle file
@@ -47,7 +47,7 @@
 - [ ] Add dictionary 2 mode for pop up + in page
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
-- [ ] [Immersion Kit API](htps://docs.immersionkit.com/public%20api/search) for anime sentence example
+- [ ] [Immersion Kit API](https://docs.immersionkit.com/public%20api/search) for anime sentence example
 - [ ] Furigana On / Off Mode (with better algorithm)
 - [ ] Add card to Anki with exact audio time and image
 

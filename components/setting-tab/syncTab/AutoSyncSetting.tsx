@@ -1,17 +1,39 @@
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import { FaSync } from "react-icons/fa";
 import { AppContext } from "@/components/provides/providers";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { Subtitle } from "@/types/type";
 import { convertAssFileText } from "@/lib/convertAssFileText";
 import { prepareFormdataTranscribe } from "@/lib/prepareFormdataTranscribe";
 
 function AutoSynSetting() {
-  const { video, setSubtitleSyncDiff, subTitle } = useContext(AppContext);
+  const { video, setSubtitleSyncDiff, subTitle, isSubtitle } =
+    useContext(AppContext);
+  const [isSyncing, setisSyncing] = useState<boolean>(false);
+  const toast = useToast();
 
   const handleSyncSubtitle = async () => {
+    let message = "";
+    if (video === null && isSubtitle)
+      message = "Please upload video file first !";
+    if (!isSubtitle && video !== null)
+      message = "Please upload subtitle file first !";
+    if (video === null && !isSubtitle)
+      message = "Please upload video and subtitle file first !";
+    if (isSyncing) message = "Subtitle is being synced !";
+    if (message !== "") {
+      toast({
+        isClosable: true,
+        title: message,
+        position: "bottom",
+        variant: "solid",
+        status: "warning",
+      });
+      return;
+    }
     try {
+      setisSyncing(true);
       const formData = prepareFormdataTranscribe(video!);
       const {
         data: { id },
@@ -19,9 +41,13 @@ function AutoSynSetting() {
         process.env.NEXT_PUBLIC_TRANSCRIBE_URL as string,
         formData
       );
+      console.log(id);
 
       const subtitleURL = `${process.env.NEXT_PUBLIC_SUBTITLE_URL}/${id}`;
-      const resultText = await fetch(subtitleURL).then((res) => res.text());
+
+      const { data: resultText } = await axios.get(subtitleURL, {
+        responseType: "text",
+      });
       let myArray: Subtitle[] = convertAssFileText(resultText);
 
       if (subTitle?.current === undefined) {
@@ -31,6 +57,14 @@ function AutoSynSetting() {
         myArray[0].start! - subTitle!.current![0].data.start / 1000;
       console.log(syncDiff);
       setSubtitleSyncDiff(syncDiff);
+      setisSyncing(false);
+      toast({
+        isClosable: true,
+        title: "Finish subtitle sync !",
+        position: "bottom",
+        variant: "solid",
+        status: "success",
+      });
     } catch (err) {
       console.log(err);
     }

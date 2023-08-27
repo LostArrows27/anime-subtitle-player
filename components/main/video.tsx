@@ -110,6 +110,7 @@ function Video() {
               width={367 * 3}
               height={360 * 3}
               alt="arisu_dance"
+              priority={true}
             />
           </div>
           <div className="text-3xl w-[620px] mt-6">

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input, useDisclosure } from "@chakra-ui/react";
+import { Button, Input, useDisclosure, useToast } from "@chakra-ui/react";
 import {
   compile,
   Dialogue,
@@ -28,8 +28,22 @@ function Headers() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const toast = useToast();
+
   const uploadVideo = async (event: ChangeEvent<HTMLInputElement>) => {
     const videoFile = (event.target as HTMLInputElement).files![0] as File;
+    if (!!!videoFile) return;
+    const req = /video/;
+    if (!req.test(videoFile.type)) {
+      toast({
+        isClosable: true,
+        title: "Please choose video file format!",
+        position: "bottom",
+        variant: "solid",
+        status: "error",
+      });
+      return;
+    }
     setVideo(videoFile);
   };
 
@@ -37,7 +51,18 @@ function Headers() {
     event.stopPropagation();
     const file = (event.target as HTMLInputElement).files![0] as File;
     if (!!!file) return;
-    const types = file.name.split(".").pop();
+    const types = file.name.split(".").pop() as string;
+    if (types !== "ass" && types !== "srt") {
+      toast({
+        isClosable: true,
+        title: "Please choose srt or ass file format",
+        position: "bottom",
+        variant: "solid",
+        status: "warning",
+      });
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = function (event: ProgressEvent<FileReader>) {
       const fileText = reader.result as string;

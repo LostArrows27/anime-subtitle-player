@@ -53,6 +53,9 @@ let isPlaying = false,
 
 fileUpload.addEventListener("change", (e) => {
   const file = e.target.files[0];
+  if (!!!file) return;
+  const reg = /video/;
+  if (!reg.test(file.type)) return;
   const fileTitle = file.name.split(".")[0];
   const filePath = URL.createObjectURL(file);
   video.src = filePath;
