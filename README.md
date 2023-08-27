@@ -32,7 +32,7 @@
 
 ## 📚 TODO
 
-#####1. Subtitle
+#### 1. Subtitle
 
 - [ ] Handle in auto sync if difference video file / not have subtitle (limit button click time)
 - [ ] File upload type limit (toast message)
@@ -40,7 +40,7 @@
 - [ ] Auto translation (for no subtitle case)
 - [ ] Supporting `.ass` subtitle file
 
-#####2. Dicitonaries + Translation
+#### 2. Dicitonaries + Translation
 
 - [ ] Add hover translation hover for word with 'each word translation i4"
 - [ ] See more word information when hover up => open pop up dictionary
@@ -51,13 +51,13 @@
 - [ ] Furigana On / Off Mode (with better algorithm)
 - [ ] Add card to Anki with exact audio time and image
 
-#####3. Video
+#### 3. Video
 
 - [ ] Add dowload screenshot with sub or not sub (using imageNext smth i forgot 😭)
 - [ ] [playerIO](https://plyr.io/) player
 - [ ] Support video link
 
-#####4. UI + main page
+#### 4. UI + main page
 
 - [ ] Add "sample" video and subtitle for user
 - [ ] Website name
@@ -66,7 +66,7 @@
 - [ ] Add login + save word to dictionary with audio + image screenshot
 - [ ] Export to anki word have saved
 
-#####5. Settings
+#### 5. Settings
 
 - [ ] Add image bg for settings subtitle background opacity
 - [ ] Save user's settting in local storage
