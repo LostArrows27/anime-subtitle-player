@@ -52,6 +52,8 @@ type AppProviderProps = {
   setOpenMenu: Dispatch<SetStateAction<boolean>>;
   video: File | null;
   setVideo: Dispatch<SetStateAction<File | null>>;
+  isCtrlPressed: boolean;
+  setIsCtrlPressed: Dispatch<SetStateAction<boolean>>;
 };
 
 type FontOption = {

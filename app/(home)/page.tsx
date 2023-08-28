@@ -38,6 +38,7 @@ function Page() {
   const [isSyncingSubtitle, setIsSyncingSubtitle] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [video, setVideo] = useState<File | null>(null);
+  const [isCtrlPressed, setIsCtrlPressed] = useState<boolean>(false);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -79,6 +80,8 @@ function Page() {
     setOpenMenu,
     video,
     setVideo,
+    isCtrlPressed,
+    setIsCtrlPressed,
   };
 
   const handlepPrevSub = () => {
@@ -145,18 +148,20 @@ function Page() {
         // toggle setting menu open
         setOpenMenu((prev) => !prev);
         break;
-
+      case "Control":
+        setIsCtrlPressed(true);
+        break;
       default:
     }
   }, []);
 
   const handleKeyUp = useCallback((event: KeyboardEvent) => {
-    if (event.key === "w") {
+    if (event.key === "w" || event.key === "s") {
       setIsSyncingSubtitle(false);
       return;
     }
-    if (event.key === "s") {
-      setIsSyncingSubtitle(false);
+    if (event.key === "Control") {
+      setIsCtrlPressed(false);
       return;
     }
   }, []);

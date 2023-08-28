@@ -42,6 +42,8 @@ const AppContext = createContext<AppProviderProps>({
   setOpenMenu: () => {},
   video: null,
   setVideo: () => {},
+  isCtrlPressed: false,
+  setIsCtrlPressed: () => {},
 });
 
 const Providers = ({

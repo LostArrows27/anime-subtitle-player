@@ -6,7 +6,8 @@ import {
 } from "@/types/type";
 
 export async function POST(request: Request) {
-  const { sentence } = await request.json();
+  let { sentence, wordIndex } = await request.json();
+  if (wordIndex === undefined || wordIndex === null) wordIndex = 0;
   // alwasy but " ですね" end of sentence
   const body: WordTraslationRequestBody = {
     query_str: `${sentence} ですね`,
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
       sentence_furigana: true,
     },
     page: 1,
-    word_index: 0,
+    word_index: wordIndex,
   };
 
   const axiosConfig = {
