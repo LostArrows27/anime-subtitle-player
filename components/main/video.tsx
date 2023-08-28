@@ -26,6 +26,8 @@ function Video() {
     setShowBorder,
     subtitleSyncDiff,
     showSubtitle,
+    video,
+    isSubtitle,
   } = useContext(AppContext);
 
   const [dotsCount, setDotsCount] = useState(0);
@@ -33,6 +35,12 @@ function Video() {
   // Function to update dots count and create the loop effect
   const updateDots = () => {
     setDotsCount((prevCount) => (prevCount + 1) % 4); // Loop from 0 to 3
+  };
+
+  const getCurrentStatus = () => {
+    if (video === null && !isSubtitle)
+      return "Upload video and subittle to start watching";
+    if (video === null) return "Upload video to start watching";
   };
 
   useEffect(() => {
@@ -92,14 +100,7 @@ function Video() {
       <InVideoSubtitle />
       {showBorder ? (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] flex flex-col items-center justify-center">
-          <div
-            onClick={() => {
-              (
-                document.querySelector('[for="file-upload"]') as HTMLElement
-              )?.click();
-            }}
-            className="h-[200px] z-[999] w-[200px] "
-          >
+          <div className="h-[200px] z-[999] w-[200px] ">
             {/* <FiPlay
             className="animate-pulse glow-element text-green-500 cursor-pointer"
             size="70px"
@@ -113,9 +114,13 @@ function Video() {
               priority={true}
             />
           </div>
-          <div className="text-3xl w-[620px] mt-6">
-            Upload video and subittle to start watching
-            {Array(dotsCount + 1).join(" .")}
+          <div className="flex justify-center min-w-[600px] mt-6 text-3xl text-center">
+            <div className="relative">
+              {getCurrentStatus()}
+              <span className="absolute w-[80px] -right-[82px] text-left">
+                {Array(dotsCount + 1).join(" .")}
+              </span>
+            </div>
           </div>
         </div>
       ) : (

@@ -36,14 +36,16 @@
 
 - [x] Handle in auto sync if difference video file / not have subtitle (limit button click time)
 - [x] File upload type limit (toast message)
-- [ ] Silence + Music OP and ED identicator
+- [ ] Supporting `.ass` subtitle file (handle multiple language)
+- [ ] If upload right -> close all toast
 - [ ] Auto translation (for no subtitle case)
-- [ ] Supporting `.ass` subtitle file
+- [ ] Silence + Music OP and ED identicator
+- [ ] Font optimization using [next/font/google](https://www.youtube.com/watch?v=L8_98i_bMMA)
 
 #### 2. Dicitonaries + Translation
 
 - [ ] Add hover translation hover for word with 'each word translation i4"
-- [ ] See more word information when hover up => open pop up dictionary
+- [ ] See more word information when hover up => open pop up dictionary (use ChakraUI's drawer)
 - [ ] Add dictionary 2 mode for pop up + in page
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name

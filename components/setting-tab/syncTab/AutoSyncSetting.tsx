@@ -58,6 +58,7 @@ function AutoSynSetting() {
       console.log(syncDiff);
       setSubtitleSyncDiff(syncDiff);
       setisSyncing(false);
+      toast.closeAll();
       toast({
         isClosable: true,
         title: "Finish subtitle sync !",

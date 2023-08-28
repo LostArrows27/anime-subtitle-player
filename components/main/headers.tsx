@@ -44,6 +44,7 @@ function Headers() {
       });
       return;
     }
+    toast.closeAll();
     setVideo(videoFile);
   };
 
@@ -62,6 +63,7 @@ function Headers() {
       });
       return;
     }
+    toast.closeAll();
 
     const reader = new FileReader();
     reader.onload = function (event: ProgressEvent<FileReader>) {
