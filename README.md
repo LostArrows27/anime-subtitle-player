@@ -49,6 +49,7 @@
 - [x] Storing each word that have fetched to avoid fetching again
 - [ ] "Translation" modal for each word when hovering
 - [ ] Add hover translation hover for word with 'each word translation i4"
+- [ ] Add Shortcut instruction for this
 - [ ] See more word information when hover up => open pop up dictionary (use ChakraUI's drawer)
 - [ ] Moving the translation feature to use everywhere on the screen too;
 - [ ] Add dictionary 2 mode for pop up + in page

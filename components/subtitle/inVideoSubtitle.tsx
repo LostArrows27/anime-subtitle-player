@@ -90,7 +90,6 @@ function InVideoSubtitle() {
   const handleMouseMove = async () => {
     if (!isCtrlPressed || sentence === text) return;
     setSentence(text!);
-    console.log("wait, im fetching ", text);
     const translationResult = await getWordPart();
     console.log(translationResult);
     setBreakDownSentence(translationResult);
