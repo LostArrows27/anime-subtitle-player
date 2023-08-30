@@ -178,6 +178,7 @@ function Page() {
   return (
     <Providers appProps={props}>
       <div
+        id="hoverDiv"
         className={
           subPos !== "under-video" || !showSubtitle
             ? "flex flex-col items-center w-full relative"

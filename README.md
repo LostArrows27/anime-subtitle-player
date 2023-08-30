@@ -44,9 +44,6 @@
 
 #### 2. Dicitonaries + Translation
 
-- [x] Break down sentence when hover
-- [x] Storing sentence that have fetched to avoid fetching again
-- [x] Storing each word that have fetched to avoid fetching again
 - [ ] "Translation" modal for each word when hovering
 - [ ] Add hover translation hover for word with 'each word translation i4"
 - [ ] Add Shortcut instruction for this
@@ -120,3 +117,6 @@
 - [x] Auto Sync subtitle with Video
 - [x] Add in video subtitle along with beside subtitle
 - [x] Add something when video haven't loaded
+- [x] Break down sentence when hover
+- [x] Storing sentence that have fetched to avoid fetching again
+- [x] Storing each word that have fetched to avoid fetching again
