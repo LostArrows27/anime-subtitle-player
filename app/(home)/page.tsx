@@ -84,7 +84,7 @@ function Page() {
     setIsCtrlPressed,
   };
 
-  const handlepPrevSub = () => {
+  const handlepPrevSub = useCallback(() => {
     let currentTime = videoRef?.current?.currentTime as number;
     if (currentTime === undefined) return;
     let newArray = subTitle?.current.filter((sub: NodeCue) => {
@@ -93,6 +93,9 @@ function Page() {
     if (newArray === undefined) return;
     let prevSubIndex = newArray[newArray.length - 1];
     if (!prevSubIndex?.data) return;
+    console.log(prevSubIndex.data.start / 1000);
+    console.log(subtitleSyncDiff);
+
     videoRef!.current!.currentTime =
       prevSubIndex.data.start / 1000 + subtitleSyncDiff;
     setCurrentSubtitle({
@@ -100,9 +103,9 @@ function Page() {
       end: prevSubIndex.data.end,
       text: prevSubIndex.data.text,
     });
-  };
+  }, [subtitleSyncDiff]);
 
-  const handleNextSub = () => {
+  const handleNextSub = useCallback(() => {
     let currentTime = videoRef?.current?.currentTime as number;
     if (currentTime === undefined) return;
     let nextSubIndex: NodeCue | undefined = subTitle?.current.find(
@@ -118,42 +121,45 @@ function Page() {
       end: nextSubIndex.data.end,
       text: nextSubIndex.data.text,
     });
-  };
+  }, [subtitleSyncDiff]);
 
-  const handleKeyPress = useCallback((event: KeyboardEvent) => {
-    switch (event.key) {
-      case "c":
-        // toggle subtitle
-        setShowSubtitle((prev) => !prev);
-        break;
-      case "a":
-        // prev subtitle
-        handlepPrevSub();
-        break;
-      case "d":
-        // next subtitle
-        handleNextSub();
-        break;
-      case "w":
-        // sync subtitle earlier 1s
-        setSubtitleSyncDiff((prev) => prev - 1);
-        setIsSyncingSubtitle(true);
-        break;
-      case "s":
-        // sync subtitle later 1s
-        setSubtitleSyncDiff((prev) => prev + 1);
-        setIsSyncingSubtitle(true);
-        break;
-      case "q":
-        // toggle setting menu open
-        setOpenMenu((prev) => !prev);
-        break;
-      case "Control":
-        setIsCtrlPressed(true);
-        break;
-      default:
-    }
-  }, []);
+  const handleKeyPress = useCallback(
+    (event: KeyboardEvent) => {
+      switch (event.key) {
+        case "c":
+          // toggle subtitle
+          setShowSubtitle((prev) => !prev);
+          break;
+        case "a":
+          // prev subtitle
+          handlepPrevSub();
+          break;
+        case "d":
+          // next subtitle
+          handleNextSub();
+          break;
+        case "w":
+          // sync subtitle earlier 1s
+          setSubtitleSyncDiff((prev) => prev - 1);
+          setIsSyncingSubtitle(true);
+          break;
+        case "s":
+          // sync subtitle later 1s
+          setSubtitleSyncDiff((prev) => prev + 1);
+          setIsSyncingSubtitle(true);
+          break;
+        case "q":
+          // toggle setting menu open
+          setOpenMenu((prev) => !prev);
+          break;
+        case "Control":
+          setIsCtrlPressed(true);
+          break;
+        default:
+      }
+    },
+    [handleNextSub, handlepPrevSub]
+  );
 
   const handleKeyUp = useCallback((event: KeyboardEvent) => {
     if (event.key === "w" || event.key === "s") {

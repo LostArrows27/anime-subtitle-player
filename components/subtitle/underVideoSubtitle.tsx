@@ -1,4 +1,6 @@
-import { useContext } from "react";
+"use client";
+
+import { useCallback, useContext, useMemo } from "react";
 import { AppContext } from "../provides/providers";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { NodeCue } from "subtitle";
@@ -24,7 +26,7 @@ function UnderVideoSubtitle() {
   let text = currentSubtitle?.text;
   let fontName = convertFontName(currentFont.name);
 
-  const handlePrevSubtitle = () => {
+  const handlePrevSubtitle = useCallback(() => {
     let currentTime = videoRef?.current?.currentTime as number;
     if (currentTime === undefined) return;
     let newArray = subTitle?.current.filter((sub: NodeCue) => {
@@ -40,9 +42,9 @@ function UnderVideoSubtitle() {
       end: prevSubIndex.data.end,
       text: prevSubIndex.data.text,
     });
-  };
+  }, [subtitleSyncDiff]);
 
-  const handleNextSubtitle = () => {
+  const handleNextSubtitle = useCallback(() => {
     let currentTime = videoRef?.current?.currentTime as number;
     if (currentTime === undefined) return;
     let nextSubIndex: NodeCue | undefined = subTitle?.current.find(
@@ -58,7 +60,7 @@ function UnderVideoSubtitle() {
       end: nextSubIndex.data.end,
       text: nextSubIndex.data.text,
     });
-  };
+  }, [subtitleSyncDiff]);
 
   return (
     <div
