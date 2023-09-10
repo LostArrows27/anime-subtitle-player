@@ -45,8 +45,10 @@
 
 #### 2. Dicitonaries + Translation
 
-- [ ] "Translation" modal for each word when hovering
-- [ ] Add hover translation hover for word with 'each word translation i4"
+- [x] "Translation" modal for each word when hovering
+- [x] Add hover translation hover for word with 'each word translation i4"
+- [ ] Popup Dictionary Loading UI
+- [ ] Complete popup dicitonary Body
 - [ ] Add Shortcut instruction for this
 - [ ] See more word information when hover up => open pop up dictionary (use ChakraUI's drawer)
 - [ ] Moving the translation feature to use everywhere on the screen too;
@@ -54,7 +56,6 @@
   - [ ] Vietnam Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
 - [ ] [Immersion Kit API](https://docs.immersionkit.com/public%20api/search) for anime sentence example
-- [ ] Furigana On / Off Mode (with better algorithm)
 - [ ] Add card to Anki with exact audio time and image
 
 #### 3. Video

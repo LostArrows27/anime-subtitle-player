@@ -8,6 +8,7 @@ type PopupBodyProps = {
 };
 
 //TODO: add senses.example_sentence and senses.part_of_speech
+//TODO: loading UI
 
 function PopupBody({ data }: PopupBodyProps) {
   return (
@@ -25,8 +26,13 @@ function PopupBody({ data }: PopupBodyProps) {
               </div>
             </div>
             <div className="text-slate-500 text-start mt-2 ml-6 text-base">
-              {convertToNormalText(value.misc)}, {value.information},{" "}
-              {value.field}
+              {value.misc && <span>{convertToNormalText(value.misc)}</span>}
+              {((value.misc && value.information) ||
+                (value.misc && value.field)) &&
+                ", "}
+              {value.information && <span>{value.information}</span>}
+              {value.field && value.information && ", "}
+              {value.field && <span>{value.field}</span>}
             </div>
           </div>
         );
