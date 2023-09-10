@@ -85,10 +85,10 @@ function Page() {
   };
 
   const handlepPrevSub = () => {
-    let currentTimes = videoRef?.current?.currentTime as number;
-    if (currentTimes === undefined) return;
+    let currentTime = videoRef?.current?.currentTime as number;
+    if (currentTime === undefined) return;
     let newArray = subTitle?.current.filter((sub: NodeCue) => {
-      return sub.data.end / 1000 + subtitleSyncDiff < currentTimes;
+      return sub.data.end / 1000 + subtitleSyncDiff < currentTime;
     });
     if (newArray === undefined) return;
     let prevSubIndex = newArray[newArray.length - 1];
