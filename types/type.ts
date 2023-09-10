@@ -54,6 +54,9 @@ type AppProviderProps = {
   setVideo: Dispatch<SetStateAction<File | null>>;
   isCtrlPressed: boolean;
   setIsCtrlPressed: Dispatch<SetStateAction<boolean>>;
+  popupRef: RefObject<HTMLDivElement> | null;
+  showPopup: boolean;
+  setShowPopup: Dispatch<SetStateAction<boolean>>;
 };
 
 type FontOption = {
@@ -161,14 +164,22 @@ type WordSenses = {
   /**meaning of word */
   glosses: string[];
   information?: string;
-  /**classify word */
-  part_of_speech: { [key: string]: string } | string[];
+  /**classify word
+      ```js 
+      [{Verb: {Godan: "Bu"}}, {Verb: "Transitive"}] 
+      ```
+  */
+  part_of_speech:
+    | { [key: string]: string | { [key: string]: string } }
+    | string[];
   language: string;
   /**
    * 1. sentence with furigana "[kanji|furigana|...]..."
    * 2. meaning in English
    */
   example_sentence?: [string, string];
+  /**term, example: financial, mahjong,....*/
+  field?: string;
 };
 
 type WordAccents = {
@@ -237,6 +248,11 @@ type WordTranslationReturnType = {
       curr_index: number;
       parts: WordPart[];
     };
+    /**the natural form of word. Example: hakonda => hakobu + te form */
+    infl_info?: {
+      inflections: string[];
+      lexeme: string;
+    };
     /** current string from curr_index */
     orginal_query: string;
   };
@@ -245,6 +261,8 @@ type WordTranslationReturnType = {
   /** current_page of pages */
   current_page: number;
 };
+
+type WordTraslationContent = Pick<WordTranslationReturnType, "content">;
 
 // Jotoba API /api/sentence return type
 
@@ -270,4 +288,5 @@ export type {
   WordPart,
   WordTranslationReturnType,
   FontKey,
+  WordTraslationContent,
 };

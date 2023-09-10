@@ -7,7 +7,7 @@ import {
   subTitleTextStyle,
   subTitleWrapperStyle,
 } from "@/utils/const";
-import { CurrentWordTraslation } from "@/types/type";
+import { CurrentWordTraslation, WordTraslationContent } from "@/types/type";
 import { NodeCue } from "subtitle";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../provides/providers";
@@ -21,7 +21,7 @@ export interface RefType {
 
 export type WordTranslate = {
   position: number;
-  data: CurrentWordTraslation[] | undefined;
+  data: WordTraslationContent | undefined;
   origin: string;
 };
 
@@ -99,6 +99,7 @@ function InVideoSubtitle() {
                 fontWeight: currentFont.fontWeight,
                 fontFamily: fontName,
                 fontSize: fontSize,
+                position: "relative",
               }}
               className={`${isTextShadow ? "text-shadow-black" : ""} ${
                 isSyncingSubtitle ? "!text-[lime]" : "!text-white"

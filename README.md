@@ -36,7 +36,7 @@
 
 - [x] Handle in auto sync if difference video file / not have subtitle (limit button click time)
 - [x] File upload type limit (toast message)
-- [ ] next and prev subtitle error when sync ealier or later
+- [x] next and prev subtitle error when sync ealier or later
 - [ ] Supporting `.ass` subtitle file (handle multiple language)
 - [ ] If upload right -> close all toast
 - [ ] Auto translation (for no subtitle case)

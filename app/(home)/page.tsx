@@ -39,6 +39,9 @@ function Page() {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [video, setVideo] = useState<File | null>(null);
   const [isCtrlPressed, setIsCtrlPressed] = useState<boolean>(false);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+
+  const popupRef = useRef<HTMLDivElement>(null);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -82,6 +85,9 @@ function Page() {
     setVideo,
     isCtrlPressed,
     setIsCtrlPressed,
+    popupRef,
+    showPopup,
+    setShowPopup,
   };
 
   const handlepPrevSub = useCallback(() => {
@@ -93,8 +99,6 @@ function Page() {
     if (newArray === undefined) return;
     let prevSubIndex = newArray[newArray.length - 1];
     if (!prevSubIndex?.data) return;
-    console.log(prevSubIndex.data.start / 1000);
-    console.log(subtitleSyncDiff);
 
     videoRef!.current!.currentTime =
       prevSubIndex.data.start / 1000 + subtitleSyncDiff;
@@ -170,6 +174,19 @@ function Page() {
       setIsCtrlPressed(false);
       return;
     }
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setShowPopup(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
   }, []);
 
   useEffect(() => {
