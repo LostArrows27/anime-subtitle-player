@@ -89,7 +89,7 @@ function Video() {
 
   return (
     <div
-      className={`relative video-container text-white overflow-x-visible bg-[rgb(25,25,25)] flex justify-center items-center ${
+      className={`relative video-container !z-0 text-white overflow-x-visible bg-[rgb(25,25,25)] flex justify-center items-center ${
         showBorder ? "border-green-500 border-solid border-2" : ""
       } ${
         subPos === "under-video" && showSubtitle
@@ -135,7 +135,7 @@ function Video() {
           </span>
           <span className="backward-duration">5</span>
         </span>
-        <span className="main-state state-btn">
+        <span className="main-state state-btn !z-0">
           <span id="play-outline">
             <IoPlayOutline size="17px" />
           </span>

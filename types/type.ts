@@ -180,6 +180,8 @@ type WordSenses = {
   example_sentence?: [string, string];
   /**term, example: financial, mahjong,....*/
   field?: string;
+  /**more information of word, option write in camel case. Example: ThisIsAMsic*/
+  misc?: string;
 };
 
 type WordAccents = {

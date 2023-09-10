@@ -25,6 +25,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   >(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [originalSentence, setOriginalSentence] = useState<string>("");
+  const [currentWordFurigana, setCurrentWordFurigana] = useState<string>("");
 
   const { isCtrlPressed, currentSubtitle, setShowPopup, showPopup } =
     useContext(AppContext);
@@ -32,7 +33,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   useEffect(() => {
     setBreakDownSentence([]);
     setWordTranslation([]);
-    setOriginalSentence(sentenceRef.current?.innerText!);
+    setOriginalSentence(currentSubtitle.text || "");
   }, [currentSubtitle?.text, sentenceRef]);
 
   const getSentenceBreakdown = async (index: number = 0) => {
@@ -61,7 +62,6 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
     setSentence(originalSentence!);
     const translationResult = await getWordPart();
     setBreakDownSentence(translationResult);
-    // add the breakDownSentenceToJSX component to sentenceRef child
   };
 
   // parse Text to span element to scan able
@@ -108,8 +108,11 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
                 // 1: multiple pop-up
                 // 2: 1 pop-up moving
                 console.log("hover to: ", value.inflected);
+                let findIndex = 0;
                 const result = wordTranslation.find(
                   (wordTranslate: WordTranslate, index: number) => {
+                    if (value.inflected === wordTranslate.origin)
+                      findIndex = index;
                     return value.inflected === wordTranslate.origin;
                   }
                 );
@@ -138,7 +141,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
                 });
                 return;
               }}
-              className="text-green-500"
+              // className="text-green-500"
               key={key}
             >
               {value.inflected}

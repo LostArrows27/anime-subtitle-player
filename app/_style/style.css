@@ -12,6 +12,32 @@
 
 }
 
+.pitch-low+.pitch-high {
+  border-left: 1px solid #8b8b8b;
+}
+
+.pitch-high+.pitch-low {
+  border-left: 1px solid #8b8b8b;
+}
+
+.pitch-high {
+  border-radius: 1px;
+  padding: 0 0.2em;
+  margin: 0 -0.5px;
+  width: max-content;
+  border: 1px solid rgba(0,0,0,0);
+  border-top: 1px solid #8b8b8b;
+}
+
+.pitch-low {
+  border-radius: 1px;
+  padding: 0 0.2em;
+  margin: 0 -0.5px;
+  width: max-content;
+  border: 1px solid rgba(0,0,0,0);
+  border-bottom: 1px solid #8b8b8b;
+}
+
 .custom-scroll-bar::-webkit-scrollbar {
   width: 6px; 
 }
