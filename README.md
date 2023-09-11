@@ -30,6 +30,26 @@
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/c3c0b11a-252e-4804-8518-5783acb93048)
 
+- Hover translation dictionary
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/463ac839-f794-4b76-9364-e38df8d51504)
+
+- Subtitle Position setting
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/b419c179-f719-4d81-bc09-a2f10285bf0f)
+
+- Keyboard shortcut
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/d55d924b-43c6-4075-b33d-cd2b43e56ff4)
+
+- Subtitle setting
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/d8ac54eb-3ea1-435c-8769-8c6d0acffeca)
+
+- Subtitle's Synchronization setting
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/fda15a7a-31fa-4ed9-bbe7-aefc90de110a)
+
 ## 📚 TODO
 
 #### 1. Subtitle
