@@ -47,7 +47,7 @@
 
 - [x] "Translation" modal for each word when hovering
 - [x] Add hover translation hover for word with 'each word translation i4"
-- [ ] Popup Dictionary Loading UI
+- [x] Popup Dictionary Loading UI
 - [ ] Complete popup dicitonary Body
 - [ ] Add Shortcut instruction for this
 - [ ] See more word information when hover up => open pop up dictionary (use ChakraUI's drawer)

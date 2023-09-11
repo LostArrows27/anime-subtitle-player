@@ -8,6 +8,7 @@ import PopupHeader from "./PopupHeader";
 import { CurrentWordTraslation } from "@/types/type";
 import PopupBody from "./PopupBody";
 import FuriganaSentece from "../subtitle/furiganaText";
+import LoadingTranslation from "./LoadingTranslation";
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
 type TranslationPopUpProps = {
@@ -39,7 +40,7 @@ function TranslationPopUp({
       ref={popupRef}
     >
       {isLoading ? (
-        <div className="animate-pulse">Loading...</div>
+        <LoadingTranslation />
       ) : (
         <>
           {wordContent?.sentence.parts[wordContent.sentence.curr_index]
