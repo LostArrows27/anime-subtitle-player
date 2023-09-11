@@ -122,12 +122,14 @@ function canPlayInit() {
     hoverDuration.innerHTML = "";
   });
 
+  playPause.addEventListener("click", toggleMainState);
+
   video.addEventListener("ended", (e) => {
     e.stopPropagation();
     e.preventDefault();
   });
 
-  videoContainer.addEventListener("click", toggleMainState);
+  // videoContainer.addEventListener("click", toggleMainState);
   videoContainer.addEventListener("fullscreenchange", () => {
     videoContainer.classList.toggle("fullscreen", document.fullscreenElement);
   });
@@ -329,18 +331,19 @@ function hideControls() {
 }
 
 function toggleMainState(e) {
-  // e.stopPropagation();
+  e.stopPropagation();
+  e.preventDefault();
   // const element = e.target;
   // console.log(element);
   // if (element) element.parentElement.click();
   // console.log(e.path);
-  // if (!e.path?.includes(controls)) {
-  //   if (!isPlaying) {
-  //     play();
-  //   } else {
-  //     pause();
-  //   }
-  // }
+  if (!e.path?.includes(controls)) {
+    if (!isPlaying) {
+      play();
+    } else {
+      pause();
+    }
+  }
 }
 
 function handleVolume(e) {
