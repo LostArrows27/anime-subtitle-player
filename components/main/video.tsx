@@ -74,7 +74,7 @@ function Video() {
 
   return (
     <div
-      className={`relative video-container !z-0 text-white overflow-x-visible bg-[rgb(25,25,25)] flex justify-center items-center ${
+      className={`relative video-container !z-0 text-white overflow-x-visible overflow-y-hidden bg-[rgb(25,25,25)] flex justify-center items-center ${
         showBorder ? "border-green-500 border-solid border-2" : ""
       } ${
         subPos === "under-video" && showSubtitle

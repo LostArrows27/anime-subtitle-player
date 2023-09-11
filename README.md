@@ -54,23 +54,14 @@
 
 #### 1. Subtitle
 
-- [x] Handle in auto sync if difference video file / not have subtitle (limit button click time)
-- [x] File upload type limit (toast message)
-- [x] next and prev subtitle error when sync ealier or later
 - [ ] Supporting `.ass` subtitle file (handle multiple language)
-- [ ] If upload right -> close all toast
 - [ ] Auto translation (for no subtitle case)
 - [ ] Silence + Music OP and ED identicator
 - [ ] Font optimization using [next/font/google](https://www.youtube.com/watch?v=L8_98i_bMMA)
 
 #### 2. Dicitonaries + Translation
 
-- [x] "Translation" modal for each word when hovering
-- [x] Add hover translation hover for word with 'each word translation i4"
-- [x] Popup Dictionary Loading UI
-- [ ] Complete popup dicitonary Body
 - [ ] If not have definiton, ex: だから　さっき妖夢化した秋人君は => searching for "name" definition
-- [ ] Add Shortcut instruction for this
 - [ ] See more word information when hover up => open pop up dictionary (use ChakraUI's drawer)
 - [ ] Moving the translation feature to use everywhere on the screen too;
 - [ ] Add dictionary 2 mode for pop up + in page
@@ -143,3 +134,11 @@
 - [x] Break down sentence when hover
 - [x] Storing sentence that have fetched to avoid fetching again
 - [x] Storing each word that have fetched to avoid fetching again
+- [x] "Translation" modal for each word when hovering
+- [x] Add hover translation hover for word with 'each word translation i4"
+- [x] Popup Dictionary Loading UI
+- [x] Complete popup dicitonary Body
+- [x] Add Shortcut instruction for this
+- [x] Handle in auto sync if difference video file / not have subtitle (limit button click time)
+- [x] File upload type limit (toast message)
+- [x] next and prev subtitle error when sync ealier or later
