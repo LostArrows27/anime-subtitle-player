@@ -25,7 +25,7 @@ function PopupBody({ data }: PopupBodyProps) {
                 }, "")}
               </div>
             </div>
-            <div className="text-slate-500 text-start mt-2 ml-6 text-base">
+            <div className="text-slate-400 text-start mt-2 ml-6 text-base">
               {value.misc && <span>{convertToNormalText(value.misc)}</span>}
               {((value.misc && value.information) ||
                 (value.misc && value.field)) &&

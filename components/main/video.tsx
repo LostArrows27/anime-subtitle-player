@@ -15,6 +15,7 @@ import {
   IoPlayOutline,
 } from "react-icons/io5";
 import Image from "next/image";
+import FuriganaSentece from "../subtitle/furiganaText";
 function Video() {
   const {
     videoRef,

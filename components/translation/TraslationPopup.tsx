@@ -98,7 +98,7 @@ function TranslationChild({
 }) {
   return (
     <div className="border-b-slate-500 flex flex-col my-4 border-b border-solid">
-      <PopupHeader data={data} />
+      <PopupHeader key={data?.sequence} data={data} />
       <PopupBody data={data} />
     </div>
   );
