@@ -31,27 +31,11 @@ function Video() {
     isSubtitle,
   } = useContext(AppContext);
 
-  const [dotsCount, setDotsCount] = useState(0);
-
-  // Function to update dots count and create the loop effect
-  const updateDots = () => {
-    setDotsCount((prevCount) => (prevCount + 1) % 4); // Loop from 0 to 3
-  };
-
   const getCurrentStatus = () => {
     if (video === null && !isSubtitle)
       return "Upload video and subittle to start watching";
     if (video === null) return "Upload video to start watching";
   };
-
-  useEffect(() => {
-    // Update dots count every 500 milliseconds
-    const intervalId = setInterval(updateDots, 500);
-
-    return () => {
-      clearInterval(intervalId); // Clear the interval when the component unmounts
-    };
-  }, []);
 
   useEffect(() => {
     if (videoRef?.current && videoRef.current.src) {
@@ -118,9 +102,7 @@ function Video() {
           <div className="flex justify-center min-w-[600px] mt-6 text-3xl text-center">
             <div className="relative">
               {getCurrentStatus()}
-              <span className="absolute w-[80px] -right-[82px] text-left">
-                {Array(dotsCount + 1).join(" .")}
-              </span>
+              <UpdateDots />
             </div>
           </div>
         </div>
@@ -230,6 +212,32 @@ function Video() {
         </div>
       </div>
     </div>
+  );
+}
+
+function UpdateDots() {
+  const [dotsCount, setDotsCount] = useState(0);
+
+  // Function to update dots count and create the loop effect
+  const updateDots = () => {
+    console.log("update dots");
+
+    setDotsCount((prevCount) => (prevCount + 1) % 4); // Loop from 0 to 3
+  };
+  useEffect(() => {
+    // Update dots count every 500 milliseconds
+
+    const intervalId = setInterval(updateDots, 500);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  return (
+    <span className="absolute w-[80px] -right-[82px] text-left">
+      {Array(dotsCount + 1).join(" .")}
+    </span>
   );
 }
 

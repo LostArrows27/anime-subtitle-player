@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "@/components/provides/providers";
-import { Kbd, Switch } from "@chakra-ui/react";
+import { Switch } from "@chakra-ui/react";
 import KeyboardGuild from "./KeyboardGuild";
 
 function OtherSettingTab() {
@@ -35,7 +35,7 @@ function OtherSettingTab() {
           </h2>
         </div>
       </div>
-      <section className="grid grid-cols-3 gap-y-8 gap-x-5">
+      <section className="gap-y-8 gap-x-5 grid grid-cols-3">
         <KeyboardGuild keyboard="f" guild="Fullscreen" />
         <KeyboardGuild keyboard="i" guild="Mini Player" />
         <KeyboardGuild keyboard="m" guild="Mute" />
@@ -50,6 +50,7 @@ function OtherSettingTab() {
         <KeyboardGuild keyboard="Space" guild="Play / pause" />
         <KeyboardGuild keyboard="w" guild="Subtitle ealier 1s" />
         <KeyboardGuild keyboard="s" guild="Subtitle later 1s" />
+        <KeyboardGuild keyboard="Ctrl" guild="Hover translate" />
       </section>
     </div>
   );

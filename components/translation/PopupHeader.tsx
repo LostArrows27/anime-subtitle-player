@@ -1,6 +1,7 @@
 import { CurrentWordTraslation } from "@/types/type";
 import FuriganaSentece from "../subtitle/furiganaText";
 import { Tooltip } from "@chakra-ui/react";
+import { BsPlayCircle } from "react-icons/bs";
 
 type PopupHeaderProps = {
   data: CurrentWordTraslation | undefined;
@@ -8,7 +9,7 @@ type PopupHeaderProps = {
 
 function PopupHeader({ data }: PopupHeaderProps) {
   return (
-    <div className="gap-x-2 flex items-center w-full mt-2">
+    <div className="gap-x-2 flex items-center w-full mt-2" key={Math.random()}>
       <div className="gap-y-2 flex flex-col items-center justify-center w-6 text-base">
         {data?.is_common && (
           <Tooltip label="Common word" aria-label="A tooltip">
@@ -32,6 +33,57 @@ function PopupHeader({ data }: PopupHeaderProps) {
       >
         <FuriganaSentece text={data?.furigana || data!.reading} />
       </div>
+      {data?.audio && (
+        <div className="flex flex-col items-center justify-center text-green-500">
+          {data?.audio.tofugu && (
+            <>
+              <Tooltip label={`Tofugo's word audio`} aria-label="A tooltip">
+                <button>
+                  <BsPlayCircle
+                    onClick={() => {
+                      const audio = document.getElementById(
+                        `tofugu-${data.audio.tofugu}`
+                      ) as HTMLAudioElement;
+                      console.log(audio);
+                      if (audio) audio.play();
+                    }}
+                    className={data.audio.tofugu ? "mb-2" : ""}
+                  />
+                </button>
+              </Tooltip>
+              <audio preload="none" id={`tofugu-${data.audio.tofugu}`}>
+                <source
+                  type="audio/mp3"
+                  src={`https://jotoba.de/resource/audio/tofugu/${data.audio.tofugu}`}
+                />
+              </audio>
+            </>
+          )}
+          {data?.audio.kanjialive && (
+            <>
+              <Tooltip label={`KanjiAlive's word audio`} aria-label="A tooltip">
+                <button>
+                  <BsPlayCircle
+                    onClick={() => {
+                      const audio = document.getElementById(
+                        `kanjialive-${data.audio.kanjialive}`
+                      ) as HTMLAudioElement;
+                      console.log(audio);
+                      if (audio) audio.play();
+                    }}
+                  />
+                </button>
+              </Tooltip>
+              <audio preload="none" id={`kanjialive-${data.audio.kanjialive}`}>
+                <source
+                  type="audio/mp3"
+                  src={`https://jotoba.de/resource/audio/kanjialive/${data.audio.kanjialive}`}
+                />
+              </audio>
+            </>
+          )}
+        </div>
+      )}
       <div className="flex items-center justify-end flex-1 mt-3">
         {data?.accents &&
           data?.accents.length > 0 &&

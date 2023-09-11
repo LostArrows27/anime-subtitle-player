@@ -25,7 +25,6 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   >(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [originalSentence, setOriginalSentence] = useState<string>("");
-  const [currentWordFurigana, setCurrentWordFurigana] = useState<string>("");
 
   const { isCtrlPressed, currentSubtitle, setShowPopup, showPopup } =
     useContext(AppContext);
@@ -67,6 +66,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   // parse Text to span element to scan able
   const parseText = (text: string) => {
     if (breakDownSentence.length === 0) return text;
+    console.log("parse text");
 
     return (
       <>

@@ -25,9 +25,11 @@ function TranslationPopUp({
   const wordContent = data?.data?.content;
 
   const { popupRef } = useContext(AppContext);
+  console.log(wordContent);
 
   return (
     <div
+      id="translation-popup"
       className={`absolute px-5 py-3 custom-scroll-bar-2 !bg-gray-800 overflow-y-auto text-2xl font-normal  ${roboto.className}`}
       style={{
         width: "550px",
@@ -99,7 +101,7 @@ function TranslationChild({
 }) {
   return (
     <div className="border-b-slate-500 flex flex-col my-4 border-b border-solid">
-      <PopupHeader key={data?.sequence} data={data} />
+      <PopupHeader key={Math.random()} data={data} />
       <PopupBody data={data} />
     </div>
   );

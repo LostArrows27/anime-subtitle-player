@@ -49,6 +49,7 @@
 - [x] Add hover translation hover for word with 'each word translation i4"
 - [x] Popup Dictionary Loading UI
 - [ ] Complete popup dicitonary Body
+- [ ] If not have definiton, ex: だから　さっき妖夢化した秋人君は => searching for "name" definition
 - [ ] Add Shortcut instruction for this
 - [ ] See more word information when hover up => open pop up dictionary (use ChakraUI's drawer)
 - [ ] Moving the translation feature to use everywhere on the screen too;

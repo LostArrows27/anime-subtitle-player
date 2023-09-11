@@ -160,7 +160,7 @@ function canPlayInit() {
     isCursorOnControls = false;
   });
 
-  mainState.addEventListener("click", toggleMainState);
+  // mainState.addEventListener("click", toggleMainState);
 
   mainState.addEventListener("animationend", handleMainSateAnimationEnd);
 
@@ -329,14 +329,18 @@ function hideControls() {
 }
 
 function toggleMainState(e) {
-  e.stopPropagation();
-  if (!e.path?.includes(controls)) {
-    if (!isPlaying) {
-      play();
-    } else {
-      pause();
-    }
-  }
+  // e.stopPropagation();
+  // const element = e.target;
+  // console.log(element);
+  // if (element) element.parentElement.click();
+  // console.log(e.path);
+  // if (!e.path?.includes(controls)) {
+  //   if (!isPlaying) {
+  //     play();
+  //   } else {
+  //     pause();
+  //   }
+  // }
 }
 
 function handleVolume(e) {
