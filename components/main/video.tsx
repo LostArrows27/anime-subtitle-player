@@ -29,6 +29,7 @@ function Video() {
     showSubtitle,
     video,
     isSubtitle,
+    showPopup,
   } = useContext(AppContext);
 
   const getCurrentStatus = () => {

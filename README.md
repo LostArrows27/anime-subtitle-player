@@ -72,7 +72,7 @@
 
 #### 3. Video
 
-- [ ] Fix can't click dicitonaries => click video instead
+- [x] Fix can't click dicitonaries => click video instead
 - [ ] Add dowload screenshot with sub or not sub (using imageNext smth i forgot 😭)
 - [ ] [playerIO](https://plyr.io/) player
 - [ ] Support video link

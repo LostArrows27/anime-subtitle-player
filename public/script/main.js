@@ -129,7 +129,7 @@ function canPlayInit() {
     e.preventDefault();
   });
 
-  // videoContainer.addEventListener("click", toggleMainState);
+  videoContainer.addEventListener("click", toggleMainStateCondition);
   videoContainer.addEventListener("fullscreenchange", () => {
     videoContainer.classList.toggle("fullscreen", document.fullscreenElement);
   });
@@ -337,6 +337,34 @@ function toggleMainState(e) {
   // console.log(element);
   // if (element) element.parentElement.click();
   // console.log(e.path);
+  if (!e.path?.includes(controls)) {
+    if (!isPlaying) {
+      play();
+    } else {
+      pause();
+    }
+  }
+}
+
+function toggleMainStateCondition(e) {
+  console.log(e.clientX, e.clientY);
+  const popupdictionaries = document.querySelector("#translation-popup");
+  if (popupdictionaries) {
+    // see if e.clientX and e.clientY is in the popupdictionaries
+    if (
+      e.clientX > popupdictionaries.getBoundingClientRect().x &&
+      e.clientX <
+        popupdictionaries.getBoundingClientRect().x +
+          popupdictionaries.getBoundingClientRect().width &&
+      e.clientY > popupdictionaries.getBoundingClientRect().y &&
+      e.clientY <
+        popupdictionaries.getBoundingClientRect().y +
+          popupdictionaries.getBoundingClientRect().height
+    ) {
+      console.log("in popupdictionaries");
+      return;
+    }
+  }
   if (!e.path?.includes(controls)) {
     if (!isPlaying) {
       play();
