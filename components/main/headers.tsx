@@ -15,6 +15,7 @@ import { AiFillVideoCamera } from "react-icons/ai";
 import { PiGear } from "react-icons/pi";
 import SettingModal from "../setting-modal/modal";
 import { Subtitle } from "@/types/type";
+import DictionaryDrawer from "../dictionary-drawer/DicitonayDrawer";
 
 function Headers() {
   const {
@@ -160,18 +161,21 @@ function Headers() {
           onChange={handleChange}
         />
       </div>
-      <PiGear
-        className={`text-green-500 hover:text-green-700 active:text-green-700 ${
-          subPos === "under-video" && showSubtitle
-            ? "absolute top-1 right-1"
-            : ""
-        }`}
-        size="40px"
-        onClick={() => {
-          onOpen();
-          setOpenMenu(true);
-        }}
-      />
+      <div className="flex gap-x-4">
+        <DictionaryDrawer />
+        <PiGear
+          className={`text-green-500 hover:text-green-700 active:text-green-700 ${
+            subPos === "under-video" && showSubtitle
+              ? "absolute top-1 right-1"
+              : ""
+          }`}
+          size="40px"
+          onClick={() => {
+            onOpen();
+            setOpenMenu(true);
+          }}
+        />
+      </div>
       <SettingModal isOpen={isOpen} onClose={onClose} />
     </div>
   );

@@ -9,6 +9,7 @@ import { CurrentWordTraslation } from "@/types/type";
 import PopupBody from "./PopupBody";
 import FuriganaSentece from "../subtitle/furiganaText";
 import LoadingTranslation from "./LoadingTranslation";
+import { convertToAllNormalText } from "@/lib/convertToNormalText";
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
 type TranslationPopUpProps = {
@@ -25,7 +26,6 @@ function TranslationPopUp({
   const wordContent = data?.data?.content;
 
   const { popupRef } = useContext(AppContext);
-  console.log(wordContent);
 
   return (
     <div
@@ -68,10 +68,16 @@ function TranslationPopUp({
               </span>
               {" : "}
               {wordContent.infl_info.inflections.reduce(
-                (prev: string, curr: string) => {
+                (prev: string, curr: string, index: number) => {
                   if (wordContent.infl_info?.inflections.length === 1)
-                    return prev + curr + " form ";
-                  return prev + curr + "form, ";
+                    return prev + convertToAllNormalText(curr) + " form ";
+                  return (
+                    prev +
+                    convertToAllNormalText(curr) +
+                    (index === wordContent.infl_info!.inflections.length - 1
+                      ? " form "
+                      : " form, ")
+                  );
                 },
                 ""
               )}{" "}

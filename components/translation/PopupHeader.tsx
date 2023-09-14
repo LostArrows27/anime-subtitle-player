@@ -44,7 +44,6 @@ function PopupHeader({ data }: PopupHeaderProps) {
                       const audio = document.getElementById(
                         `tofugu-${data.audio.tofugu}`
                       ) as HTMLAudioElement;
-                      console.log(audio);
                       if (audio) audio.play();
                     }}
                     className={data.audio.tofugu ? "mb-2" : ""}
@@ -68,7 +67,6 @@ function PopupHeader({ data }: PopupHeaderProps) {
                       const audio = document.getElementById(
                         `kanjialive-${data.audio.kanjialive}`
                       ) as HTMLAudioElement;
-                      console.log(audio);
                       if (audio) audio.play();
                     }}
                   />

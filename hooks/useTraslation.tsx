@@ -6,7 +6,7 @@ import {
   WordTranslationReturnType,
   WordTraslationContent,
 } from "@/types/type";
-import { useState, useContext, useEffect, useMemo } from "react";
+import { useState, useContext, useEffect, useMemo, useCallback } from "react";
 import { AppContext } from "@/components/provides/providers";
 import TranslationPopUp from "@/components/translation/TraslationPopup";
 
@@ -35,6 +35,15 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
     setOriginalSentence(currentSubtitle.text || "");
   }, [currentSubtitle?.text, sentenceRef]);
 
+  useEffect(() => {
+    if (
+      sentenceRef.current &&
+      !sentenceRef.current.classList.contains("relative")
+    ) {
+      sentenceRef.current.classList.add("relative");
+    }
+  }, [sentenceRef]);
+
   const getSentenceBreakdown = async (index: number = 0) => {
     return (await fetch("/api/breakdown", {
       method: "POST",
@@ -56,17 +65,17 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
     return translationResult.content;
   };
 
-  const handleMouseMove = async () => {
+  const handleMouseMove = useCallback(async () => {
     if (!isCtrlPressed || sentence === originalSentence) return;
     setSentence(originalSentence!);
     const translationResult = await getWordPart();
     setBreakDownSentence(translationResult);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCtrlPressed, originalSentence, sentenceRef]);
 
   // parse Text to span element to scan able
   const parseText = (text: string) => {
     if (breakDownSentence.length === 0) return text;
-    console.log("parse text");
 
     return (
       <>

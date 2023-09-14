@@ -347,7 +347,6 @@ function toggleMainState(e) {
 }
 
 function toggleMainStateCondition(e) {
-  console.log(e.clientX, e.clientY);
   const popupdictionaries = document.querySelector("#translation-popup");
   if (popupdictionaries) {
     // see if e.clientX and e.clientY is in the popupdictionaries
@@ -361,7 +360,6 @@ function toggleMainStateCondition(e) {
         popupdictionaries.getBoundingClientRect().y +
           popupdictionaries.getBoundingClientRect().height
     ) {
-      console.log("in popupdictionaries");
       return;
     }
   }

@@ -41,7 +41,6 @@ function AutoSynSetting() {
         process.env.NEXT_PUBLIC_TRANSCRIBE_URL as string,
         formData
       );
-      console.log(id);
 
       const subtitleURL = `${process.env.NEXT_PUBLIC_SUBTITLE_URL}/${id}`;
 
@@ -55,7 +54,6 @@ function AutoSynSetting() {
       }
       const syncDiff =
         myArray[0].start! - subTitle!.current![0].data.start / 1000;
-      console.log(syncDiff);
       setSubtitleSyncDiff(syncDiff);
       setisSyncing(false);
       toast.closeAll();

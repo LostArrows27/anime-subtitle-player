@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useContext, useMemo } from "react";
+import { useCallback, useContext, useMemo, useRef } from "react";
 import { AppContext } from "../provides/providers";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { NodeCue } from "subtitle";
 import { convertFontName } from "@/lib/convertFontName";
 import { FontName } from "@/types/type";
+import useTranslation from "@/hooks/useTraslation";
 
 function UnderVideoSubtitle() {
   const {
@@ -62,6 +63,10 @@ function UnderVideoSubtitle() {
     });
   }, [subtitleSyncDiff]);
 
+  const sentenceRef = useRef(null);
+
+  const { parseText, handleMouseMove } = useTranslation(sentenceRef);
+
   return (
     <div
       className={`relative w-full h-[calc(100vh-522px)] bg-[rgb(25,25,25)] px-[calc((100vw-840px)/2)] flex justify-center items-cen`}
@@ -106,8 +111,10 @@ function UnderVideoSubtitle() {
             } text-center leading-[50px] ${
               isSyncingSubtitle ? "!text-[lime]" : "!text-white"
             }`}
+            ref={sentenceRef}
+            onMouseMove={handleMouseMove}
           >
-            {text}
+            {parseText(text!)}
           </span>
         )}
       </div>

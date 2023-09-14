@@ -75,7 +75,7 @@ function Video() {
 
   return (
     <div
-      className={`relative video-container !z-0 text-white overflow-x-visible overflow-y-clip bg-[rgb(25,25,25)] flex justify-center items-center ${
+      className={`relative video-container !z-0 text-white overflow-x-visible bg-[rgb(25,25,25)] flex justify-center items-center ${
         showBorder ? "border-green-500 border-solid border-2" : ""
       } ${
         subPos === "under-video" && showSubtitle
@@ -221,8 +221,6 @@ function UpdateDots() {
 
   // Function to update dots count and create the loop effect
   const updateDots = () => {
-    console.log("update dots");
-
     setDotsCount((prevCount) => (prevCount + 1) % 4); // Loop from 0 to 3
   };
   useEffect(() => {
