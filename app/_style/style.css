@@ -160,7 +160,7 @@ video {
   background: linear-gradient(to top, #000000b8 -100%, transparent);
   box-sizing: border-box;
   opacity: 0;
-  transform: translateY(17px);
+  transform: translateY(13px);
   visibility: hidden;
   z-index: 99;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);

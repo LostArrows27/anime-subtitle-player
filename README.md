@@ -54,6 +54,7 @@
 
 #### 1. Subtitle
 
+- [ ] Fix main state hide and show length error
 - [ ] Supporting `.ass` subtitle file (handle multiple language)
 - [ ] Auto translation (for no subtitle case)
 - [ ] Silence + Music OP and ED identicator
@@ -61,6 +62,7 @@
 
 #### 2. Dicitonaries + Translation
 
+- [ ] Input loading state + icon
 - [ ] Open side bar dictionary with 2 mode (use ChakraUI's drawer)
   - [ ] Vietnamese Dictionary (Mazii)
   - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name

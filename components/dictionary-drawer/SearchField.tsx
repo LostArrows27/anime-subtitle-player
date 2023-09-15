@@ -71,7 +71,7 @@ function SearchField({ myRef }: { myRef: any }) {
         }}
         ref={myRef}
         id="search-field"
-        placeholder="Please enter user name"
+        placeholder="アニメ, anime, ..."
       />
       <div
         className="relative"
