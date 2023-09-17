@@ -34,6 +34,10 @@
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/463ac839-f794-4b76-9364-e38df8d51504)
 
+- Japanese dictionary
+
+![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/80798efb-b27a-4050-8573-58b3b596028a)
+
 - Subtitle Position setting
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/b419c179-f719-4d81-bc09-a2f10285bf0f)
