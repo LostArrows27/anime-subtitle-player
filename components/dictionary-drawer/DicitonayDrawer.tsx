@@ -79,7 +79,7 @@ function DictionaryDrawer(props: any, ref: any) {
               setResult={setResult}
               isDrawerOpen={isOpen}
             />
-            <div className="mt-2 pl-1 max-h-[calc(100vh-144px)] overflow-y-scroll custom-scroll-bar-2 -mr-5">
+            <div className="mt-2 pl-1 max-h-[calc(100vh-144px)] max-w-[483px] overflow-x-hidden overflow-y-scroll custom-scroll-bar-2 -mr-5">
               {result.length > 0 &&
                 result.map((e, index) => {
                   return (
