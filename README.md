@@ -54,7 +54,6 @@
 
 #### 1. Subtitle
 
-- [ ] Fix main state hide and show length error
 - [ ] Supporting `.ass` subtitle file (handle multiple language)
 - [ ] Auto translation (for no subtitle case)
 - [ ] Silence + Music OP and ED identicator
@@ -63,16 +62,22 @@
 #### 2. Dicitonaries + Translation
 
 - [ ] Input loading state + icon
-- [ ] Open side bar dictionary with 2 mode (use ChakraUI's drawer)
-  - [ ] Vietnamese Dictionary (Mazii)
-  - [ ] English Dictionary (Jotoba + Jisho) with 4 mode: sentences, kanji, word, name
+- [x] Open side bar dictionary with 2 mode (use ChakraUI's drawer)
+  - [x] Vietnamese Dictionary word(Mazii)
+  - [ ] Vietnamese Dictionary kanji(Mazii)
+  - [ ] English Dictionary word(Mazii)
+  - [ ] English Dictionary kanji (Mazii)
+
+1. https://mazii.net/api/search (type = "word") => get word meaning
+
+2. https://mazii.net/api/search (type = "example") => get from comments
+
 - [ ] If not have definiton, ex: だから　さっき妖夢化した秋人君は => searching for "name" definition
 - [ ] [Immersion Kit API](https://docs.immersionkit.com/public%20api/search) for anime sentence example
 - [ ] Add card to Anki with exact audio time and image
 
 #### 3. Video
 
-- [x] Fix can't click dicitonaries => click video instead
 - [ ] Add dowload screenshot with sub or not sub (using imageNext smth i forgot 😭)
 - [ ] [playerIO](https://plyr.io/) player
 - [ ] Support video link
@@ -146,3 +151,5 @@
 - [x] Moving the translation feature to use everywhere on the screen too;
 - [x] Fix word form error (Kyoukai no kanata - eps 10 - 9:57)
 - [x] Multiple key click toggle translation
+- [x] Fix main state hide and show length error
+- [x] Fix can't click dicitonaries => click video instead

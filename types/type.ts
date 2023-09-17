@@ -1,3 +1,4 @@
+import { DictionaryMethod } from "@/components/dictionary-drawer/DicitonayDrawer";
 import { Dispatch, SetStateAction, RefObject, MutableRefObject } from "react";
 import { NodeCue } from "subtitle";
 
@@ -57,6 +58,7 @@ type AppProviderProps = {
   popupRef: RefObject<HTMLDivElement> | null;
   showPopup: boolean;
   setShowPopup: Dispatch<SetStateAction<boolean>>;
+  dictionaryRef: RefObject<DictionaryMethod> | null;
 };
 
 type FontOption = {
@@ -266,7 +268,110 @@ type WordTranslationReturnType = {
 
 type WordTraslationContent = Pick<WordTranslationReturnType, "content">;
 
-// Jotoba API /api/sentence return type
+// Mazii Word meaning return type
+
+type WordExample = {
+  /** sentence in Japanese */
+  content: string;
+  /** sentence translate */
+  mean: string;
+  /** reading of sentence (furigana) */
+  transcription: string;
+};
+
+type WordMeaning = {
+  mean: string;
+  examples: WordExample[] | null;
+};
+
+type MaziiWordTranslate = {
+  /** original word */
+  word: string;
+  /** opposite word of current word */
+  opposite_word: string[] | null;
+  /** short meaning, include all meaning of the current word */
+  short_mean: string;
+  /** reading of word */
+  phonetic: string;
+  /** word meaning */
+  means: WordMeaning[];
+  /** wordID to pass in another params */
+  mobileId: number;
+};
+
+type MaziiWordMeaningReturnType = {
+  status: number;
+  found: boolean;
+  data: MaziiWordTranslate[];
+};
+
+// Mazii word example return type
+
+type MaziiWordExampleReturnType = {
+  status: number;
+  results: WordExample[];
+};
+
+// Mazii word Kanji return type
+
+type OverallExample = {
+  /** meaning in Vietnamese or English */
+  m: string;
+  /** word original */
+  w: "自ら";
+  /** word kanji reading. Example: 残高 => TÀN CAO */
+  h: "TỰ";
+  /** word furigana */
+  p: " みずから";
+};
+
+type KunyomiExample = {
+  /** the key is directly the kunyomi example */
+  [kunyomiWord: string]: OverallExample[];
+};
+
+type OnyomiExample = {
+  /** the key is directly the onyomi example */
+  [onyomiWord: string]: OverallExample[];
+};
+
+type KanjiMeaning = {
+  /** original kanji */
+  kanji: string;
+  /** kanji meaning in short way */
+  mean: string;
+  /** kunyomi */
+  kun: string;
+  /** onyomi */
+  on: string;
+  /** fully meaning of kanji */
+  detail: string;
+  /** example of kunyomi reading */
+  example_kun: KunyomiExample[];
+  /** example of onyomi reading */
+  example_on: OnyomiExample[];
+  /** kanji overall example, include on and kun */
+  example: OverallExample[];
+  /** wordID to pass in another params */
+  mobileId: number;
+};
+
+type MaziiWordKanjiReturnType = {
+  status: number;
+  results: KanjiMeaning[];
+};
+
+// Mazii Kanji example from comments
+
+type KanjiExampleFromCommentsReturnType = {
+  status: number;
+  result: { mean: string }[];
+};
+
+type WordExampleFromCommentsReturnType = {
+  status: number;
+  result: { mean: string }[];
+};
 
 export type {
   AppProviderProps,
@@ -291,4 +396,14 @@ export type {
   WordTranslationReturnType,
   FontKey,
   WordTraslationContent,
+  WordExample,
+  WordMeaning,
+  MaziiWordTranslate,
+  MaziiWordMeaningReturnType,
+  MaziiWordExampleReturnType,
+  MaziiWordKanjiReturnType,
+  KanjiMeaning,
+  KanjiExampleFromCommentsReturnType,
+  WordExampleFromCommentsReturnType,
+  OverallExample,
 };

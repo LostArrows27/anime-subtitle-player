@@ -47,6 +47,7 @@ const AppContext = createContext<AppProviderProps>({
   popupRef: null,
   showPopup: false,
   setShowPopup: () => {},
+  dictionaryRef: null,
 });
 
 const Providers = ({

@@ -1,5 +1,6 @@
 "use client";
 
+import { DictionaryMethod } from "@/components/dictionary-drawer/DicitonayDrawer";
 import { Headers } from "@/components/main/headers";
 import { Video } from "@/components/main/video";
 import { Providers } from "@/components/provides/providers";
@@ -42,6 +43,7 @@ function Page() {
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
   const popupRef = useRef<HTMLDivElement>(null);
+  const dictionaryRef = useRef<DictionaryMethod>(null);
 
   const setSubtitle = (data: NodeCue[]): void => {
     subTitle.current = data;
@@ -88,6 +90,7 @@ function Page() {
     popupRef,
     showPopup,
     setShowPopup,
+    dictionaryRef,
   };
 
   const handlepPrevSub = useCallback(() => {
@@ -159,6 +162,19 @@ function Page() {
         case "Control":
           setIsCtrlPressed(true);
           break;
+        case "j":
+          if (dictionaryRef.current?.isOpen) {
+            dictionaryRef.current?.closeDictionary();
+            return;
+          }
+          // if the video is in fullscreen state, exit fullscreen
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          }
+          dictionaryRef.current?.openDictionary();
+
+          break;
+
         default:
       }
     },

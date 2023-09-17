@@ -51,6 +51,7 @@ function OtherSettingTab() {
         <KeyboardGuild keyboard="w" guild="Subtitle ealier 1s" />
         <KeyboardGuild keyboard="s" guild="Subtitle later 1s" />
         <KeyboardGuild keyboard="Ctrl" guild="Hover translate" />
+        <KeyboardGuild keyboard="j" guild="Open dictionaries" />
       </section>
     </div>
   );

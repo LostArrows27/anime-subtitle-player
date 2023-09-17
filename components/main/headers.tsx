@@ -25,6 +25,7 @@ function Headers() {
     showSubtitle,
     setOpenMenu,
     setVideo,
+    dictionaryRef,
   } = useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -161,8 +162,8 @@ function Headers() {
           onChange={handleChange}
         />
       </div>
-      <div className="flex gap-x-4">
-        <DictionaryDrawer />
+      <div className="gap-x-4 flex">
+        <DictionaryDrawer ref={dictionaryRef} />
         <PiGear
           className={`text-green-500 hover:text-green-700 active:text-green-700 ${
             subPos === "under-video" && showSubtitle

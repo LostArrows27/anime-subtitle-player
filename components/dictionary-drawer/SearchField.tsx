@@ -1,9 +1,14 @@
 "use client";
 
 import { useDebounce } from "@/hooks/useDebounce";
+import {
+  MaziiWordTranslate,
+  KanjiMeaning,
+  MaziiWordMeaningReturnType,
+} from "@/types/type";
 import { Input, Menu } from "@chakra-ui/react";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 
 type WordSuggestType = {
@@ -12,8 +17,24 @@ type WordSuggestType = {
   meaning: "string";
 };
 
-function SearchField({ myRef }: { myRef: any }) {
-  const [searchWord, setCurrentWord] = useState<string>("");
+type SearchFieldProps = {
+  myRef: any;
+  lang: "javi" | "jaen";
+  result: MaziiWordTranslate[] | KanjiMeaning[];
+  type: "kanji" | "word";
+  setResult: Dispatch<SetStateAction<MaziiWordTranslate[] | KanjiMeaning[]>>;
+  isDrawerOpen: boolean;
+};
+
+function SearchField({
+  myRef,
+  lang,
+  result,
+  type,
+  setResult,
+  isDrawerOpen,
+}: SearchFieldProps) {
+  const [searchWord, setSearchWord] = useState<string>("");
   const [suggestWordList, setSuggestWordList] = useState<WordSuggestType[]>([]);
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
@@ -21,18 +42,47 @@ function SearchField({ myRef }: { myRef: any }) {
 
   const suggestMenuRef = useRef(null);
 
+  const fetchWordMeaning = async () => {
+    const { data: wordData } = (await axios.post(
+      "https://mazii.net/api/search",
+      {
+        dict: lang,
+        type: "word",
+        query: searchWord,
+        limit: "20",
+        page: "1",
+      }
+    )) as { data: MaziiWordMeaningReturnType };
+    if (wordData.status === 200) {
+      console.log(wordData.data);
+      setResult(wordData.data);
+    }
+  };
+
+  const fetchKanjiMeaning = async () => {};
+
   useOnClickOutside(suggestMenuRef, () => {
     setIsFocus(false);
   });
 
   useEffect(() => {
+    if (isDrawerOpen && searchWord === "") {
+      setResult([]);
+      return;
+    }
+  }, [isDrawerOpen]);
+
+  useEffect(() => {
+    if (searchWord === "j") {
+      setSearchWord("");
+    }
+  }, [searchWord]);
+
+  useEffect(() => {
     async function fetchWordSuggestion() {
-      const formData = new FormData();
-      formData.append("keyword", debouncedValue);
-      formData.append("dict", "javi");
       const res = await axios.post("https://mazii.net/api/suggest", {
         keyword: debouncedValue,
-        dict: "javi",
+        dict: lang,
       });
       if (res.data.status === 200) {
         const newArray: WordSuggestType[] = res.data.data.map((e: string) => {
@@ -64,7 +114,7 @@ function SearchField({ myRef }: { myRef: any }) {
       <Input
         value={searchWord}
         onChange={(e) => {
-          setCurrentWord(e.target.value);
+          setSearchWord(e.target.value);
         }}
         onFocus={() => {
           setIsFocus(true);
@@ -86,14 +136,19 @@ function SearchField({ myRef }: { myRef: any }) {
           {suggestWordList.map((word, index) => {
             return (
               <div
-                className="cursor-pointer py-3 px-4 border-b border-solid border-b-gray-500"
+                className="border-b-gray-500 px-4 py-3 border-b border-solid cursor-pointer"
                 key={index}
                 onClick={() => {
-                  setCurrentWord(word.kanji);
+                  setSearchWord(word.kanji);
                   setIsFocus(false);
+                  if (type === "word") {
+                    fetchWordMeaning();
+                  } else {
+                    fetchKanjiMeaning();
+                  }
                 }}
               >
-                <div className="flex gap-x-3">
+                <div className="gap-x-3 flex">
                   <span className="font-bold text-green-500">{word.kanji}</span>
                   <span className="text-red-400">{word.reading}</span>
                 </div>
