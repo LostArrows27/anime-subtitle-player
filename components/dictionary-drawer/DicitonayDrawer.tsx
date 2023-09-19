@@ -78,6 +78,8 @@ function DictionaryDrawer(props: any, ref: any) {
               myRef={firstField}
               setResult={setResult}
               isDrawerOpen={isOpen}
+              setLang={setLang}
+              setSearchType={setSearchType}
             />
             <div className="mt-2 pl-1 max-h-[calc(100vh-144px)] max-w-[483px] overflow-x-hidden overflow-y-scroll custom-scroll-bar-2 -mr-5">
               {result.length > 0 &&

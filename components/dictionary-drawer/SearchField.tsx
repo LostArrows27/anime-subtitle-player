@@ -6,9 +6,18 @@ import {
   KanjiMeaning,
   MaziiWordMeaningReturnType,
 } from "@/types/type";
-import { Input, Menu } from "@chakra-ui/react";
+import {
+  Button,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import axios from "axios";
+import Image from "next/image";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import { useOnClickOutside } from "usehooks-ts";
 
 type WordSuggestType = {
@@ -24,6 +33,8 @@ type SearchFieldProps = {
   type: "kanji" | "word";
   setResult: Dispatch<SetStateAction<MaziiWordTranslate[] | KanjiMeaning[]>>;
   isDrawerOpen: boolean;
+  setSearchType: Dispatch<SetStateAction<"kanji" | "word">>;
+  setLang: Dispatch<SetStateAction<"javi" | "jaen">>;
 };
 
 function SearchField({
@@ -33,6 +44,8 @@ function SearchField({
   type,
   setResult,
   isDrawerOpen,
+  setLang,
+  setSearchType,
 }: SearchFieldProps) {
   const [searchWord, setSearchWord] = useState<string>("");
   const [suggestWordList, setSuggestWordList] = useState<WordSuggestType[]>([]);
@@ -111,20 +124,156 @@ function SearchField({
 
   return (
     <Menu placement="bottom-start" isOpen={true}>
-      <Input
-        value={searchWord}
-        onChange={(e) => {
-          setSearchWord(e.target.value);
-        }}
-        onFocus={() => {
-          setIsFocus(true);
-        }}
-        ref={myRef}
-        id="search-field"
-        placeholder="アニメ, anime, ..."
-      />
+      <div className="relative">
+        <Input
+          value={searchWord}
+          onChange={(e) => {
+            setSearchWord(e.target.value);
+          }}
+          onFocus={() => {
+            setIsFocus(true);
+          }}
+          pr={"150px"}
+          ref={myRef}
+          id="search-field"
+          placeholder="アニメ, anime, ..."
+        />
+        <Menu>
+          <MenuButton
+            className="top-0 right-0 flex"
+            height={"40px"}
+            position={"absolute"}
+            as={Button}
+            backgroundColor={"transparent !important"}
+            textColor={"white !important"}
+            borderLeft={"1px solid #4A5568"}
+            borderTopLeftRadius={"0px"}
+            borderBottomLeftRadius={"0px"}
+            _hover={{
+              backgroundColor: "transparent",
+              textColor: "white",
+            }}
+            rightIcon={<FaChevronDown />}
+          >
+            <div className="flex items-center w-full h-full">
+              <span className="mr-2">{type}</span>
+              <Image
+                width={32}
+                height={32}
+                className="w-6 h-6 mx-1"
+                alt="lang"
+                src={lang === "jaen" ? "/image/en.png" : "/image/vi.png"}
+              />
+            </div>
+          </MenuButton>
+          <MenuList
+            minW="0"
+            w={"130px"}
+            backgroundColor={"#4b5563 !important"}
+            py={"0"}
+            overflow={"hidden"}
+          >
+            <MenuItem
+              justifyContent={"space-between"}
+              maxWidth={"130px !important"}
+              backgroundColor={"#4b5563 !important"}
+              height={"48px"}
+              alignItems={"center"}
+              _hover={{
+                backgroundColor: "#d1d5db !important",
+                textColor: "black  !important",
+              }}
+              onClick={(e) => {
+                setLang("javi");
+                setSearchType("word");
+              }}
+            >
+              <span className="ml-2 mr-3">word</span>
+              <Image
+                width={32}
+                height={32}
+                className="w-7 h-7 mr-4"
+                alt="lang"
+                src={"/image/vi.png"}
+              />
+            </MenuItem>
+            <MenuItem
+              justifyContent={"space-between"}
+              maxWidth={"130px !important"}
+              backgroundColor={"#4b5563 !important"}
+              height={"48px"}
+              _hover={{
+                backgroundColor: "#d1d5db !important",
+                textColor: "black  !important",
+              }}
+              onClick={(e) => {
+                setLang("jaen");
+                setSearchType("word");
+              }}
+              alignItems={"center"}
+            >
+              <span className="ml-2 mr-3">word</span>
+              <Image
+                width={32}
+                height={32}
+                className="w-7 h-7 mr-4"
+                alt="lang"
+                src={"/image/en.png"}
+              />
+            </MenuItem>
+            <MenuItem
+              justifyContent={"space-between"}
+              maxWidth={"130px !important"}
+              backgroundColor={"#4b5563 !important"}
+              height={"48px"}
+              alignItems={"center"}
+              _hover={{
+                backgroundColor: "#d1d5db !important",
+                textColor: "black  !important",
+              }}
+              onClick={(e) => {
+                setLang("javi");
+                setSearchType("kanji");
+              }}
+            >
+              <span className="ml-2 mr-3">kanji</span>
+              <Image
+                width={32}
+                height={32}
+                className="w-7 h-7 mr-4"
+                alt="lang"
+                src={"/image/vi.png"}
+              />
+            </MenuItem>
+            <MenuItem
+              justifyContent={"space-between"}
+              maxWidth={"130px !important"}
+              backgroundColor={"#4b5563 !important"}
+              height={"48px"}
+              _hover={{
+                backgroundColor: "#d1d5db !important",
+                textColor: "black  !important",
+              }}
+              onClick={(e) => {
+                setLang("jaen");
+                setSearchType("kanji");
+              }}
+              alignItems={"center"}
+            >
+              <span className="ml-2 mr-3">kanji</span>
+              <Image
+                width={32}
+                height={32}
+                className="w-7 h-7 mr-4"
+                alt="lang"
+                src={"/image/en.png"}
+              />
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </div>
       <div
-        className="relative"
+        className="absolute top-[132px] w-[464px]"
         style={{
           display: isFocus ? "block" : "none",
         }}
