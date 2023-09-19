@@ -21,7 +21,6 @@ type WordResultDisplayProps = {
 function WordResultDisplay({ data, lang, type }: WordResultDisplayProps) {
   // Word display
 
-  const [show, setShow] = useState<boolean>(false);
   const [example, setExample] = useState<WordExample[]>([]);
   const [comment, setComment] = useState<{ mean: string }[]>([]);
 
@@ -32,7 +31,7 @@ function WordResultDisplay({ data, lang, type }: WordResultDisplayProps) {
           "https://mazii.net/api/search",
           {
             type: "example",
-            dict: "javi",
+            dict: lang,
             query: (data as MaziiWordTranslate).word,
           }
         )) as { data: MaziiWordExampleReturnType };
