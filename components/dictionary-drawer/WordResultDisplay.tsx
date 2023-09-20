@@ -25,6 +25,7 @@ function WordResultDisplay({ data, searchRef }: WordResultDisplayProps) {
   const [example, setExample] = useState<WordExample[]>([]);
   const [comment, setComment] = useState<{ mean: string }[]>([]);
 
+  // search lang
   let { lang, type } = searchRef.current
     ? searchRef.current
     : { lang: "javi", type: "word" };
