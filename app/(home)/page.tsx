@@ -132,9 +132,12 @@ function Page() {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
+      if (document.activeElement!.id === "search-field" && event.key !== "j")
+        return;
       switch (event.key) {
         case "c":
           // toggle subtitle
+          if (document.activeElement!.id === "search-field") break;
           setShowSubtitle((prev) => !prev);
           break;
         case "a":
