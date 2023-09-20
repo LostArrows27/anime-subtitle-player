@@ -25,7 +25,15 @@ function WordResultDisplay({ data, searchRef }: WordResultDisplayProps) {
   const [example, setExample] = useState<WordExample[]>([]);
   const [comment, setComment] = useState<{ mean: string }[]>([]);
 
-  const { lang, type } = searchRef.current;
+  let { lang, type } = searchRef.current;
+
+  if (lang === undefined) {
+    lang = "javi";
+  }
+
+  if (type === undefined) {
+    type = "word";
+  }
 
   useEffect(() => {
     const getExample = async (type: "kanji" | "word") => {
