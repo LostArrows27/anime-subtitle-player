@@ -61,7 +61,7 @@
 - [ ] Supporting `.ass` subtitle file (handle multiple language)
 - [ ] Auto translation (for no subtitle case)
 - [ ] Silence + Music OP and ED identicator
-- [ ] Font optimization using [next/font/google](https://www.youtube.com/watch?v=L8_98i_bMMA)
+- [ ] Font optimization using [next/font/google](https://www.youtube.com/watch?v=L8_98i_bMMA), [google font with tailwind](https://www.youtube.com/watch?v=VVRskhA2rug)
 
 #### 2. Dicitonaries + Translation
 

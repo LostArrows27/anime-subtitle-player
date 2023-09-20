@@ -29,12 +29,17 @@ export type DictionaryMethod = {
 
 type Props = {};
 
+export type SearchFieldMethod = {
+  lang: "javi" | "jaen";
+  type: "kanji" | "word";
+};
+
 function DictionaryDrawer(props: any, ref: any) {
-  const [lang, setLang] = useState<"javi" | "jaen">("javi");
-  const [searchType, setSearchType] = useState<"kanji" | "word">("word");
   const [result, setResult] = useState<MaziiWordTranslate[] | KanjiMeaning[]>(
     []
   );
+
+  const searchFieldRef = useRef<SearchFieldMethod>(null);
 
   useImperativeHandle(ref, () => {
     return {
@@ -73,22 +78,18 @@ function DictionaryDrawer(props: any, ref: any) {
             </div>
             <SearchField
               result={result}
-              lang={lang}
-              type={searchType}
               myRef={firstField}
               setResult={setResult}
               isDrawerOpen={isOpen}
-              setLang={setLang}
-              setSearchType={setSearchType}
+              ref={searchFieldRef}
             />
             <div className="mt-2 pl-1 max-h-[calc(100vh-144px)] max-w-[483px] overflow-x-hidden overflow-y-scroll custom-scroll-bar-2 -mr-5">
               {result.length > 0 &&
                 result.map((e, index) => {
                   return (
                     <WordResultDisplay
+                      searchRef={searchFieldRef}
                       data={e}
-                      lang={lang}
-                      type={searchType}
                       key={index}
                     />
                   );
