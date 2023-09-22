@@ -1,5 +1,6 @@
 "use client";
 
+import unicodeEncoding from "@/lib/unicodeEncoding";
 import {
   MaziiWordTranslate,
   KanjiMeaning,
@@ -12,7 +13,9 @@ import {
 import { Tooltip } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
+import xml2js from "xml2js";
 import { useEffect, useState } from "react";
+import KanjiSVG from "./KanjiSVG";
 
 type WordResultDisplayProps = {
   data: MaziiWordTranslate | KanjiMeaning;
@@ -24,6 +27,7 @@ function WordResultDisplay({ data, searchRef }: WordResultDisplayProps) {
 
   const [example, setExample] = useState<WordExample[]>([]);
   const [comment, setComment] = useState<{ mean: string }[]>([]);
+  const [svgData, setSvgData] = useState<any>(null);
 
   // search lang
   let { lang, type } = searchRef.current
@@ -78,7 +82,30 @@ function WordResultDisplay({ data, searchRef }: WordResultDisplayProps) {
       }
     };
 
+    const getKanjiArt = async () => {
+      try {
+        const kanjiArtData = await fetch(
+          `https://data.mazii.net/kanji/0${unicodeEncoding(
+            (data as KanjiMeaning).kanji
+          )}.svg`
+        ).then((res) => res.text());
+        const parser = new xml2js.Parser({ explicitArray: false });
+        parser.parseString(kanjiArtData, (err: Error | null, result: any) => {
+          if (!err) {
+            setSvgData(kanjiArtData.split("]>")[1]);
+          } else {
+            console.error("Error parsing XML:", err);
+          }
+        });
+      } catch {
+        console.log("Error fetching art");
+      }
+    };
+
     const getCommentAndExample = async (type: "kanji" | "word") => {
+      if (type === "kanji") {
+        await Promise.all([getComment(type), getExample(type), getKanjiArt()]);
+      }
       await Promise.all([getComment(type), getExample(type)]);
     };
 
@@ -175,7 +202,9 @@ function WordResultDisplay({ data, searchRef }: WordResultDisplayProps) {
     );
   }
 
-  // Kanji display
+  if (type === "kanji") {
+    return <KanjiSVG svgData={svgData} />;
+  }
 
   return <></>;
 }
