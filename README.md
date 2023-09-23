@@ -65,8 +65,6 @@
 
 #### 2. Dicitonaries + Translation
 
-- [ ] jaen kanji search mode
-- [ ] javi kanji searhc mode
 - [ ] Input loading state + icon
 - [ ] If not have definiton, ex: だから　さっき妖夢化した秋人君は => searching for "name" definition
 - [ ] [Immersion Kit API](https://docs.immersionkit.com/public%20api/search) for anime sentence example
@@ -152,3 +150,5 @@
 - [x] Open side bar dictionary with 2 mode (use ChakraUI's drawer)
   - [x] Vietnamese Dictionary word(Mazii)
   - [x] English Dictionary word(Mazii)
+- [x] jaen kanji search mode
+- [x] javi kanji searhc mode

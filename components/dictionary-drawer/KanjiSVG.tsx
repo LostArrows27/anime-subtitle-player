@@ -1,15 +1,15 @@
-function KanjiSVG({ svgData }: { svgData: any }) {
+import { cn } from "@/lib/utils";
+
+function KanjiSVG({ svgData, className }: { svgData: any; className: string }) {
   if (!svgData) {
     return null;
   }
 
-  console.log(svgData);
-
   return (
-    <div>
-      <h1>Kanji Character</h1>
-      <div dangerouslySetInnerHTML={{ __html: svgData }}></div>
-    </div>
+    <div
+      className={cn("kanji-text flex justify-center", className)}
+      dangerouslySetInnerHTML={{ __html: svgData }}
+    ></div>
   );
 }
 

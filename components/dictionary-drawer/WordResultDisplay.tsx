@@ -8,7 +8,6 @@ import {
   WordExampleFromCommentsReturnType,
   WordExample,
   MaziiWordExampleReturnType,
-  KanjiExampleFromCommentsReturnType,
 } from "@/types/type";
 import { Tooltip } from "@chakra-ui/react";
 import axios from "axios";
@@ -16,6 +15,10 @@ import React from "react";
 import xml2js from "xml2js";
 import { useEffect, useState } from "react";
 import KanjiSVG from "./KanjiSVG";
+import EnKanji from "./EnKanji";
+import ViKanji from "./ViKanji";
+import ViExplainDetail from "./ViExplainDetail";
+import EnExplainDetail from "./EnExplainDetail";
 
 type WordResultDisplayProps = {
   data: MaziiWordTranslate | KanjiMeaning;
@@ -203,7 +206,25 @@ function WordResultDisplay({ data, searchRef }: WordResultDisplayProps) {
   }
 
   if (type === "kanji") {
-    return <KanjiSVG svgData={svgData} />;
+    return (
+      <div className="py-4 border-b-gray-700 border-b-[1px] border-solid">
+        <div className="flex mb-3">
+          <div className="flex-1">
+            {lang === "javi" ? (
+              <ViKanji data={data as KanjiMeaning} />
+            ) : (
+              <EnKanji data={data as KanjiMeaning} />
+            )}
+          </div>
+          <KanjiSVG className="w-[40%]" svgData={svgData} />
+        </div>
+        {lang === "javi" ? (
+          <ViExplainDetail data={data as KanjiMeaning} />
+        ) : (
+          <EnExplainDetail data={data as KanjiMeaning} />
+        )}
+      </div>
+    );
   }
 
   return <></>;

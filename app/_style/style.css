@@ -15,6 +15,14 @@
   color-scheme: dark;
 }
 
+.kanji-text > svg > g:first-child {
+  stroke: #22C35E !important;
+}
+
+.kanji-text > svg > g:nth-child(2) {
+  font-size: 9px;
+}
+
 .pitch-low+.pitch-high {
   border-left: 1px solid #8b8b8b;
 }

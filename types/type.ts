@@ -354,6 +354,10 @@ type KanjiMeaning = {
   example: OverallExample[];
   /** wordID to pass in another params */
   mobileId: number;
+  /** kanji stroke count */
+  stroke_count: number;
+  /** h: Kanji, w: writing */
+  compDetail: { h: string; w: string }[];
 };
 
 type MaziiWordKanjiReturnType = {
