@@ -104,7 +104,7 @@ function Page() {
     if (!prevSubIndex?.data) return;
 
     videoRef!.current!.currentTime =
-      prevSubIndex.data.start / 1000 + subtitleSyncDiff;
+      prevSubIndex.data.start / 1000 + subtitleSyncDiff + 0.0001;
     setCurrentSubtitle({
       start: prevSubIndex.data.start,
       end: prevSubIndex.data.end,
@@ -121,8 +121,9 @@ function Page() {
       }
     );
     if (nextSubIndex === undefined) return;
+
     videoRef!.current!.currentTime =
-      nextSubIndex.data.start / 1000 + subtitleSyncDiff;
+      nextSubIndex.data.start / 1000 + subtitleSyncDiff + 0.0001;
     setCurrentSubtitle({
       start: nextSubIndex.data.start,
       end: nextSubIndex.data.end,

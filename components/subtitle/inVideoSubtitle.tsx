@@ -91,9 +91,12 @@ function InVideoSubtitle() {
           <div style={subTitleAreaStyle}>
             <div
               ref={textRef}
-              onMouseEnter={handleMouseEnter}
+              onMouseEnter={async () => {
+                handleMouseEnter();
+                await handleMouseMove();
+              }}
               onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
+              // onMouseMove={handleMouseMove}
               style={{
                 ...subTitleTextStyle,
                 fontWeight: currentFont.fontWeight,

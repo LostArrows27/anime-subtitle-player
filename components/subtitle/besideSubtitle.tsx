@@ -114,7 +114,7 @@ function SubTitleElement({
       ref={isCurrentSubtitle ? currentSubRef : null}
       onClick={() => {
         videoRef!.current!.currentTime =
-          sub.data.start / 1000 + subtitleSyncDiff;
+          sub.data.start / 1000 + subtitleSyncDiff + 0.0001;
         setCurrentSubtitle({
           text: sub.data.text,
           start: sub.data.start,

@@ -29,6 +29,13 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   const { isCtrlPressed, currentSubtitle, setShowPopup, showPopup } =
     useContext(AppContext);
 
+  const [fetchTime, setFetchTime] = useState<number>(0);
+
+  useEffect(() => {
+    setFetchTime(0);
+    console.log("fetch time reset");
+  }, [currentSubtitle.text]);
+
   useEffect(() => {
     setBreakDownSentence([]);
     setWordTranslation([]);
@@ -45,7 +52,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   }, [sentenceRef]);
 
   const getSentenceBreakdown = async (index: number = 0) => {
-    return (await fetch("/api/breakdown", {
+    const result = (await fetch("/api/breakdown", {
       method: "POST",
       body: JSON.stringify({
         sentence: originalSentence,
@@ -53,9 +60,12 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
       }),
       cache: "force-cache",
     }).then((res) => res.json())) as WordTranslationReturnType;
+    return result;
   };
 
   const getWordPart = async (index: number = 0) => {
+    // console.log("get word part");
+    if (fetchTime > 0) return;
     const translationResult = await getSentenceBreakdown(index);
     return translationResult.content.sentence.parts.slice(0, -3);
   };
@@ -66,10 +76,15 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   };
 
   const handleMouseMove = useCallback(async () => {
+    console.log("handle mouse move");
+
     if (!isCtrlPressed || sentence === originalSentence) return;
+    if (fetchTime > 0) return;
     setSentence(originalSentence!);
+    setFetchTime(1);
+    console.log("fetch time: ", fetchTime);
     const translationResult = await getWordPart();
-    setBreakDownSentence(translationResult);
+    setBreakDownSentence(translationResult!);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCtrlPressed, originalSentence, sentenceRef]);
 
@@ -150,7 +165,6 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
                 });
                 return;
               }}
-              // className="text-green-500"
               key={key}
             >
               {value.inflected}

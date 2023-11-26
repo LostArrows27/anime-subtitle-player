@@ -49,10 +49,7 @@ function Video() {
       videoRef!.current.ontimeupdate = (e) => {
         const curSubIndex: number = subTitle!.current.findIndex(
           (value: NodeCue) => {
-            let currentTime = parseFloat(
-              videoRef!.current?.currentTime.toFixed(3) as string
-            );
-
+            let currentTime = videoRef!.current?.currentTime as number;
             return (
               currentTime >= value.data.start / 1000 + subtitleSyncDiff &&
               currentTime <= value.data.end / 1000 + subtitleSyncDiff
@@ -64,6 +61,7 @@ function Video() {
           setCurrentSubtitle({ text: "", start: -100, end: -100 });
         }
         let currentSubFound = subTitle!.current[curSubIndex];
+
         setCurrentSubtitle({
           text: currentSubFound?.data.text,
           start: currentSubFound?.data.start,
