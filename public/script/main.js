@@ -82,6 +82,7 @@ function canPlayInit() {
   muted = video.muted;
   if (video.paused) {
     controls.classList.add("show-controls");
+    document.body.style.cursor = "default";
     mainState.classList.add("show-state");
     handleMainStateIcon(playIcon(40, 40));
   }
@@ -136,17 +137,21 @@ function canPlayInit() {
   videoContainer.addEventListener("mouseleave", hideControls);
   videoContainer.addEventListener("mousemove", (e) => {
     controls.classList.add("show-controls");
-    hideControls();
+    document.body.style.cursor = "default";
+
+    hideControls(e);
   });
   videoContainer.addEventListener("touchstart", (e) => {
     controls.classList.add("show-controls");
+    document.body.style.cursor = "default";
+
     touchClientX = e.changedTouches[0].clientX;
     const currentTimeRect = currentTime.getBoundingClientRect();
     touchPastDurationWidth = currentTimeRect.width;
     touchStartTime = e.timeStamp;
   });
   videoContainer.addEventListener("touchend", () => {
-    hideControls();
+    hideControls(e);
     touchClientX = 0;
     touchPastDurationWidth = 0;
     touchStartTime = 0;
@@ -155,6 +160,8 @@ function canPlayInit() {
 
   controls.addEventListener("mouseenter", (e) => {
     controls.classList.add("show-controls");
+    document.body.style.cursor = "default";
+
     isCursorOnControls = true;
   });
 
@@ -258,6 +265,8 @@ function pause() {
   isPlaying = false;
   playPause.innerHTML = playIcon(17, 17);
   controls.classList.add("show-controls");
+  document.body.style.cursor = "default";
+
   mainState.classList.add("show-state");
   handleMainStateIcon(playIcon(40, 40));
   if (video.ended) {
@@ -285,7 +294,7 @@ function navigate(e) {
 }
 
 function handleTouchNavigate(e) {
-  hideControls();
+  hideControls(e);
   if (e.timeStamp - touchStartTime > 500) {
     const durationRect = duration.getBoundingClientRect();
     const clientX = e.changedTouches[0].clientX;
@@ -318,13 +327,23 @@ function toggleMuteUnmute(e) {
   }
 }
 
-function hideControls() {
+function hideControls(e) {
   if (timeout) {
     clearTimeout(timeout);
   }
+
   timeout = setTimeout(() => {
     if (isPlaying && !isCursorOnControls) {
       controls.classList.remove("show-controls");
+      if (
+        e &&
+        e.clientX >= videoContainer.getBoundingClientRect().left &&
+        e.clientX <= videoContainer.getBoundingClientRect().right &&
+        e.clientY >= videoContainer.getBoundingClientRect().top &&
+        e.clientY <= videoContainer.getBoundingClientRect().bottom
+      ) {
+        document.body.style.cursor = "none";
+      }
       settingMenu.classList.remove("show-setting-menu");
     }
   }, 1000);

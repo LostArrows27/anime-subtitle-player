@@ -538,6 +538,11 @@ video {
   display: flex;
 }
 
+
+.video-container .controls:not(.show-controls) {
+  cursor: none !important;
+}
+
 @keyframes playPause {
   50% {
     opacity: 1;
