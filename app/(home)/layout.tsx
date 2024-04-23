@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import Script from "next/script";
 import { LayoutProps } from "@/types/type";
 import { ColorModeScript } from "@chakra-ui/react";
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,7 +27,10 @@ export default function RootLayout(props: LayoutProps) {
           "relative m-0 p-0 flex flex-col items-center h-screen !bg-[#131418]"
         }
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Analytics />
+        </Providers>
         <Script
           type="module"
           defer
