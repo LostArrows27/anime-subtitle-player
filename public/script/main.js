@@ -546,7 +546,7 @@ function togglePlayPause() {
   } else {
     play();
   }
-  // forceHideCursor(); // Force hide the cursor when toggling play/pause
+  forceHideCursor(); // Force hide the cursor when toggling play/pause
 }
 
 function handleShorthand(e) {
