@@ -393,6 +393,7 @@ function toggleMainStateCondition(e) {
   if (!e.path?.includes(controls)) {
     if (!isPlaying) {
       play();
+      forceHideCursor();
     } else {
       pause();
     }
@@ -528,6 +529,7 @@ function forceHideCursor() {
 
   timeout = setTimeout(() => {
     if (isPlaying && !isCursorOnControls) {
+      controls.classList.remove("show-controls");
       if (
         mouseX >= videoContainer.getBoundingClientRect().left &&
         mouseX <= videoContainer.getBoundingClientRect().right &&
@@ -536,6 +538,7 @@ function forceHideCursor() {
       ) {
         document.body.style.cursor = "none";
       }
+      settingMenu.classList.remove("show-setting-menu");
     }
   }, 1000);
 }
@@ -556,9 +559,6 @@ function handleShorthand(e) {
   //   video.currentTime = (video.duration / 100) * (parseInt(e.key) * 10);
   //   currentTime.style.width = parseInt(e.key) * 10 + "%";
   // }
-  if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) {
-    return;
-  }
   switch (e.key.toLowerCase()) {
     case " ":
       if (tagName === "button") return;

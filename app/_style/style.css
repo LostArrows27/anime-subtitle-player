@@ -507,13 +507,13 @@ video {
 }
 
 .fullscreen {
-  position: absolute !important;
+  /* position: absolute !important;
   max-width: 100% !important;
   width: 100% !important;
   height: 100% !important;
   display: flex !important;
-  background: #000 !important;
-  align-items: center !important;
+  align-items: center !important; */
+  background: #111 !important;
 }
 
 .right-controls {
