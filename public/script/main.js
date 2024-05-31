@@ -37,6 +37,14 @@ const backwardSate = document.querySelector(".state-backward");
 const forwardSate = document.querySelector(".state-forward");
 const loader = document.querySelector(".custom-loader");
 const fileUpload = document.querySelector("#file-upload");
+let mouseX = 0;
+let mouseY = 0;
+
+// Event listener to update mouse position
+document.addEventListener("mousemove", (event) => {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+});
 
 let isPlaying = false,
   mouseDownProgress = false,
@@ -237,6 +245,7 @@ function handleMainStateIcon(icon) {
 
 function play() {
   if (!!video.src && !isPlaying) {
+    console.log("play");
     video.play();
     isPlaying = true;
     playPause.innerHTML = pauseIcon(17, 17);
@@ -266,7 +275,6 @@ function pause() {
   playPause.innerHTML = playIcon(17, 17);
   controls.classList.add("show-controls");
   document.body.style.cursor = "default";
-
   mainState.classList.add("show-state");
   handleMainStateIcon(playIcon(40, 40));
   if (video.ended) {
@@ -513,6 +521,36 @@ function handlePlaybackRateKey(type = "") {
   });
 }
 
+function forceHideCursor() {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+
+  timeout = setTimeout(() => {
+    if (isPlaying && !isCursorOnControls) {
+      controls.classList.remove("show-controls");
+      if (
+        mouseX >= videoContainer.getBoundingClientRect().left &&
+        mouseX <= videoContainer.getBoundingClientRect().right &&
+        mouseY >= videoContainer.getBoundingClientRect().top &&
+        mouseY <= videoContainer.getBoundingClientRect().bottom
+      ) {
+        document.body.style.cursor = "none";
+      }
+      settingMenu.classList.remove("show-setting-menu");
+    }
+  }, 1000);
+}
+
+function togglePlayPause() {
+  if (isPlaying) {
+    pause();
+  } else {
+    play();
+  }
+  forceHideCursor(); // Force hide the cursor when toggling play/pause
+}
+
 function handleShorthand(e) {
   const tagName = document.activeElement.tagName.toLowerCase();
   if (tagName === "input") return;
@@ -523,11 +561,7 @@ function handleShorthand(e) {
   switch (e.key.toLowerCase()) {
     case " ":
       if (tagName === "button") return;
-      if (isPlaying) {
-        video.pause();
-      } else {
-        video.play();
-      }
+      togglePlayPause(); // Toggle play/pause and force hide cursor
       break;
     case "f":
       toggleFullscreen();
