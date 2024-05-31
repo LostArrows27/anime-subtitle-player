@@ -133,8 +133,24 @@ function Page() {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      if (document.activeElement!.id === "search-field" && event.key !== "j")
+      switch (event.key) {
+        case "Control":
+          setIsCtrlPressed(true);
+          break;
+
+        default:
+      }
+
+      if (
+        event.ctrlKey ||
+        event.altKey ||
+        event.shiftKey ||
+        event.metaKey ||
+        (document.activeElement!.id === "search-field" && event.key !== "j")
+      ) {
         return;
+      }
+
       switch (event.key) {
         case "c":
           // toggle subtitle

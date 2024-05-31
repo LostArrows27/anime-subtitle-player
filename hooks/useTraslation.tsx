@@ -67,7 +67,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
     // console.log("get word part");
     if (fetchTime > 0) return;
     const translationResult = await getSentenceBreakdown(index);
-    return translationResult.content.sentence.parts.slice(0, -3);
+    return translationResult.content.sentence.parts.slice(0, -2);
   };
 
   const getWordTranslation = async (index: number = 0) => {
@@ -92,6 +92,85 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   const parseText = (text: string) => {
     if (breakDownSentence.length === 0) return text;
 
+    let result = [];
+    let lastIndex = 0;
+
+    breakDownSentence.forEach((part, index) => {
+      const partIndex = text.indexOf(part.inflected, lastIndex);
+
+      if (partIndex === -1) return;
+
+      // Add text between the last segment and the current one
+      if (partIndex > lastIndex) {
+        result.push(text.substring(lastIndex, partIndex));
+      }
+
+      // Add the current segment wrapped in a span
+      result.push(
+        <span
+          onMouseEnter={async (e) => {
+            if (!isCtrlPressed) return;
+            if (
+              part.word_class === undefined ||
+              part.word_class === "Symbol" ||
+              part.word_class === "Space"
+            )
+              return;
+            setShowPopup(true);
+            let spanElement = e.target as HTMLSpanElement;
+            let spanParentElement = spanElement.parentElement;
+            let xPosition =
+              spanElement.getBoundingClientRect().x -
+              spanParentElement!.getBoundingClientRect().x;
+            const leftSpaceToRight =
+              window.innerWidth - spanParentElement!.getBoundingClientRect().x;
+
+            if (xPosition + 550 > leftSpaceToRight) {
+              xPosition = leftSpaceToRight - 550;
+            }
+            setPopupXPosition(xPosition);
+            setIsLoading(true);
+            let findIndex = 0;
+            const result = wordTranslation.find(
+              (wordTranslate: WordTranslate, index: number) => {
+                if (part.inflected === wordTranslate.origin) findIndex = index;
+                return part.inflected === wordTranslate.origin;
+              }
+            );
+            // have fetched before
+            if (result !== undefined) {
+              setIsLoading(false);
+              setCurrentWordTranslation(result);
+              return;
+            }
+            // haven't fetched before
+            const newWordTranslation = await getWordTranslation(part.position);
+            setIsLoading(false);
+            setWordTranslation((prev) => {
+              const wordResult = {
+                position: part.position,
+                data: { content: newWordTranslation },
+                origin: part.inflected,
+              };
+              setCurrentWordTranslation(wordResult);
+              return [...prev, wordResult];
+            });
+            return;
+          }}
+          key={index}
+        >
+          {part.inflected}
+        </span>
+      );
+
+      lastIndex = partIndex + part.inflected.length;
+    });
+
+    // Add any remaining text after the last segment
+    if (lastIndex < text.length) {
+      result.push(text.substring(lastIndex));
+    }
+
     return (
       <>
         {showPopup && (
@@ -101,76 +180,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
             isLoading={isLoading}
           />
         )}
-        {breakDownSentence.map((value: WordPart, key: number) => {
-          return (
-            <span
-              onMouseEnter={async (e) => {
-                if (!isCtrlPressed) return;
-                if (
-                  value.word_class === undefined ||
-                  value.word_class === "Symbol" ||
-                  value.word_class === "Space"
-                )
-                  return;
-                setShowPopup(true);
-                let spanElement = e.target as HTMLSpanElement;
-                let spanParentElement = spanElement.parentElement;
-                let xPosition =
-                  spanElement.getBoundingClientRect().x -
-                  spanParentElement!.getBoundingClientRect().x;
-                const leftSpaceToRight =
-                  window.innerWidth -
-                  spanParentElement!.getBoundingClientRect().x;
-
-                if (xPosition + 550 > leftSpaceToRight) {
-                  xPosition = leftSpaceToRight - 550;
-                }
-                setPopupXPosition(xPosition);
-                setIsLoading(true);
-                //TODO: handle pop over dictionaries
-                //TODO: handle multiple pop-up (not fetch done this word => jump to next word)
-                // 1: multiple pop-up
-                // 2: 1 pop-up moving
-                console.log("hover to: ", value.inflected);
-                let findIndex = 0;
-                const result = wordTranslation.find(
-                  (wordTranslate: WordTranslate, index: number) => {
-                    if (value.inflected === wordTranslate.origin)
-                      findIndex = index;
-                    return value.inflected === wordTranslate.origin;
-                  }
-                );
-                // have fetched before
-                if (result !== undefined) {
-                  setIsLoading(false);
-                  setCurrentWordTranslation(result);
-                  console.log("found: ", result.data);
-                  return;
-                }
-                // haven't fetched before
-                console.log("fetching: ", value.inflected);
-                const newWordTranslation = await getWordTranslation(
-                  value.position
-                );
-                console.log("fetched: ", newWordTranslation);
-                setIsLoading(false);
-                setWordTranslation((prev) => {
-                  const wordResult = {
-                    position: value.position,
-                    data: { content: newWordTranslation },
-                    origin: value.inflected,
-                  };
-                  setCurrentWordTranslation(wordResult);
-                  return [...prev, wordResult];
-                });
-                return;
-              }}
-              key={key}
-            >
-              {value.inflected}
-            </span>
-          );
-        })}
+        {result}
       </>
     );
   };

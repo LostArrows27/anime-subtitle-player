@@ -528,7 +528,6 @@ function forceHideCursor() {
 
   timeout = setTimeout(() => {
     if (isPlaying && !isCursorOnControls) {
-      controls.classList.remove("show-controls");
       if (
         mouseX >= videoContainer.getBoundingClientRect().left &&
         mouseX <= videoContainer.getBoundingClientRect().right &&
@@ -537,7 +536,6 @@ function forceHideCursor() {
       ) {
         document.body.style.cursor = "none";
       }
-      settingMenu.classList.remove("show-setting-menu");
     }
   }, 1000);
 }
@@ -548,7 +546,7 @@ function togglePlayPause() {
   } else {
     play();
   }
-  forceHideCursor(); // Force hide the cursor when toggling play/pause
+  // forceHideCursor(); // Force hide the cursor when toggling play/pause
 }
 
 function handleShorthand(e) {
@@ -558,6 +556,9 @@ function handleShorthand(e) {
   //   video.currentTime = (video.duration / 100) * (parseInt(e.key) * 10);
   //   currentTime.style.width = parseInt(e.key) * 10 + "%";
   // }
+  if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) {
+    return;
+  }
   switch (e.key.toLowerCase()) {
     case " ":
       if (tagName === "button") return;
