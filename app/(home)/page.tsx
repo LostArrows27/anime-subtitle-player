@@ -133,16 +133,7 @@ function Page() {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      switch (event.key) {
-        case "Control":
-          setIsCtrlPressed(true);
-          break;
-
-        default:
-      }
-
       if (
-        event.ctrlKey ||
         event.altKey ||
         event.shiftKey ||
         event.metaKey ||
@@ -180,6 +171,9 @@ function Page() {
           setOpenMenu((prev) => !prev);
           break;
         case "Control":
+          console.log(event);
+          console.log("Ctrl is set to be true");
+
           setIsCtrlPressed(true);
           break;
         case "j":
