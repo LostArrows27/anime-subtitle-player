@@ -201,6 +201,9 @@ function Page() {
       return;
     }
     if (event.key === "Control") {
+      console.log(event);
+      console.log("Ctrl is set to be false");
+
       setIsCtrlPressed(false);
       return;
     }
