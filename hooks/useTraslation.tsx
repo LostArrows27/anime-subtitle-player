@@ -76,9 +76,13 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
   };
 
   const handleMouseMove = useCallback(async () => {
-    console.log("handle mouse move");
+    console.log(
+      "handle mouse move - ",
+      isCtrlPressed ? "Ctrl pressed" : "Ctrl not pressed"
+    );
 
-    if (!isCtrlPressed || sentence === originalSentence) return;
+    if (!isCtrlPressed) return;
+    if (sentence === originalSentence) return;
     if (fetchTime > 0) return;
     setSentence(originalSentence!);
     setFetchTime(1);
@@ -90,6 +94,7 @@ function useTranslation(sentenceRef: React.RefObject<HTMLDivElement>) {
 
   // parse Text to span element to scan able
   const parseText = (text: string) => {
+    if (!text) return text;
     if (breakDownSentence.length === 0) return text;
 
     let result = [];
