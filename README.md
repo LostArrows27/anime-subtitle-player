@@ -58,6 +58,11 @@
 
 ![image](https://github.com/LostArrows27/anime-subtitle-player/assets/97510841/fda15a7a-31fa-4ed9-bbe7-aefc90de110a)
 
+## ⚒️ DEVELOPING FEATURES
+
+- [ ] Listening comprehension "mark" mode
+- [ ] Add card with audio to "Anki"  
+
 ## 📚 TODO
 
 #### 1. Subtitle
