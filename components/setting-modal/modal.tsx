@@ -41,7 +41,6 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
           setSave(false);
         }
       }}
-      isCentered
       isOpen={openMenu}
       onClose={() => {
         onClose();
@@ -49,7 +48,7 @@ function SettingModal({ isOpen, onClose }: SettingModelProps) {
       }}
     >
       <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
-      <ModalContent className="!bg-gray-800 !z-[999999] !text-white !w-[700px] !max-w-[700px]">
+      <ModalContent className="!bg-gray-800 !z-[999999] !mt-[150px] !text-white !w-[700px] !max-w-[700px]">
         <ModalHeader>Settings</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
