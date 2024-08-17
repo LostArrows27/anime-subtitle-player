@@ -16,6 +16,11 @@
 
 - ❌ I am not going to finish this project at a specific time cause i'm going to use this everyday and do more feature when i have time to make it better 😁.
 
+## 📽️ UPDATE 
+- Currently i have found [asb player](https://killergerbah.github.io/asbplayer/), an anime immersion player which pretty similar to "Anime Subtitle Player" and have many cool feature that i plan to do:D
+- Since asb player has many convenient feature and can directly create Anime Card in 1 second so i decide to use it from now. 
+- Therefore there'll have no new feature on "Anime Subtitle Player" till i have new idea or something of asb player want to improve.
+
 ## 📺 Preview
 
 - In video subtitle
